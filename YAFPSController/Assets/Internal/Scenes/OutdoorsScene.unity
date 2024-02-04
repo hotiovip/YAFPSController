@@ -1337,6 +1337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9d935756e70d46459f36569c245abf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: d23e182c99a17974ca268aedeae37ee2, type: 2}
 --- !u!33 &33803936088544198
 MeshFilter:
   m_ObjectHideFlags: 0

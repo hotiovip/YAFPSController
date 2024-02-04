@@ -2,13 +2,10 @@ using UnityEngine;
 
 namespace Hotiovip.YAFPSController
 {
-    [CreateAssetMenu(fileName = "WeaponData", menuName = "YAFPSController/WeaponData", order = 0)]
-    public class WeaponData : ScriptableObject
+    [CreateAssetMenu(fileName = "WeaponData", menuName = "YAFPSController/WeaponData", order = 1)]
+    public class WeaponData : ItemData
     {
-        public string weaponName = "no name weapon";
-
+        [Space]
         public int magSize = 30;
-
-        public bool aimable = false;
     }
 }
