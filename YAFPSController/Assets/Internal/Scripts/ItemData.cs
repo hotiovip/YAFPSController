@@ -18,6 +18,9 @@ namespace Hotiovip.YAFPSController
         public bool canSway = true;
 
         [ShowIf("canSway")]
-        public Vector3 swayAmount;
+        public Vector3 swayVector;
+        public Vector3 maxSwayVector;
+        public Vector3 minSwayVector;
+        public float swaySmooth;
     }
 }

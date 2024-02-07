@@ -7,6 +7,9 @@ namespace Hotiovip.YAFPSController
     {
         [SerializeField]
         private PlayerController playerController;
+        [Space]
+        [SerializeField]
+        private Transform swayHolder;
 
         private PlayerInput playerInput;
         private Item[] items;
@@ -16,6 +19,7 @@ namespace Hotiovip.YAFPSController
             playerInput = playerController.GetPlayerInput();
         }
 
-        public PlayerController GetPlayerController() => GetPlayerController();
+        public PlayerController GetPlayerController() => playerController;
+        public Transform GetSwayHolder() => swayHolder;
     }
 }

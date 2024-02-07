@@ -1,4 +1,4 @@
-using System.Threading;
+using Hotiovip.YAFPSController.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
@@ -16,8 +16,17 @@ namespace Hotiovip.YAFPSController
 
         private Vector2 lookInput;
 
+
+        private Transform swayHolder;
+        private Quaternion originalPosition;
+        private Quaternion swayVelocity;
+
         protected virtual void OnEnable()
         {
+            inventoryController = GetComponentInParent<InventoryController>();
+            playerController = inventoryController.GetPlayerController();
+            playerInput = playerController.GetPlayerInput();
+
             playerInput.onActionTriggered += OnActionTriggered;
         }
         protected virtual void OnDisable()
@@ -26,13 +35,11 @@ namespace Hotiovip.YAFPSController
         }
         protected virtual void Start()
         {
-            inventoryController = GetComponentInParent<InventoryController>();
-            playerController = inventoryController.GetPlayerController();
-            playerInput = playerController.GetPlayerInput();
+            swayHolder = inventoryController.GetSwayHolder();
         }
         protected virtual void Update()
         {
-
+            Sway();
         }
 
 
@@ -54,14 +61,17 @@ namespace Hotiovip.YAFPSController
             if (!itemData.canSway) return;
 
             // Calculate the sway movement based on mouse input
-            //float moveX = Mathf.Clamp(lookInput.x * swayAmount, -maxSwayAmount, maxSwayAmount);
-            //float moveY = Mathf.Clamp(lookInput.y * swayAmount, -maxSwayAmount, maxSwayAmount);
+            float moveX = Mathf.Clamp(lookInput.x * itemData.swayVector.y, itemData.minSwayVector.y, itemData.maxSwayVector.y);
+            float moveY = Mathf.Clamp(-lookInput.y * itemData.swayVector.x, itemData.minSwayVector.x, itemData.maxSwayVector.x);
+            float moveZ = Mathf.Clamp(lookInput.x * itemData.swayVector.z, itemData.minSwayVector.z, itemData.maxSwayVector.z);
 
-            // Calculate the target position with weapon sway
-            //Vector3 targetSwayPosition = originalPosition + new Vector3(moveX, moveY, 0f);
+            Quaternion swayRotationX = Quaternion.AngleAxis(moveX, Vector3.up);
+            Quaternion swayRotationY = Quaternion.AngleAxis(moveY, Vector3.right);
+            Quaternion swayRotationZ = Quaternion.AngleAxis(moveZ, Vector3.forward);
 
-            // Smoothly interpolate between current position and target position
-            //transform.localPosition = Vector3.Lerp(transform.localPosition, targetSwayPosition, Time.deltaTime * smoothFactor);
+            Quaternion targetRotation = swayRotationX * swayRotationY * swayRotationZ;
+
+            swayHolder.localRotation = QuaternionUtil.SmoothDamp(swayHolder.localRotation, targetRotation, ref swayVelocity, itemData.swaySmooth * Time.deltaTime);
         }
 
 
