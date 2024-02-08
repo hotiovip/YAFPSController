@@ -6,6 +6,9 @@ using Sirenix.OdinInspector;
 
 namespace Hotiovip.YAFPSController
 {
+    /// <summary>
+    /// Controls the player.
+    /// </summary>
     public class PlayerController : MonoBehaviour
     {
         #region VARIABLES
@@ -135,11 +138,9 @@ namespace Hotiovip.YAFPSController
             currentSpeed = walkSpeed;
         }
 
-
         public PlayerInput GetPlayerInput() => playerInput;
         public bool IsGrounded => Physics.Raycast(transform.position, Vector3.down, currentHeight* 0.5f + 0.2f, whatIsGround);
         public bool IsRunning => isRunning;
-
 
         #region INPUTS
         public void OnActionTriggered(CallbackContext context)

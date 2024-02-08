@@ -1,10 +1,11 @@
 using Sirenix.OdinInspector;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Hotiovip.YAFPSController
 {
+    /// <summary>
+    /// ScriptableObject class used to store item-specific data.
+    /// </summary>
     [CreateAssetMenu(fileName = "ItemData", menuName = "YAFPSController/ItemData", order = 0)]
     public class ItemData : ScriptableObject
     {
@@ -18,9 +19,9 @@ namespace Hotiovip.YAFPSController
         public bool canSway = true;
 
         [ShowIf("canSway")]
-        public Vector3 swayVector;
-        public Vector3 maxSwayVector;
-        public Vector3 minSwayVector;
-        public float swaySmooth;
+        public Vector3 swayVector = new Vector3(5, 3, 2);
+        public Vector3 maxSwayVector = new Vector3(10, 6, 4);
+        public Vector3 minSwayVector = new Vector3(-10, -6, -4);
+        public float swaySmoothTime = 6;
     }
 }

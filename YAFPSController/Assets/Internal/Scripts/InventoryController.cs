@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 
 namespace Hotiovip.YAFPSController
 {
+    /// <summary>
+    /// Controls the inventory system, like: weapon swapping, usables, etc...
+    /// </summary>
     public class InventoryController : MonoBehaviour
     {
         [SerializeField]

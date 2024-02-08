@@ -2,53 +2,78 @@ using UnityEngine;
 
 namespace Hotiovip.YAFPSController.Utils
 {
-    public class FloatLerp
+    public class TransformInterp
     {
-        private float currentVelocity;
+        private Transform transform;
 
-        public FloatLerp()
+        private Vector3 positionVelocity;
+        private Quaternion rotationVelocity;
+        
+        public TransformInterp(Transform targetTransform)
         {
-            currentVelocity = 0;
+            transform = targetTransform;
+            positionVelocity = Vector3.zero;
+            rotationVelocity = Quaternion.identity;
         }
 
-        public float SmoothDamp(float currentFloat, float targetFloat, float smoothTime)
+        public void Reset()
         {
-            return Mathf.SmoothDamp(currentFloat, targetFloat, ref currentVelocity, smoothTime);
+            positionVelocity = Vector3.zero;
+            rotationVelocity = Quaternion.identity;
+        }
+        public void ResetPosition()
+        {
+            positionVelocity = Vector3.zero;
+        }
+        public void ResetRotation()
+        {
+            rotationVelocity = Quaternion.identity;
+        }
+
+        public void PositionSmoothDamp(Vector3 targetPosition, float smoothTime, InterpolationSpace interpolationSpace = InterpolationSpace.Local) 
+        {
+            if (!CanInterpolate()) return;
+
+            if (interpolationSpace.Equals(InterpolationSpace.Local))
+            {
+                transform.localPosition = Vector3.SmoothDamp(transform.localPosition, targetPosition, ref positionVelocity, smoothTime * Time.deltaTime);
+            }
+            else
+            {
+                transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref positionVelocity, smoothTime * Time.deltaTime);
+
+            }
+        }
+        public void RotationSmoothDamp(Quaternion targetRotation, float smoothTime, InterpolationSpace interpolationSpace = InterpolationSpace.Local)
+        {
+            if (!CanInterpolate()) return;
+
+            if (interpolationSpace.Equals(InterpolationSpace.Local))
+            {
+                transform.localRotation = QuaternionUtil.SmoothDamp(transform.localRotation, targetRotation, ref rotationVelocity, smoothTime * Time.deltaTime);
+            }
+            else
+            {
+                transform.rotation = QuaternionUtil.SmoothDamp(transform.rotation, targetRotation, ref rotationVelocity, smoothTime * Time.deltaTime);
+
+            }
+        }
+
+        public bool CanInterpolate()
+        {
+            if (transform == null)
+            {
+                Debug.LogError("No transform given on initialization. Cannot interpolate without transform!");
+                return false;
+            }
+
+            return true;
         }
     }
 
-    public class Vector2Lerp
+    public enum InterpolationSpace
     {
-        public Vector2 currentVelocity;
-
-        public Vector2Lerp()
-        {
-            currentVelocity = Vector3.zero;
-        }
-
-        public Vector2 SmoothDamp(Vector2 currentVector, Vector2 targetVector, float smoothTime)
-        {
-            return Vector2.SmoothDamp(currentVector, targetVector, ref currentVelocity, smoothTime);
-        }
-    }
-
-    public class Vector3Lerp
-    {
-        public Vector3 currentVelocity;
-
-        public Vector3Lerp()
-        {
-            currentVelocity = Vector3.zero;
-        }
-
-        public Vector3 SmoothDamp(Vector3 currentVector, Vector3 targetVector, float smoothTime)
-        {
-            return Vector3.SmoothDamp(currentVector, targetVector, ref currentVelocity, smoothTime);
-        }
-    }
-
-    public class TransformLerp
-    {
-
+        Local,
+        Global
     }
 }

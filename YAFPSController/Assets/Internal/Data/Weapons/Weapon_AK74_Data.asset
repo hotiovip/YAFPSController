@@ -19,5 +19,5 @@ MonoBehaviour:
   swayVector: {x: 5, y: 3, z: 2}
   maxSwayVector: {x: 10, y: 6, z: 4}
   minSwayVector: {x: -10, y: -6, z: -4}
-  swaySmooth: 6
+  swaySmoothTime: 6
   magSize: 30

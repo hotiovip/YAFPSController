@@ -2,8 +2,14 @@ using UnityEngine;
 
 namespace Hotiovip.YAFPSController
 {
+    /// <summary>
+    /// Used for weapons (shooting items). Can be used as a superclass to make new custom weapons.
+    /// </summary>
     public class WeaponController : Item
     {
+        /// <summary>
+        /// Used for weapon-specific data. Use this.itemData for item-specific data.
+        /// </summary>
         protected WeaponData weaponData;
 
         protected override void Start()

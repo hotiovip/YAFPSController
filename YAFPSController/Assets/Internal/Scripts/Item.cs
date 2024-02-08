@@ -5,20 +5,42 @@ using static UnityEngine.InputSystem.InputAction;
 
 namespace Hotiovip.YAFPSController
 {
+    /// <summary>
+    /// Used to make items. Can be used as a super class to make new specific items.
+    /// </summary>
     public class Item : MonoBehaviour
     {
+        /// <summary>
+        /// Item's data.
+        /// </summary>
         [SerializeField]
         protected ItemData itemData;
 
+        /// <summary>
+        /// InventoryController reference. Used to get playerController
+        /// </summary>
         protected InventoryController inventoryController;
+        /// <summary>
+        /// PlayerController reference. Used to get playerInput.
+        /// </summary>
         protected PlayerController playerController;
+        /// <summary>
+        /// PlayerInput reference. Used for listening to player inputs.
+        /// </summary>
         protected PlayerInput playerInput;
 
+        /// <summary>
+        /// Vector2 used to store mouse delta.
+        /// </summary>
         private Vector2 lookInput;
 
-
+        /// <summary>
+        /// Transform to wich the sway is applied.
+        /// </summary>
         private Transform swayHolder;
-        private Quaternion originalPosition;
+        /// <summary>
+        /// the velocity parameter used for the sway's smooth damp.
+        /// </summary>
         private Quaternion swayVelocity;
 
         protected virtual void OnEnable()
@@ -51,9 +73,13 @@ namespace Hotiovip.YAFPSController
         {
             if (!itemData.canPrimaryUse) return;
         }
-        protected virtual void SecondaryUse()
+        protected virtual void StartSecondaryUse()
         {
             if (!itemData.canSecondaryUse) return;
+        }
+        protected virtual void StopSecondaryUse()
+        {
+            
         }
 
         private void Sway()
@@ -71,7 +97,7 @@ namespace Hotiovip.YAFPSController
 
             Quaternion targetRotation = swayRotationX * swayRotationY * swayRotationZ;
 
-            swayHolder.localRotation = QuaternionUtil.SmoothDamp(swayHolder.localRotation, targetRotation, ref swayVelocity, itemData.swaySmooth * Time.deltaTime);
+            swayHolder.localRotation = QuaternionUtil.SmoothDamp(swayHolder.localRotation, targetRotation, ref swayVelocity, itemData.swaySmoothTime * Time.deltaTime);
         }
 
 
@@ -129,7 +155,8 @@ namespace Hotiovip.YAFPSController
         }
         private void OnSecondaryUse(CallbackContext callbackContext)
         {
-            if (callbackContext.performed) SecondaryUse();
+            if (callbackContext.performed) StartSecondaryUse();
+            else if (callbackContext.canceled) StopSecondaryUse();
         }
         #endregion
     }
