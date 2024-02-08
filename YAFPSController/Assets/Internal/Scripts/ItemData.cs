@@ -12,6 +12,10 @@ namespace Hotiovip.YAFPSController
         [Title("General Settings")]
         public string itemName;
         [Space]
+        public Vector3 itemPosition;
+        [Space]
+        public Quaternion itemRotation;
+        [Space]
         public bool canPrimaryUse = true;
         public bool canSecondaryUse = false;
 

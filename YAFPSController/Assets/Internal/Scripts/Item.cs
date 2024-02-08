@@ -1,4 +1,5 @@
 using Hotiovip.YAFPSController.Utils;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
@@ -10,6 +11,7 @@ namespace Hotiovip.YAFPSController
     /// </summary>
     public class Item : MonoBehaviour
     {
+        #region VARIABLES
         /// <summary>
         /// Item's data.
         /// </summary>
@@ -21,35 +23,50 @@ namespace Hotiovip.YAFPSController
         /// </summary>
         protected InventoryController inventoryController;
         /// <summary>
-        /// PlayerController reference. Used to get playerInput.
+        /// PlayerController reference. Used to get playerInput
         /// </summary>
         protected PlayerController playerController;
         /// <summary>
-        /// PlayerInput reference. Used for listening to player inputs.
+        /// PlayerInput reference. Used for listening to player inputs
         /// </summary>
         protected PlayerInput playerInput;
 
         /// <summary>
-        /// Vector2 used to store mouse delta.
+        /// Vector2 used to store mouse delta
         /// </summary>
         private Vector2 lookInput;
 
+        private Transform positionHolder;
+
         /// <summary>
-        /// Transform to wich the sway is applied.
+        /// Transform to wich the sway is applied
         /// </summary>
         private Transform swayHolder;
         /// <summary>
-        /// the velocity parameter used for the sway's smooth damp.
+        /// the velocity parameter used for the sway's smooth damp
         /// </summary>
         private Quaternion swayVelocity;
 
+        // STATES
+        protected bool isPrimaryUsing;
+        protected bool isSecondaryUsing;
+        #endregion
+
         protected virtual void OnEnable()
         {
+            // Get important references
             inventoryController = GetComponentInParent<InventoryController>();
             playerController = inventoryController.GetPlayerController();
             playerInput = playerController.GetPlayerInput();
 
+            // Listen for inputs
             playerInput.onActionTriggered += OnActionTriggered;
+
+            // Set positionHolder's position and rotation
+            positionHolder = inventoryController.GetPositionHolder();
+            positionHolder.localPosition = itemData.itemPosition;
+            positionHolder.localRotation = itemData.itemRotation;
+
         }
         protected virtual void OnDisable()
         {
@@ -61,28 +78,53 @@ namespace Hotiovip.YAFPSController
         }
         protected virtual void Update()
         {
-            Sway();
+            UpdatePrimaryUse();
+
+            if (isSecondaryUsing) SecondaryUse();
+
+            UpdateSway();
         }
 
-
+        /// <summary>
+        /// Handles the logic to decide if call PrimaryUse() or not.
+        /// Can be overridden for custom logic.
+        /// </summary>
+        protected virtual void UpdatePrimaryUse()
+        {
+            if (isPrimaryUsing) PrimaryUse();
+        }
         protected virtual void StartPrimaryUse()
         {
             if (!itemData.canPrimaryUse) return;
+
+            isPrimaryUsing = true;
+
+            PrimaryUse();
+        }
+        protected virtual void PrimaryUse()
+        {
+
         }
         protected virtual void StopPrimaryUse()
         {
             if (!itemData.canPrimaryUse) return;
+
+            isPrimaryUsing = false;
         }
         protected virtual void StartSecondaryUse()
         {
             if (!itemData.canSecondaryUse) return;
+        }
+        protected virtual void SecondaryUse()
+        {
+
         }
         protected virtual void StopSecondaryUse()
         {
             
         }
 
-        private void Sway()
+        private void UpdateSway()
         {
             if (!itemData.canSway) return;
 
