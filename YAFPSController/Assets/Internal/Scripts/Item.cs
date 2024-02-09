@@ -1,5 +1,4 @@
 using Hotiovip.YAFPSController.Utils;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
@@ -52,13 +51,15 @@ namespace Hotiovip.YAFPSController
         protected bool isSecondaryUsing;
         #endregion
 
-        protected virtual void OnEnable()
+        protected virtual void Awake()
         {
             // Get important references
             inventoryController = GetComponentInParent<InventoryController>();
             playerController = inventoryController.GetPlayerController();
             playerInput = playerController.GetPlayerInput();
-
+        }
+        protected virtual void OnEnable()
+        {
             // Listen for inputs
             playerInput.onActionTriggered += OnActionTriggered;
 
@@ -110,6 +111,11 @@ namespace Hotiovip.YAFPSController
             if (!itemData.canPrimaryUse) return;
 
             isPrimaryUsing = false;
+        }
+
+        protected virtual void UpdateSecondaryUse()
+        {
+            if (isSecondaryUsing) SecondaryUse();
         }
         protected virtual void StartSecondaryUse()
         {

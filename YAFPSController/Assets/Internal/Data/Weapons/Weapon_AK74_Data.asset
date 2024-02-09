@@ -22,9 +22,9 @@ MonoBehaviour:
   maxSwayVector: {x: 10, y: 6, z: 4}
   minSwayVector: {x: -10, y: -6, z: -4}
   swaySmoothTime: 6
-  bulletPrefab: {fileID: 4865850878145834771, guid: 353af56144c21f74184f3f426e1424e1,
+  projectilePrefab: {fileID: 7766734690337166737, guid: 353af56144c21f74184f3f426e1424e1,
     type: 3}
-  fireRate: 8
+  fireRate: 650
   muzzleVelocity: 900
-  fireModes: 000000000100000002000000
+  fireModes: 020000000000000001000000
   magSize: 30

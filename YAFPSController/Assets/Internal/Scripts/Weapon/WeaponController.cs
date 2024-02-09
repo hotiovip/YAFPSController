@@ -1,6 +1,5 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
-using static UnityEngine.ParticleSystem;
 
 namespace Hotiovip.YAFPSController.Weapon
 {
@@ -9,9 +8,13 @@ namespace Hotiovip.YAFPSController.Weapon
     /// </summary>
     public class WeaponController : Item
     {
+        #region VARIABLES
         [SerializeField]
         [Required]
-        private Transform muzzle;
+        protected Transform muzzle;
+        [SerializeField]
+        [Required]
+        protected ProjectilePool projectilePool;
 
         /// <summary>
         /// Used for weapon-specific data. Use this.itemData for item-specific data.
@@ -22,6 +25,8 @@ namespace Hotiovip.YAFPSController.Weapon
         protected float fireTimer;
         protected int bursts;
         protected FireMode currentFireMode;
+        #endregion
+
         protected override void Start()
         {
             base.Start();
@@ -90,8 +95,9 @@ namespace Hotiovip.YAFPSController.Weapon
         {
             base.PrimaryUse();
 
-            GameObject bullet = Instantiate(weaponData.bulletPrefab, transform.position, transform.rotation);
-            bullet.transform.parent = inventoryController.GetBulletsHolder();
+            //GameObject bullet = Instantiate(weaponData.bulletPrefab, muzzle.position, transform.rotation);
+            //bullet.transform.parent = inventoryController.GetBulletsHolder();
+            projectilePool.GetPool().Get().SetStartValues(muzzle.position, muzzle.forward, weaponData.muzzleVelocity);
         }
         /// <summary>
         /// Stops the fire process.
@@ -99,9 +105,14 @@ namespace Hotiovip.YAFPSController.Weapon
         protected override void StopPrimaryUse()
         {
             base.StopPrimaryUse();
+
+
         }
 
 
+
         public bool CanFire() => currentMagSize > 0;
+        public WeaponData GetWeaponData() => weaponData;
+        public Transform GetMuzzle() => muzzle;
     }
 }

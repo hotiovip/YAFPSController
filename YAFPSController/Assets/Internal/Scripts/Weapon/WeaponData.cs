@@ -10,7 +10,7 @@ namespace Hotiovip.YAFPSController.Weapon
     public class WeaponData : ItemData
     {
         [Title("References")]
-        public GameObject bulletPrefab;
+        public ProjectileController projectilePrefab;
         [Space]
         [Title("General Settings")]
         /// <summary>
