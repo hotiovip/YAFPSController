@@ -1,5 +1,7 @@
 using UnityEngine;
 
+using Hotiovip.YAFPSController.Wind;
+
 namespace Hotiovip.YAFPSController.Weapon
 {
     public static class BallisticMethods
@@ -108,7 +110,7 @@ namespace Hotiovip.YAFPSController.Weapon
         {
             //If you have a wind speed in your game, you can take that into account here:
             //https://www.youtube.com/watch?v=lGg7wNf1w-k
-            Vector3 bulletVelRelativeToWindVel = projectileVelocity - projectileData.windSpeedVector;
+            Vector3 bulletVelRelativeToWindVel = projectileVelocity - WindManager.Instance.GetWindSpeedVector();
 
             //Step 1. Calculate the bullet's drag force [N]
             //https://en.wikipedia.org/wiki/Drag_equation
@@ -119,7 +121,7 @@ namespace Hotiovip.YAFPSController.Weapon
             //The bullet's cross section area [m^2]
             float A = Mathf.PI * projectileData.radius * projectileData.radius;
 
-            float dragForce = 0.5f * projectileData.airDensity * v * v * projectileData.dragCoefficient * A;
+            float dragForce = 0.5f * WindManager.Instance.GetAirDensity() * v * v * projectileData.dragCoefficient * A;
 
 
             //Step 2. We need to add an acceleration, not a force, in the integration method [m/s^2]
@@ -144,7 +146,7 @@ namespace Hotiovip.YAFPSController.Weapon
         {
             //If you have a wind speed in your game, you can take that into account here:
             //https://www.youtube.com/watch?v=lGg7wNf1w-k
-            Vector3 bulletVelRelativeToWindVel = projectileVelocity - projectileData.windSpeedVector;
+            Vector3 bulletVelRelativeToWindVel = projectileVelocity - WindManager.Instance.GetWindSpeedVector();
 
             //Step 1. Calculate the bullet's lift force [N]
             //https://en.wikipedia.org/wiki/Lift_(force)
@@ -155,7 +157,7 @@ namespace Hotiovip.YAFPSController.Weapon
             //Planform (projected) wing area, which is assumed to be the same as the cross section area [m^2]
             float S = Mathf.PI * projectileData.radius * projectileData.radius;
 
-            float liftForce = 0.5f * projectileData.airDensity * v * v * S * projectileData.liftCoefficient;
+            float liftForce = 0.5f * WindManager.Instance.GetAirDensity() * v * v * S * projectileData.liftCoefficient;
 
             //Step 2. We need to add an acceleration, not a force, in the integration method [m/s^2]
             //Drag acceleration F = m * a -> a = F / m

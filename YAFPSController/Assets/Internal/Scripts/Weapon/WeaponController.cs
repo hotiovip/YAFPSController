@@ -95,8 +95,6 @@ namespace Hotiovip.YAFPSController.Weapon
         {
             base.PrimaryUse();
 
-            //GameObject bullet = Instantiate(weaponData.bulletPrefab, muzzle.position, transform.rotation);
-            //bullet.transform.parent = inventoryController.GetBulletsHolder();
             projectilePool.GetPool().Get().SetStartValues(muzzle.position, muzzle.forward, weaponData.muzzleVelocity);
         }
         /// <summary>
@@ -105,13 +103,17 @@ namespace Hotiovip.YAFPSController.Weapon
         protected override void StopPrimaryUse()
         {
             base.StopPrimaryUse();
-
-
         }
 
+        /// <summary>
+        /// Reload logic.
+        /// </summary>
+        protected override void Reload()
+        {
+          //TODO: Add isReloading true and deactivate firing   
+        }
 
-
-        public bool CanFire() => currentMagSize > 0;
+        public bool CanFire() => currentMagSize > 0 && !isReloading;
         public WeaponData GetWeaponData() => weaponData;
         public Transform GetMuzzle() => muzzle;
     }

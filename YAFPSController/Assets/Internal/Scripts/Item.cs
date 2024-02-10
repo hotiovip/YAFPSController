@@ -49,6 +49,7 @@ namespace Hotiovip.YAFPSController
         // STATES
         protected bool isPrimaryUsing;
         protected bool isSecondaryUsing;
+        protected bool isReloading;
         #endregion
 
         protected virtual void Awake()
@@ -130,6 +131,11 @@ namespace Hotiovip.YAFPSController
             
         }
 
+        protected virtual void Reload()
+        {
+
+        }
+
         private void UpdateSway()
         {
             if (!itemData.canSway) return;
@@ -174,37 +180,44 @@ namespace Hotiovip.YAFPSController
                 case "Secondary Use":
                     OnSecondaryUse(context);
                     break;
+                case "Reload":
+                    OnReload(context);
+                    break;
             }
         }
 
-        private void OnMove(CallbackContext callbackContext)
+        protected virtual void OnMove(CallbackContext callbackContext)
         {
             // Update vector
             //moveInput = callbackContext.ReadValue<Vector2>();
         }
-        private void OnLook(CallbackContext callbackContext)
+        protected virtual void OnLook(CallbackContext callbackContext)
         {
             // Update vector
             lookInput = callbackContext.ReadValue<Vector2>();
         }
-        private void OnJump(CallbackContext callbackContext)
+        protected virtual void OnJump(CallbackContext callbackContext)
         {
             //if (callbackContext.performed) Jump();
         }
-        private void OnRun(CallbackContext callbackContext)
+        protected virtual void OnRun(CallbackContext callbackContext)
         {
             //if (callbackContext.performed) StartRun();
             //else if (callbackContext.canceled) StopRun();
         }
-        private void OnPrimaryUse(CallbackContext callbackContext)
+        protected virtual void OnPrimaryUse(CallbackContext callbackContext)
         {
             if (callbackContext.performed) StartPrimaryUse();
             else if (callbackContext.canceled) StopPrimaryUse();
         }
-        private void OnSecondaryUse(CallbackContext callbackContext)
+        protected virtual void OnSecondaryUse(CallbackContext callbackContext)
         {
             if (callbackContext.performed) StartSecondaryUse();
             else if (callbackContext.canceled) StopSecondaryUse();
+        }
+        protected virtual void OnReload(CallbackContext context)
+        {
+            if (context.performed) Reload();
         }
         #endregion
     }

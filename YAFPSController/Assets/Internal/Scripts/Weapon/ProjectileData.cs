@@ -24,14 +24,5 @@ namespace Hotiovip.YAFPSController.Weapon
         public float dragCoefficient = 0.5f;
         [Tooltip("Lift coefficient")]
         public float liftCoefficient = 0.0f;
-
-
-        // TODO: MOVE SOMEWHERE ELSE (WIND CLASS SINGLETON)
-        [Tooltip("Wind speed [m/s]")]
-        public Vector3 windSpeedVector = new Vector3(0f, 0f, 0f);
-
-        // TODO: MOVE SOMEWHERE ELSE (WIND CLASS SINGLETON)
-        [Tooltip("The density of the medium the bullet is travelling in, which in this case is air at 15 degrees [kg/m^3].")]
-        public float airDensity = 1.225f;
     }
 }

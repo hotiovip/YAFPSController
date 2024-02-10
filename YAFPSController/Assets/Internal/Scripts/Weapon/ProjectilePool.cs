@@ -8,8 +8,6 @@ namespace Hotiovip.YAFPSController.Weapon
         [SerializeField]
         private WeaponController weaponController;
 
-
-
         private WeaponData weaponData;
         private Transform muzzle;
 
@@ -21,7 +19,7 @@ namespace Hotiovip.YAFPSController.Weapon
             weaponData = weaponController.GetWeaponData();
             muzzle = weaponController.GetMuzzle();
 
-            poolHolder = new GameObject($"{weaponData.name}_ProjectilePool").transform;
+            poolHolder = new GameObject($"{weaponData.itemName}_ProjectilePool").transform;
             pool = new ObjectPool<ProjectileController>(CreateProjectile, OnTakeProjectileFromPool, OnReturnProjectileToPool, OnDestroyProjectile,
                 true, weaponData.magSize, weaponData.magSize + weaponData.magSize / 2);
         }
