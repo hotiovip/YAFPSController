@@ -1,4 +1,5 @@
 using Hotiovip.YAFPSController.Utils;
+using Sirenix.Utilities.Editor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
@@ -47,9 +48,9 @@ namespace Hotiovip.YAFPSController
         private Quaternion swayVelocity;
 
         // STATES
-        protected bool isPrimaryUsing;
-        protected bool isSecondaryUsing;
-        protected bool isReloading;
+        protected bool isUsingPrimary;
+        protected bool isUsingSecondary;
+        protected bool isPerformingAction;
         #endregion
 
         protected virtual void Awake()
@@ -82,7 +83,7 @@ namespace Hotiovip.YAFPSController
         {
             UpdatePrimaryUse();
 
-            if (isSecondaryUsing) SecondaryUse();
+            if (isUsingSecondary) SecondaryUse();
 
             UpdateSway();
         }
@@ -93,13 +94,13 @@ namespace Hotiovip.YAFPSController
         /// </summary>
         protected virtual void UpdatePrimaryUse()
         {
-            if (isPrimaryUsing) PrimaryUse();
+            if (!CanPrimaryUse()) return;
+
+            if (isUsingPrimary) PrimaryUse();
         }
         protected virtual void StartPrimaryUse()
         {
-            if (!itemData.canPrimaryUse) return;
-
-            isPrimaryUsing = true;
+            isUsingPrimary = true;
 
             PrimaryUse();
         }
@@ -109,18 +110,16 @@ namespace Hotiovip.YAFPSController
         }
         protected virtual void StopPrimaryUse()
         {
-            if (!itemData.canPrimaryUse) return;
-
-            isPrimaryUsing = false;
+            isUsingPrimary = false;
         }
 
         protected virtual void UpdateSecondaryUse()
         {
-            if (isSecondaryUsing) SecondaryUse();
+            if (isUsingSecondary) SecondaryUse();
         }
         protected virtual void StartSecondaryUse()
         {
-            if (!itemData.canSecondaryUse) return;
+
         }
         protected virtual void SecondaryUse()
         {
@@ -131,7 +130,7 @@ namespace Hotiovip.YAFPSController
             
         }
 
-        protected virtual void Reload()
+        protected virtual void Action()
         {
 
         }
@@ -155,6 +154,9 @@ namespace Hotiovip.YAFPSController
         }
 
 
+        public virtual bool CanPrimaryUse() => true;
+        public virtual bool CanSecondaryUse() => true;
+        public virtual bool CanPerformAction() => true;
         #region INPUTS
         public virtual void OnActionTriggered(CallbackContext context)
         {
@@ -180,8 +182,8 @@ namespace Hotiovip.YAFPSController
                 case "Secondary Use":
                     OnSecondaryUse(context);
                     break;
-                case "Reload":
-                    OnReload(context);
+                case "Action":
+                    OnAction(context);
                     break;
             }
         }
@@ -215,9 +217,9 @@ namespace Hotiovip.YAFPSController
             if (callbackContext.performed) StartSecondaryUse();
             else if (callbackContext.canceled) StopSecondaryUse();
         }
-        protected virtual void OnReload(CallbackContext context)
+        protected virtual void OnAction(CallbackContext context)
         {
-            if (context.performed) Reload();
+            if (context.performed) Action();
         }
         #endregion
     }

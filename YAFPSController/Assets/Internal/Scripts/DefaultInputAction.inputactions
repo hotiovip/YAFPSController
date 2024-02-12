@@ -78,6 +78,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Action",
+                    "type": "Button",
+                    "id": "866f0fd6-5795-4a0a-8f95-5799fb310f8e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Equip Primary",
                     "type": "Button",
                     "id": "75f5c79f-d0ae-4d6c-ad38-f71a87f3e661",
@@ -90,15 +99,6 @@
                     "name": "Equip Secondary",
                     "type": "Button",
                     "id": "b4e1946e-708f-4631-81f6-96c0d17e4bc7",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Reload",
-                    "type": "Button",
-                    "id": "866f0fd6-5795-4a0a-8f95-5799fb310f8e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -285,11 +285,11 @@
                 {
                     "name": "",
                     "id": "50ef602f-4f7b-4dca-829a-1f83f77e927d",
-                    "path": "",
+                    "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Reload",
+                    "action": "Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

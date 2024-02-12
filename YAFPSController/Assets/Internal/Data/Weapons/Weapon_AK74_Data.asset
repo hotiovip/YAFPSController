@@ -15,16 +15,16 @@ MonoBehaviour:
   itemName: AK74
   itemPosition: {x: 0.164, y: -0.09999996, z: 0.2}
   itemRotation: {x: 0, y: 0.9961947, z: 0, w: -0.08715577}
-  canPrimaryUse: 1
-  canSecondaryUse: 1
   canSway: 1
   swayVector: {x: 5, y: 3, z: 2}
   maxSwayVector: {x: 10, y: 6, z: 4}
   minSwayVector: {x: -10, y: -6, z: -4}
   swaySmoothTime: 6
-  projectilePrefab: {fileID: 7766734690337166737, guid: 353af56144c21f74184f3f426e1424e1,
-    type: 3}
   fireRate: 650
   muzzleVelocity: 900
   fireModes: 020000000000000001000000
+  projectilePrefab: {fileID: 7766734690337166737, guid: 353af56144c21f74184f3f426e1424e1,
+    type: 3}
   magSize: 30
+  hasSpareAmmo: 1
+  spareAmmoSize: 300

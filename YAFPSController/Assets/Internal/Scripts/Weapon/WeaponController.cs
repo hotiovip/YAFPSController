@@ -22,6 +22,7 @@ namespace Hotiovip.YAFPSController.Weapon
         protected WeaponData weaponData;
 
         protected int currentMagSize;
+        protected int currentSpareAmmoSize;
         protected float fireTimer;
         protected int bursts;
         protected FireMode currentFireMode;
@@ -36,6 +37,7 @@ namespace Hotiovip.YAFPSController.Weapon
 
             currentFireMode = weaponData.fireModes[0];
             currentMagSize = weaponData.magSize;
+            currentSpareAmmoSize = weaponData.spareAmmoSize;
         }
 
 
@@ -44,9 +46,9 @@ namespace Hotiovip.YAFPSController.Weapon
         /// </summary>
         protected override void UpdatePrimaryUse()
         {
-            if (!CanFire() || !isPrimaryUsing)
+            if (!CanPrimaryUse() || !isUsingPrimary)
             {
-                if (isPrimaryUsing) StopPrimaryUse();
+                if (isUsingPrimary) StopPrimaryUse();
                 return;
             }
 
@@ -108,12 +110,16 @@ namespace Hotiovip.YAFPSController.Weapon
         /// <summary>
         /// Reload logic.
         /// </summary>
-        protected override void Reload()
+        protected override void Action()
         {
-          //TODO: Add isReloading true and deactivate firing   
+            if (!CanPerformAction()) return;
+
+            //currentMagSize
         }
 
-        public bool CanFire() => currentMagSize > 0 && !isReloading;
+        public override bool CanPrimaryUse() => currentMagSize > 0 && !isPerformingAction;
+        public override bool CanPerformAction() => !isUsingPrimary;
+
         public WeaponData GetWeaponData() => weaponData;
         public Transform GetMuzzle() => muzzle;
     }

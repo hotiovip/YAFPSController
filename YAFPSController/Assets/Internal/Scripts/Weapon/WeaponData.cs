@@ -9,8 +9,6 @@ namespace Hotiovip.YAFPSController.Weapon
     [CreateAssetMenu(fileName = "WeaponData", menuName = "YAFPSController/WeaponData", order = 1)]
     public class WeaponData : ItemData
     {
-        [Title("References")]
-        public ProjectileController projectilePrefab;
         [Space]
         [Title("General Settings")]
         /// <summary>
@@ -26,6 +24,12 @@ namespace Hotiovip.YAFPSController.Weapon
         /// </summary>
         public FireMode[] fireModes = { FireMode.Semi };
         [Space]
+        [Title("Ammo Settings")]
+        public ProjectileController projectilePrefab;
+        [Space]
         public int magSize = 30;
+        public bool hasSpareAmmo = true;
+        [ShowIf("hasSpareAmmo")]
+        public int spareAmmoSize = 300;
     }
 }

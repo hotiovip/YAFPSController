@@ -15,17 +15,17 @@ namespace Hotiovip.YAFPSController
         public Vector3 itemPosition;
         [Space]
         public Quaternion itemRotation;
-        [Space]
-        public bool canPrimaryUse = true;
-        public bool canSecondaryUse = false;
 
         [Title("Sway Settings")]
         public bool canSway = true;
 
         [ShowIf("canSway")]
         public Vector3 swayVector = new Vector3(5, 3, 2);
+        [ShowIf("canSway")]
         public Vector3 maxSwayVector = new Vector3(10, 6, 4);
+        [ShowIf("canSway")]
         public Vector3 minSwayVector = new Vector3(-10, -6, -4);
+        [ShowIf("canSway")]
         public float swaySmoothTime = 6;
     }
 }
