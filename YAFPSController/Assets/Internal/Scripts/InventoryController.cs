@@ -51,6 +51,7 @@ namespace Hotiovip.YAFPSController
             foreach (Item item in transform.GetComponentsInChildren(typeof(Item), true))
             {
                 items.Add(item);
+                item.gameObject.SetActive(false);
             }
 
             Equip(0);

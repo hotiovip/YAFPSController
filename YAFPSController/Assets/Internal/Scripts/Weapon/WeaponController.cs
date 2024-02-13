@@ -114,13 +114,45 @@ namespace Hotiovip.YAFPSController.Weapon
         {
             if (!CanPerformAction()) return;
 
-            //currentMagSize
+            isPerformingAction = true;
+
+            // Use spare ammo to reload
+            if (weaponData.hasSpareAmmo)
+            {
+                // Calculate needed ammo amount
+                int neededAmmo = weaponData.magSize - currentMagSize;
+
+                // We should always have enough spare ammo because this check is also in CanPerformAction()
+                // Enough spare ammo
+                if (neededAmmo <= currentSpareAmmoSize)
+                {
+                    currentSpareAmmoSize -= neededAmmo;
+                    currentMagSize += neededAmmo;
+                }
+                // Not enough spare ammo
+                else
+                {
+                    // Cannot reload
+                }
+            }
+            // No spare ammo needed
+            else
+            {
+                currentMagSize = weaponData.magSize;
+            }
         }
 
+        protected override void ActionEnded()
+        {
+            base.ActionEnded();
+        }
+
+        #region GETTERS
         public override bool CanPrimaryUse() => currentMagSize > 0 && !isPerformingAction;
-        public override bool CanPerformAction() => !isUsingPrimary;
+        public override bool CanPerformAction() => !isUsingPrimary && currentMagSize < weaponData.magSize && (weaponData.magSize - currentMagSize) <= currentSpareAmmoSize;
 
         public WeaponData GetWeaponData() => weaponData;
         public Transform GetMuzzle() => muzzle;
+        #endregion
     }
 }

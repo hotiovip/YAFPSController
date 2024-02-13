@@ -1,5 +1,5 @@
 using Hotiovip.YAFPSController.Utils;
-using Sirenix.Utilities.Editor;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
@@ -16,7 +16,10 @@ namespace Hotiovip.YAFPSController
         /// Item's data.
         /// </summary>
         [SerializeField]
+        [Required]
         protected ItemData itemData;
+        [SerializeField]
+        protected Animator animator;
 
         /// <summary>
         /// InventoryController reference. Used to get playerController
@@ -134,6 +137,10 @@ namespace Hotiovip.YAFPSController
         {
 
         }
+        protected virtual void ActionEnded()
+        {
+
+        }
 
         private void UpdateSway()
         {
@@ -153,10 +160,23 @@ namespace Hotiovip.YAFPSController
             swayHolder.localRotation = QuaternionUtil.SmoothDamp(swayHolder.localRotation, targetRotation, ref swayVelocity, itemData.swaySmoothTime * Time.deltaTime);
         }
 
-
+        #region GETTERS
         public virtual bool CanPrimaryUse() => true;
         public virtual bool CanSecondaryUse() => true;
         public virtual bool CanPerformAction() => true;
+        #endregion
+
+        #region ANIMATION CALLBACKS
+        /// <summary>
+        /// Can be called from the animation callback redirector. After the "action" animation has finished playing.
+        /// To trigger custom logic.
+        /// </summary>
+        public virtual void OnActionEndedCallback()
+        {
+            
+        }
+        #endregion
+
         #region INPUTS
         public virtual void OnActionTriggered(CallbackContext context)
         {
