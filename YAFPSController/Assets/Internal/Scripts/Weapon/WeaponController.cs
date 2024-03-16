@@ -108,15 +108,21 @@ namespace Hotiovip.YAFPSController.Weapon
 
         protected override void UpdateSecondaryUse()
         {
-            base.UpdateSecondaryUse();
+            
         }
-
         protected override void StartSecondaryUse()
         {
-            base.StartSecondaryUse();
+            
+        }
+        protected override void SecondaryUse()
+        {
+            
         }
 
-        protected+
+        protected override void StopSecondaryUse()
+        {
+            
+        }
 
         /// <summary>
         /// Reload logic.
@@ -162,6 +168,7 @@ namespace Hotiovip.YAFPSController.Weapon
 
         #region GETTERS
         public override bool CanPrimaryUse() => currentMagSize > 0 && !isPerformingAction;
+        public override bool CanSecondaryUse() => !isUsingPrimary && weaponData.canAim;
         public override bool CanPerformAction() => !isUsingPrimary && currentMagSize < weaponData.magSize && (weaponData.magSize - currentMagSize) <= currentSpareAmmoSize;
 
         public WeaponData GetWeaponData() => weaponData;

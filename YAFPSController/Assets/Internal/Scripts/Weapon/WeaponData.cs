@@ -29,7 +29,11 @@ namespace Hotiovip.YAFPSController.Weapon
         [Space]
         public int magSize = 30;
         public bool hasSpareAmmo = true;
-        //[ShowIf("hasSpareAmmo")]
+        [ShowIf("hasSpareAmmo")]
         public int spareAmmoSize = 300;
+        [Title("Aim Settings")]
+        public bool canAim = true;
+        public Vector3 aimPosition;
+        public Vector3 aimRotation;
     }
 }
