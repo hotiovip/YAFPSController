@@ -2,7 +2,8 @@
     "name": "Project.Internal",
     "rootNamespace": "Hotiovip.YAFPSController",
     "references": [
-        "GUID:75469ad4d38634e559750d17036d5f7c"
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:7d91769f9bbe6f847a86ec96da9f4e79"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,30 +1,25 @@
+using Hotiovip.YAFPSController.Attributes;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 
-using Sirenix.OdinInspector;
-
 namespace Hotiovip.YAFPSController
 {
     /// <summary>
-    /// Controls the player.
+    /// Controls the player. Move, jump, run, etc...
     /// </summary>
     public class PlayerController : MonoBehaviour
     {
         #region VARIABLES
         [Title("References")]
-        [LabelText("Rigidbody")]
         [SerializeField]
-        [Required]
+        [DisplayName("Rigidbody")]
         private Rigidbody rb;
         [SerializeField]
-        [Required]
         private CapsuleCollider capsuleCollider;
         [SerializeField]
-        [Required]
         private PlayerInput playerInput;
         [SerializeField]
-        [Required]
         private Transform playerCamera;
 
         [Title("Movement Settings")]
@@ -42,9 +37,9 @@ namespace Hotiovip.YAFPSController
 
         [Title("Input Settings")]
         [SerializeField]
-        private float mouseXSensitivity = 1f;
+        private float lookXSensitivity = 1f;
         [SerializeField]
-        private float mouseYSensitivity = 1f;
+        private float lookYSensitivity = 1f;
 
         private float currentHeight;
         private float currentSpeed;
@@ -111,8 +106,8 @@ namespace Hotiovip.YAFPSController
         }
         private void Look()
         {
-            float lookInputX = lookInput.x * mouseXSensitivity * Time.deltaTime;
-            float lookInputY = lookInput.y * mouseYSensitivity * Time.deltaTime;
+            float lookInputX = lookInput.x * lookXSensitivity * Time.deltaTime;
+            float lookInputY = lookInput.y * lookYSensitivity * Time.deltaTime;
 
             lookYRotation += lookInputX;
             lookXRotation -= lookInputY;

@@ -1,4 +1,4 @@
-using Sirenix.OdinInspector;
+using Hotiovip.YAFPSController.Attributes;
 using UnityEngine;
 
 namespace Hotiovip.YAFPSController.Weapon

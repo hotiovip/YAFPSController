@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c6c8f009832d3249b8cd07abc6ec420, type: 3}
+  m_Name: Weapon_AK-109_Data
+  m_EditorClassIdentifier: 
+  itemName: AK-109
+  itemPosition: {x: 0.164, y: -0.17, z: 0.3}
+  itemRotation: {x: 0, y: 0.76604444, z: 0, w: 0.64278764}
+  canSway: 1
+  swayVector: {x: 1, y: 3, z: 2}
+  swayVectorDirection: {x: -1, y: -1, z: 1}
+  maxSwayVector: {x: 6, y: 3, z: 4}
+  minSwayVector: {x: -6, y: -3, z: -4}
+  swaySmoothTime: 15
+  fireRate: 650
+  muzzleVelocity: 900
+  fireModes: 020000000000000001000000
+  projectilePrefab: {fileID: 7766734690337166737, guid: 353af56144c21f74184f3f426e1424e1,
+    type: 3}
+  magSize: 30
+  hasSpareAmmo: 1
+  spareAmmoSize: 300

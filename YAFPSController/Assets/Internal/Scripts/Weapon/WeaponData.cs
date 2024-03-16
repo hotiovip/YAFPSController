@@ -1,4 +1,4 @@
-using Sirenix.OdinInspector;
+using Hotiovip.YAFPSController.Attributes;
 using UnityEngine;
 
 namespace Hotiovip.YAFPSController.Weapon
@@ -29,7 +29,7 @@ namespace Hotiovip.YAFPSController.Weapon
         [Space]
         public int magSize = 30;
         public bool hasSpareAmmo = true;
-        [ShowIf("hasSpareAmmo")]
+        //[ShowIf("hasSpareAmmo")]
         public int spareAmmoSize = 300;
     }
 }

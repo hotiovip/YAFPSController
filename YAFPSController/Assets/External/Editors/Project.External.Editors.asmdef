@@ -1,0 +1,18 @@
+{
+    "name": "Project.External.Editors",
+    "rootNamespace": "Hotiovip.YAFPSController.Editors",
+    "references": [
+        "GUID:370d756e74e92144e821042f783a7d62"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

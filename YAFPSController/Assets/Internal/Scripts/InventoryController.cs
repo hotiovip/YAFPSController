@@ -1,4 +1,4 @@
-using Sirenix.OdinInspector;
+using Hotiovip.YAFPSController.Attributes;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,14 +12,11 @@ namespace Hotiovip.YAFPSController
     public class InventoryController : MonoBehaviour
     {
         [SerializeField]
-        [Required]
         private PlayerController playerController;
         [Title("Holders")]
         [SerializeField]
-        [Required]
         private Transform swayHolder;
         [SerializeField]
-        [Required]
         private Transform positionHolder;
 
         private PlayerInput playerInput;

@@ -1,5 +1,4 @@
 using Hotiovip.YAFPSController.Utils;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
@@ -7,17 +6,15 @@ using static UnityEngine.InputSystem.InputAction;
 namespace Hotiovip.YAFPSController
 {
     /// <summary>
-    /// Used to make items. Can be used as a super class to make new specific items.
+    /// Used to make items. Can be used as a super class to make new items or custom items (weapons, meeles, etc...).
     /// </summary>
     public class Item : MonoBehaviour
     {
         #region VARIABLES
-        /// <summary>
-        /// Item's data.
-        /// </summary>
+        [Tooltip("Item's data.")]
         [SerializeField]
-        [Required]
         protected ItemData itemData;
+        [Tooltip("Item's animator. Used for playing animations.")]
         [SerializeField]
         protected Animator animator;
 
@@ -38,7 +35,9 @@ namespace Hotiovip.YAFPSController
         /// Vector2 used to store mouse delta
         /// </summary>
         private Vector2 lookInput;
-
+        /// <summary>
+        /// This transform will get the weapon's position and rotation setup in the itemData.
+        /// </summary>
         private Transform positionHolder;
 
         /// <summary>
@@ -76,10 +75,12 @@ namespace Hotiovip.YAFPSController
         }
         protected virtual void OnDisable()
         {
+            // Unbind from all events
             playerInput.onActionTriggered -= OnActionTriggered;
         }
         protected virtual void Start()
         {
+            // Get the transform on wich the sway will be applied
             swayHolder = inventoryController.GetSwayHolder();
         }
         protected virtual void Update()
@@ -101,62 +102,105 @@ namespace Hotiovip.YAFPSController
 
             if (isUsingPrimary) PrimaryUse();
         }
+        /// <summary>
+        /// Starts the logic for primary use. It can also not be used. It is needed only if we need looping primary use,
+        /// like firing a gun. Can be overriden to add custom logic.
+        /// </summary>
         protected virtual void StartPrimaryUse()
         {
             isUsingPrimary = true;
 
             PrimaryUse();
         }
+        /// <summary>
+        /// Primary use logic. Can be overriden to add custom logic.
+        /// </summary>
         protected virtual void PrimaryUse()
         {
 
         }
+        /// <summary>
+        /// Stops the logic for primary use. It can also not be used. It is needed only if we need looping primary use,
+        /// like firing a gun. Can be overriden to add custom logic.
+        /// </summary>
         protected virtual void StopPrimaryUse()
         {
             isUsingPrimary = false;
         }
 
+        /// <summary>
+        /// Handles the logic to decide if call SecondaryUse() or not.
+        /// Can be overridden for custom logic.
+        /// </summary>
         protected virtual void UpdateSecondaryUse()
         {
             if (isUsingSecondary) SecondaryUse();
         }
+        /// <summary>
+        /// Starts the logic for secondary use. It can also not be used. It is needed only if we need looping secondary use,
+        /// like aiming a gun. Can be overriden to add custom logic.
+        /// </summary>
         protected virtual void StartSecondaryUse()
         {
 
         }
+        /// <summary>
+        /// Primary use logic. Can be overriden to add custom logic.
+        /// </summary>
         protected virtual void SecondaryUse()
         {
 
         }
+        /// <summary>
+        /// Stops the logic for secondary use. It can also not be used. It is needed only if we need looping secondary use,
+        /// like aiming a gun. Can be overriden to add custom logic.
+        /// </summary>
         protected virtual void StopSecondaryUse()
         {
             
         }
 
+        /// <summary>
+        /// Action logic. As default this action is bound to the "R" key and it is like a reload.
+        /// But can be overriden to be any action.
+        /// </summary>
         protected virtual void Action()
         {
 
         }
+        /// <summary>
+        /// Action logic that gets triggered at the end of an animation "reload animation".
+        /// On a weapon it would add the ammo, so that they appear at the end of the animation.
+        /// </summary>
         protected virtual void ActionEnded()
         {
 
         }
-
+        
+        /// <summary>
+        /// Updates the weapon's sway. Has to be called each frame.
+        /// </summary>
         private void UpdateSway()
         {
             if (!itemData.canSway) return;
 
             // Calculate the sway movement based on mouse input
-            float moveX = Mathf.Clamp(lookInput.x * itemData.swayVector.y, itemData.minSwayVector.y, itemData.maxSwayVector.y);
-            float moveY = Mathf.Clamp(-lookInput.y * itemData.swayVector.x, itemData.minSwayVector.x, itemData.maxSwayVector.x);
-            float moveZ = Mathf.Clamp(lookInput.x * itemData.swayVector.z, itemData.minSwayVector.z, itemData.maxSwayVector.z);
+            // Left-right sway
+            float moveX = Mathf.Clamp(lookInput.x * itemData.swayVectorDirection.y * itemData.swayVector.y, itemData.minSwayVector.y, itemData.maxSwayVector.y);
+            // Sway on itself
+            float moveY = Mathf.Clamp(lookInput.x * itemData.swayVectorDirection.x * itemData.swayVector.x, itemData.minSwayVector.x, itemData.maxSwayVector.x);
+            // Up-down sway
+            float moveZ = Mathf.Clamp(lookInput.y * itemData.swayVectorDirection.z * itemData.swayVector.z, itemData.minSwayVector.z, itemData.maxSwayVector.z);
 
+            // Transform the rotations from Vector3s to Quaternions
             Quaternion swayRotationX = Quaternion.AngleAxis(moveX, Vector3.up);
             Quaternion swayRotationY = Quaternion.AngleAxis(moveY, Vector3.right);
             Quaternion swayRotationZ = Quaternion.AngleAxis(moveZ, Vector3.forward);
 
+            // Summ all the rotations together
             Quaternion targetRotation = swayRotationX * swayRotationY * swayRotationZ;
 
+            // Apply the rotations
             swayHolder.localRotation = QuaternionUtil.SmoothDamp(swayHolder.localRotation, targetRotation, ref swayVelocity, itemData.swaySmoothTime * Time.deltaTime);
         }
 
@@ -178,8 +222,15 @@ namespace Hotiovip.YAFPSController
         #endregion
 
         #region INPUTS
+        /// <summary>
+        /// Method that gets called from the player input component.
+        /// </summary>
+        /// <param name="context"></param>
         public virtual void OnActionTriggered(CallbackContext context)
         {
+            // With a switch we check if the action name is the one we want and then call the respective method.
+            // It is not the best way. But offers flexibility and customization.
+
             // Check wich action to call
             switch (context.action.name)
             {
@@ -207,7 +258,8 @@ namespace Hotiovip.YAFPSController
                     break;
             }
         }
-
+        
+        /// Different methods that handle player input
         protected virtual void OnMove(CallbackContext callbackContext)
         {
             // Update vector

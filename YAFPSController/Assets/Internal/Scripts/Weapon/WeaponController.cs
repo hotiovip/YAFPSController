@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Hotiovip.YAFPSController.Weapon
@@ -10,10 +9,8 @@ namespace Hotiovip.YAFPSController.Weapon
     {
         #region VARIABLES
         [SerializeField]
-        [Required]
         protected Transform muzzle;
         [SerializeField]
-        [Required]
         protected ProjectilePool projectilePool;
 
         /// <summary>
@@ -32,9 +29,11 @@ namespace Hotiovip.YAFPSController.Weapon
         {
             base.Start();
 
+            // Get weapon data
             weaponData = itemData as WeaponData;
             if (weaponData == null) Debug.LogError($"The assigned Data for the weapon '{itemData.name}' is not a WeaponData!");
 
+            // Initialize values that need a default value
             currentFireMode = weaponData.fireModes[0];
             currentMagSize = weaponData.magSize;
             currentSpareAmmoSize = weaponData.spareAmmoSize;
@@ -107,6 +106,18 @@ namespace Hotiovip.YAFPSController.Weapon
             base.StopPrimaryUse();
         }
 
+        protected override void UpdateSecondaryUse()
+        {
+            base.UpdateSecondaryUse();
+        }
+
+        protected override void StartSecondaryUse()
+        {
+            base.StartSecondaryUse();
+        }
+
+        protected+
+
         /// <summary>
         /// Reload logic.
         /// </summary>
@@ -141,7 +152,9 @@ namespace Hotiovip.YAFPSController.Weapon
                 currentMagSize = weaponData.magSize;
             }
         }
-
+        /// <summary>
+        /// Reload end logic.
+        /// </summary>
         protected override void ActionEnded()
         {
             base.ActionEnded();
