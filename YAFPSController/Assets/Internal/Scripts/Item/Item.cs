@@ -34,20 +34,20 @@ namespace Hotiovip.YAFPSController
         /// <summary>
         /// Vector2 used to store mouse delta
         /// </summary>
-        private Vector2 lookInput;
+        protected Vector2 lookInput;
         /// <summary>
         /// This transform will get the weapon's position and rotation setup in the itemData.
         /// </summary>
-        private Transform positionHolder;
+        protected Transform positionHolder;
 
         /// <summary>
         /// Transform to wich the sway is applied
         /// </summary>
-        private Transform swayHolder;
+        protected Transform swayHolder;
         /// <summary>
         /// the velocity parameter used for the sway's smooth damp
         /// </summary>
-        private Quaternion swayVelocity;
+        protected Quaternion swayVelocity;
 
         // STATES
         protected bool isUsingPrimary;
@@ -69,8 +69,10 @@ namespace Hotiovip.YAFPSController
 
             // Set positionHolder's position and rotation
             positionHolder = inventoryController.GetPositionHolder();
-            positionHolder.localPosition = itemData.itemPosition;
-            positionHolder.localRotation = itemData.itemRotation;
+            //positionHolder.localPosition = itemData.itemPosition;
+            //positionHolder.localRotation = itemData.itemRotation;
+            positionHolder.localPosition = itemData.defaultPosRot.position;
+            positionHolder.localRotation = itemData.defaultPosRot.rotation;
 
         }
         protected virtual void OnDisable()
@@ -91,6 +93,10 @@ namespace Hotiovip.YAFPSController
 
             UpdateSway();
         }
+
+        //TODO: Remove UpdatePrimaryUse()
+        // it is not needed everything could be done with just a Start, Execute and Stop method
+        // It makes the whole logic simple and straightforward
 
         /// <summary>
         /// Handles the logic to decide if call PrimaryUse() or not.
@@ -127,6 +133,10 @@ namespace Hotiovip.YAFPSController
         {
             isUsingPrimary = false;
         }
+
+        //TODO: Remove UpdateSecondaryUse()
+        // it is not needed everything could be done with just a Start, Execute and Stop method
+        // It makes the whole logic simple and straightforward
 
         /// <summary>
         /// Handles the logic to decide if call SecondaryUse() or not.

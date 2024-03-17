@@ -19,8 +19,10 @@ namespace Hotiovip.YAFPSController.Utils
         {
             if (itemData == null) return;
 
-            transform.localPosition = itemData.itemPosition;
-            transform.localRotation = itemData.itemRotation;            
+            //transform.localPosition = itemData.itemPosition;
+            //transform.localRotation = itemData.itemRotation;
+            transform.localPosition = itemData.defaultPosRot.position;
+            transform.localRotation = itemData.defaultPosRot.rotation;
         }
         public void StopPreviewPosition()
         {

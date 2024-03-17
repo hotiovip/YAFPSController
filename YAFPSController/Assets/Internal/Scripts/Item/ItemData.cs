@@ -12,10 +12,13 @@ namespace Hotiovip.YAFPSController
         [Title("General Settings")]
         public string itemName;
         [Space]
+        public PosRotData defaultPosRot;
+        /*
         [Tooltip("X: how much to the right | Y: how much down | Z: how far from the camera")]
         public Vector3 itemPosition;
         [Tooltip("X: on itself | Y: left-right | Z: down-up")]
         public Quaternion itemRotation;
+        */
 
         [Title("Sway Settings")]
         [Tooltip("If this variable is false, then no sway will be applied to the item.")]

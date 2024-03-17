@@ -1,3 +1,4 @@
+using Hotiovip.YAFPSController.Utils;
 using UnityEngine;
 
 namespace Hotiovip.YAFPSController.Weapon
@@ -39,10 +40,6 @@ namespace Hotiovip.YAFPSController.Weapon
             currentSpareAmmoSize = weaponData.spareAmmoSize;
         }
 
-
-        /// <summary>
-        /// Calls PrimaryUse() if all conditions are met.
-        /// </summary>
         protected override void UpdatePrimaryUse()
         {
             if (!CanPrimaryUse() || !isUsingPrimary)
@@ -80,27 +77,18 @@ namespace Hotiovip.YAFPSController.Weapon
                 fireTimer += Time.deltaTime;
             }
         }
-        /// <summary>
-        /// Start the fire process.
-        /// </summary>
         protected override void StartPrimaryUse()
         {
             base.StartPrimaryUse();
 
             fireTimer = 0;
         }
-        /// <summary>
-        /// Fire logic.
-        /// </summary>
         protected override void PrimaryUse()
         {
             base.PrimaryUse();
 
             projectilePool.GetPool().Get().SetStartValues(muzzle.position, muzzle.forward, weaponData.muzzleVelocity);
         }
-        /// <summary>
-        /// Stops the fire process.
-        /// </summary>
         protected override void StopPrimaryUse()
         {
             base.StopPrimaryUse();
@@ -108,11 +96,15 @@ namespace Hotiovip.YAFPSController.Weapon
 
         protected override void UpdateSecondaryUse()
         {
-            
+            // Return if it cannot secondary use
+            if (!CanSecondaryUse()) return;
+
+            StartSecondaryUse();
         }
         protected override void StartSecondaryUse()
         {
-            
+            // Aim
+            positionHolder.localRotation = QuaternionUtil.SmoothDamp(positionHolder.localRotation.)
         }
         protected override void SecondaryUse()
         {
@@ -168,7 +160,7 @@ namespace Hotiovip.YAFPSController.Weapon
 
         #region GETTERS
         public override bool CanPrimaryUse() => currentMagSize > 0 && !isPerformingAction;
-        public override bool CanSecondaryUse() => !isUsingPrimary && weaponData.canAim;
+        public override bool CanSecondaryUse() => weaponData.canAim && !isPerformingAction;
         public override bool CanPerformAction() => !isUsingPrimary && currentMagSize < weaponData.magSize && (weaponData.magSize - currentMagSize) <= currentSpareAmmoSize;
 
         public WeaponData GetWeaponData() => weaponData;
