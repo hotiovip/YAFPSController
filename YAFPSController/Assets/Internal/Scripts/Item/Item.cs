@@ -6,7 +6,7 @@ using static UnityEngine.InputSystem.InputAction;
 namespace Hotiovip.YAFPSController
 {
     /// <summary>
-    /// Used to make items. Can be used as a super class to make new items or custom items (weapons, meeles, etc...).
+    /// Base class for creating items. Can be used as a superclass for custom items (e.g., weapons, melee weapons).
     /// </summary>
     public class Item : MonoBehaviour
     {
@@ -61,6 +61,10 @@ namespace Hotiovip.YAFPSController
             inventoryController = GetComponentInParent<InventoryController>();
             playerController = inventoryController.GetPlayerController();
             playerInput = playerController.GetPlayerInput();
+
+            // Get the transforms on wich the various movements will be applied
+            positionHolder = inventoryController.GetPositionHolder();
+            swayHolder = inventoryController.GetSwayHolder();
         }
         protected virtual void OnEnable()
         {
@@ -68,7 +72,6 @@ namespace Hotiovip.YAFPSController
             playerInput.onActionTriggered += OnActionTriggered;
 
             // Set positionHolder's position and rotation
-            positionHolder = inventoryController.GetPositionHolder();
             //positionHolder.localPosition = itemData.itemPosition;
             //positionHolder.localRotation = itemData.itemRotation;
             positionHolder.localPosition = itemData.defaultPosRot.position;
@@ -82,25 +85,21 @@ namespace Hotiovip.YAFPSController
         }
         protected virtual void Start()
         {
-            // Get the transform on wich the sway will be applied
-            swayHolder = inventoryController.GetSwayHolder();
+            
         }
         protected virtual void Update()
         {
             UpdatePrimaryUse();
-
-            if (isUsingSecondary) SecondaryUse();
+            UpdateSecondaryUse();
 
             UpdateSway();
         }
 
-        //TODO: Remove UpdatePrimaryUse()
-        // it is not needed everything could be done with just a Start, Execute and Stop method
-        // It makes the whole logic simple and straightforward
-
+        #region PRIMARY USE
         /// <summary>
-        /// Handles the logic to decide if call PrimaryUse() or not.
-        /// Can be overridden for custom logic.
+        /// Controls the decision logic for triggering the primary action of the item.
+        /// This method determines whether to execute the PrimaryUse() action based on predefined conditions.
+        /// Custom logic can be implemented by overriding this method.
         /// </summary>
         protected virtual void UpdatePrimaryUse()
         {
@@ -133,14 +132,13 @@ namespace Hotiovip.YAFPSController
         {
             isUsingPrimary = false;
         }
+        #endregion
 
-        //TODO: Remove UpdateSecondaryUse()
-        // it is not needed everything could be done with just a Start, Execute and Stop method
-        // It makes the whole logic simple and straightforward
-
+        #region SECONDARY USE
         /// <summary>
-        /// Handles the logic to decide if call SecondaryUse() or not.
-        /// Can be overridden for custom logic.
+        /// Controls the decision logic for triggering the secondary action of the item.
+        /// This method determines whether to execute the SecondaryUse() action based on predefined conditions.
+        /// Custom logic can be implemented by overriding this method.
         /// </summary>
         protected virtual void UpdateSecondaryUse()
         {
@@ -169,6 +167,7 @@ namespace Hotiovip.YAFPSController
         {
             
         }
+        #endregion
 
         /// <summary>
         /// Action logic. As default this action is bound to the "R" key and it is like a reload.

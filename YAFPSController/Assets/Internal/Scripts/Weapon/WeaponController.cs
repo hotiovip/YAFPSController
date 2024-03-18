@@ -4,7 +4,9 @@ using UnityEngine;
 namespace Hotiovip.YAFPSController.Weapon
 {
     /// <summary>
-    /// Used for weapons (shooting items). Can be used as a superclass to make new custom weapons.
+    /// Base class for managing weapons, primarily used for shooting items.
+    /// This class provides functionality to create custom weapons and manages aspects such as firing behavior, reloading, and aiming.
+    /// Derived classes can implement specific weapon types by overriding or extending the provided functionality.
     /// </summary>
     public class WeaponController : Item
     {
@@ -28,8 +30,6 @@ namespace Hotiovip.YAFPSController.Weapon
 
         protected override void Start()
         {
-            base.Start();
-
             // Get weapon data
             weaponData = itemData as WeaponData;
             if (weaponData == null) Debug.LogError($"The assigned Data for the weapon '{itemData.name}' is not a WeaponData!");
@@ -40,6 +40,7 @@ namespace Hotiovip.YAFPSController.Weapon
             currentSpareAmmoSize = weaponData.spareAmmoSize;
         }
 
+        #region PRIMARY USE
         protected override void UpdatePrimaryUse()
         {
             if (!CanPrimaryUse() || !isUsingPrimary)
@@ -79,21 +80,23 @@ namespace Hotiovip.YAFPSController.Weapon
         }
         protected override void StartPrimaryUse()
         {
+            // Do normal item generic primary use start logic
             base.StartPrimaryUse();
 
+            // Do weapon specific primary use start logic
             fireTimer = 0;
         }
         protected override void PrimaryUse()
         {
-            base.PrimaryUse();
-
             projectilePool.GetPool().Get().SetStartValues(muzzle.position, muzzle.forward, weaponData.muzzleVelocity);
         }
         protected override void StopPrimaryUse()
         {
             base.StopPrimaryUse();
         }
+        #endregion
 
+        #region SECONDARY USE
         protected override void UpdateSecondaryUse()
         {
             // Return if it cannot secondary use
@@ -104,17 +107,18 @@ namespace Hotiovip.YAFPSController.Weapon
         protected override void StartSecondaryUse()
         {
             // Aim
-            positionHolder.localRotation = QuaternionUtil.SmoothDamp(positionHolder.localRotation.)
+
+            //positionHolder.localRotation = QuaternionUtil.SmoothDamp(positionHolder.localRotation, weaponData.aimPosRot.rotation)
         }
         protected override void SecondaryUse()
         {
             
         }
-
         protected override void StopSecondaryUse()
         {
             
         }
+        #endregion
 
         /// <summary>
         /// Reload logic.

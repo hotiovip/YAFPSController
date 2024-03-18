@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "E:\\GitHub\\YAFPSController\\YAFPSController\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|e:\\github\\yafpscontroller\\yafpscontroller\\assets\\internal\\scripts\\utils\\positionpreviewer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|solutionrelative:assets\\internal\\scripts\\utils\\positionpreviewer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|E:\\GitHub\\YAFPSController\\YAFPSController\\assets\\internal\\scripts\\item\\posrotdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|solutionrelative:assets\\internal\\scripts\\item\\posrotdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|e:\\github\\yafpscontroller\\yafpscontroller\\assets\\internal\\scripts\\item\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|solutionrelative:assets\\internal\\scripts\\item\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,20 +19,24 @@
       "RelativeMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|solutionrelative:assets\\internal\\scripts\\weapon\\weaponcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|E:\\GitHub\\YAFPSController\\YAFPSController\\assets\\internal\\scripts\\weapon\\weapondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|solutionrelative:assets\\internal\\scripts\\weapon\\weapondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|e:\\github\\yafpscontroller\\yafpscontroller\\assets\\internal\\scripts\\utils\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|solutionrelative:assets\\internal\\scripts\\utils\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|e:\\github\\yafpscontroller\\yafpscontroller\\assets\\internal\\scripts\\item\\itemdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|solutionrelative:assets\\internal\\scripts\\item\\itemdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|e:\\github\\yafpscontroller\\yafpscontroller\\assets\\internal\\scripts\\item\\posrotdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|solutionrelative:assets\\internal\\scripts\\item\\posrotdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|e:\\github\\yafpscontroller\\yafpscontroller\\assets\\internal\\scripts\\utils\\quaternionutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|solutionrelative:assets\\internal\\scripts\\utils\\quaternionutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|E:\\GitHub\\YAFPSController\\YAFPSController\\assets\\internal\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|solutionrelative:assets\\internal\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|E:\\GitHub\\YAFPSController\\YAFPSController\\assets\\internal\\scripts\\weapon\\weapondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|solutionrelative:assets\\internal\\scripts\\weapon\\weapondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|E:\\GitHub\\YAFPSController\\YAFPSController\\assets\\internal\\scripts\\item\\itemdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C17068D-87D1-19B2-8A3C-86FE3FB10ACA}|Project.Internal.csproj|solutionrelative:assets\\internal\\scripts\\item\\itemdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,84 +46,124 @@
       "DocumentGroups": [
         {
           "DockedWidth": 232,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PositionPreviewer.cs",
+              "DocumentMoniker": "E:\\GitHub\\YAFPSController\\YAFPSController\\Assets\\Internal\\Scripts\\Utils\\PositionPreviewer.cs",
+              "RelativeDocumentMoniker": "Assets\\Internal\\Scripts\\Utils\\PositionPreviewer.cs",
+              "ToolTip": "E:\\GitHub\\YAFPSController\\YAFPSController\\Assets\\Internal\\Scripts\\Utils\\PositionPreviewer.cs",
+              "RelativeToolTip": "Assets\\Internal\\Scripts\\Utils\\PositionPreviewer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T17:23:05.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "Utils.cs",
+              "DocumentMoniker": "E:\\GitHub\\YAFPSController\\YAFPSController\\Assets\\Internal\\Scripts\\Utils\\Utils.cs",
+              "RelativeDocumentMoniker": "Assets\\Internal\\Scripts\\Utils\\Utils.cs",
+              "ToolTip": "E:\\GitHub\\YAFPSController\\YAFPSController\\Assets\\Internal\\Scripts\\Utils\\Utils.cs",
+              "RelativeToolTip": "Assets\\Internal\\Scripts\\Utils\\Utils.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T16:00:19.459Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "QuaternionUtil.cs",
+              "DocumentMoniker": "E:\\GitHub\\YAFPSController\\YAFPSController\\Assets\\Internal\\Scripts\\Utils\\QuaternionUtil.cs",
+              "RelativeDocumentMoniker": "Assets\\Internal\\Scripts\\Utils\\QuaternionUtil.cs",
+              "ToolTip": "E:\\GitHub\\YAFPSController\\YAFPSController\\Assets\\Internal\\Scripts\\Utils\\QuaternionUtil.cs",
+              "RelativeToolTip": "Assets\\Internal\\Scripts\\Utils\\QuaternionUtil.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-18T16:00:19.035Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "PosRotData.cs",
               "DocumentMoniker": "E:\\GitHub\\YAFPSController\\YAFPSController\\Assets\\Internal\\Scripts\\Item\\PosRotData.cs",
               "RelativeDocumentMoniker": "Assets\\Internal\\Scripts\\Item\\PosRotData.cs",
               "ToolTip": "E:\\GitHub\\YAFPSController\\YAFPSController\\Assets\\Internal\\Scripts\\Item\\PosRotData.cs",
               "RelativeToolTip": "Assets\\Internal\\Scripts\\Item\\PosRotData.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAaAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-17T11:54:08.538Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "ItemData.cs",
               "DocumentMoniker": "E:\\GitHub\\YAFPSController\\YAFPSController\\Assets\\Internal\\Scripts\\Item\\ItemData.cs",
               "RelativeDocumentMoniker": "Assets\\Internal\\Scripts\\Item\\ItemData.cs",
               "ToolTip": "E:\\GitHub\\YAFPSController\\YAFPSController\\Assets\\Internal\\Scripts\\Item\\ItemData.cs",
               "RelativeToolTip": "Assets\\Internal\\Scripts\\Item\\ItemData.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAQwBUAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-16T17:25:48.238Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "WeaponData.cs",
               "DocumentMoniker": "E:\\GitHub\\YAFPSController\\YAFPSController\\Assets\\Internal\\Scripts\\Weapon\\WeaponData.cs",
               "RelativeDocumentMoniker": "Assets\\Internal\\Scripts\\Weapon\\WeaponData.cs",
               "ToolTip": "E:\\GitHub\\YAFPSController\\YAFPSController\\Assets\\Internal\\Scripts\\Weapon\\WeaponData.cs",
               "RelativeToolTip": "Assets\\Internal\\Scripts\\Weapon\\WeaponData.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAPAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-16T17:21:55.521Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Item.cs",
               "DocumentMoniker": "E:\\GitHub\\YAFPSController\\YAFPSController\\Assets\\Internal\\Scripts\\Item\\Item.cs",
               "RelativeDocumentMoniker": "Assets\\Internal\\Scripts\\Item\\Item.cs",
               "ToolTip": "E:\\GitHub\\YAFPSController\\YAFPSController\\Assets\\Internal\\Scripts\\Item\\Item.cs",
               "RelativeToolTip": "Assets\\Internal\\Scripts\\Item\\Item.cs",
-              "ViewState": "AQIAAE0AAAAAAAAAAAA4wIcAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-17T11:57:22.087Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "WeaponController.cs",
               "DocumentMoniker": "E:\\GitHub\\YAFPSController\\YAFPSController\\Assets\\Internal\\Scripts\\Weapon\\WeaponController.cs",
               "RelativeDocumentMoniker": "Assets\\Internal\\Scripts\\Weapon\\WeaponController.cs",
               "ToolTip": "E:\\GitHub\\YAFPSController\\YAFPSController\\Assets\\Internal\\Scripts\\Weapon\\WeaponController.cs",
               "RelativeToolTip": "Assets\\Internal\\Scripts\\Weapon\\WeaponController.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAowF8AAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-16T13:47:54.47Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "PlayerController.cs",
               "DocumentMoniker": "E:\\GitHub\\YAFPSController\\YAFPSController\\Assets\\Internal\\Scripts\\PlayerController.cs",
               "RelativeDocumentMoniker": "Assets\\Internal\\Scripts\\PlayerController.cs",
               "ToolTip": "E:\\GitHub\\YAFPSController\\YAFPSController\\Assets\\Internal\\Scripts\\PlayerController.cs",
               "RelativeToolTip": "Assets\\Internal\\Scripts\\PlayerController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAsAAAAFAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-16T13:40:38.347Z"
+              "WhenOpened": "2024-03-16T13:40:38.347Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2262.0686, g: 2403.5393, b: 3501.0396, a: 1}
+  m_IndirectSpecularColor: {r: 2262.0686, g: 2403.5315, b: 3501.0356, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -978,6 +978,9 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: d23e182c99a17974ca268aedeae37ee2, type: 2}
   startPreviewPositionButton: 0
   stopPreviewPositionButton: 0
+  posRotDataName: 
+  savePath: Assets/Internal/Data/Weapons/AK-109_PosRotData.asset
+  savePosRotData: 0
 --- !u!1 &1466946363
 GameObject:
   m_ObjectHideFlags: 0

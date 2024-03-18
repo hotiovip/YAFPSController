@@ -9,11 +9,18 @@ namespace Hotiovip.YAFPSController.Utils
         [Required]
         private ItemData itemData;
 
+        [Title("PosRotData Previewing")]
         [Button(nameof(StartPreviewPosition), "Start Preview Positon")]
         public bool startPreviewPositionButton;
         [Button(nameof(StopPreviewPosition), "Stop Preview Position")]
         public bool stopPreviewPositionButton;
 
+        [Title("PosRotData Creation")]
+        [Tooltip("If left empty the item's name from the given itemData will be used. It will look like this 'itemName_PosRotData'. ")]
+        public string posRotDataName = "PosRotData";
+        public string savePath = "Assets/";
+        [Button(nameof(SavePosRotData), "Save PosRot Data")]
+        public bool savePosRotData;
 
         public void StartPreviewPosition()
         {
@@ -30,6 +37,11 @@ namespace Hotiovip.YAFPSController.Utils
             transform.localRotation = Quaternion.identity;
         }
 
-
+        public void SavePosRotData()
+        {
+            PosRotData posRotData = new PosRotData();
+            posRotData.position = transform.localPosition;
+            posRotData.rotation = transform.localRotation;
+        }
     }
 }
