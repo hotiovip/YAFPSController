@@ -33,6 +33,5 @@ namespace Hotiovip.YAFPSController.Weapon
         public int spareAmmoSize = 300;
         [Title("Aim Settings")]
         public bool canAim = true;
-        public PosRotData aimPosRot;
     }
 }

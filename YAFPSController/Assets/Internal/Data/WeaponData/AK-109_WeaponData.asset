@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: AK-109_WeaponData
   m_EditorClassIdentifier: 
   itemName: AK-109
-  itemPosition: {x: 0.164, y: -0.17, z: 0.3}
-  itemRotation: {x: 0, y: 0.76604444, z: 0, w: 0.64278764}
+  defaultPosRot: {fileID: 0}
   canSway: 1
   swayVector: {x: 1, y: 3, z: 2}
   swayVectorDirection: {x: -1, y: -1, z: 1}
@@ -29,3 +28,5 @@ MonoBehaviour:
   magSize: 30
   hasSpareAmmo: 1
   spareAmmoSize: 300
+  canAim: 1
+  aimPosRot: {fileID: 11400000, guid: a09da5a10389e5d49b1fd9686ff635e7, type: 2}

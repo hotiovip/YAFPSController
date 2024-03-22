@@ -12,7 +12,7 @@ namespace Hotiovip.YAFPSController
         [Title("General Settings")]
         public string itemName;
         [Space]
-        public PosRotData defaultPosRot;
+        public PosRotData posRotData;
         /*
         [Tooltip("X: how much to the right | Y: how much down | Z: how far from the camera")]
         public Vector3 itemPosition;

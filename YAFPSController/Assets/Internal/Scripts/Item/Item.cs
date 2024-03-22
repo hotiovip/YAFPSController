@@ -74,8 +74,8 @@ namespace Hotiovip.YAFPSController
             // Set positionHolder's position and rotation
             //positionHolder.localPosition = itemData.itemPosition;
             //positionHolder.localRotation = itemData.itemRotation;
-            positionHolder.localPosition = itemData.defaultPosRot.position;
-            positionHolder.localRotation = itemData.defaultPosRot.rotation;
+            positionHolder.localPosition = itemData.posRotData.defaultPosition;
+            positionHolder.localRotation = itemData.posRotData.defaultRotation;
 
         }
         protected virtual void OnDisable()

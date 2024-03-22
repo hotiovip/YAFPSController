@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2262.0686, g: 2403.5315, b: 3501.0356, a: 1}
+  m_IndirectSpecularColor: {r: 2262.0686, g: 2403.5159, b: 3501.0435, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -962,7 +962,7 @@ Transform:
   m_Children:
   - {fileID: 77080698}
   m_Father: {fileID: 1466946364}
-  m_LocalEulerAnglesHint: {x: 0, y: 100, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &1462480997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -975,12 +975,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13e42ada754e1114e877baefe5bff9ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: d23e182c99a17974ca268aedeae37ee2, type: 2}
-  startPreviewPositionButton: 0
-  stopPreviewPositionButton: 0
-  posRotDataName: 
-  savePath: Assets/Internal/Data/Weapons/AK-109_PosRotData.asset
-  savePosRotData: 0
+  posRotData: {fileID: 11400000, guid: a09da5a10389e5d49b1fd9686ff635e7, type: 2}
+  startPreviewPosRot: 0
+  startPreviewAimingPosRot: 0
+  stopPreview: 0
+  scriptableObjectName: AK-109_PosRotData.asset
+  savePath: Assets/Internal/Data/Weapons/
+  saveDefaultPosRotData: 0
+  saveAimingPosRotData: 0
 --- !u!1 &1466946363
 GameObject:
   m_ObjectHideFlags: 0
