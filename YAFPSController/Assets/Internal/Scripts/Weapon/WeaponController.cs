@@ -26,6 +26,8 @@ namespace Hotiovip.YAFPSController.Weapon
         protected float fireTimer;
         protected int bursts;
         protected FireMode currentFireMode;
+
+        // Aim variables
         #endregion
 
         protected override void Start()
@@ -97,18 +99,16 @@ namespace Hotiovip.YAFPSController.Weapon
         #endregion
 
         #region SECONDARY USE
-        protected override void UpdateSecondaryUse()
-        {
-            // Return if it cannot secondary use
-            if (!CanSecondaryUse()) return;
-
-            StartSecondaryUse();
-        }
         protected override void StartSecondaryUse()
         {
-            // Aim
+            if (!CanSecondaryUse() && !isUsingSecondary) return;
 
+            isUsingSecondary = true;
+
+            // Aim
             //positionHolder.localRotation = QuaternionUtil.SmoothDamp(positionHolder.localRotation, weaponData.aimPosRot.rotation)
+            positionHolderInterp.RotationSmoothDamp(weaponData.posRotData.aimRotation, 6f, InterpolationSpace.Local);
+            positionHolderInterp.PositionSmoothDamp(weaponData.posRotData.aimPosition, 6f, InterpolationSpace.Local);
         }
         protected override void SecondaryUse()
         {
@@ -116,7 +116,12 @@ namespace Hotiovip.YAFPSController.Weapon
         }
         protected override void StopSecondaryUse()
         {
-            
+            if (!isUsingSecondary) return;
+
+            positionHolderInterp.RotationSmoothDamp(weaponData.posRotData.defaultRotation, 10f, InterpolationSpace.Local);
+            positionHolderInterp.PositionSmoothDamp(weaponData.posRotData.defaultPosition, 10f, InterpolationSpace.Local);
+
+            isUsingSecondary = false;
         }
         #endregion
 

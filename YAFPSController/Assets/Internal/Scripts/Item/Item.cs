@@ -39,6 +39,7 @@ namespace Hotiovip.YAFPSController
         /// This transform will get the weapon's position and rotation setup in the itemData.
         /// </summary>
         protected Transform positionHolder;
+        protected TransformInterp positionHolderInterp;
 
         /// <summary>
         /// Transform to wich the sway is applied
@@ -65,6 +66,8 @@ namespace Hotiovip.YAFPSController
             // Get the transforms on wich the various movements will be applied
             positionHolder = inventoryController.GetPositionHolder();
             swayHolder = inventoryController.GetSwayHolder();
+
+            positionHolderInterp = inventoryController.GetPositionsHolderInterp();
         }
         protected virtual void OnEnable()
         {
@@ -95,6 +98,7 @@ namespace Hotiovip.YAFPSController
             UpdateSway();
         }
 
+        // TODO: Remove Primary Use logic. Should be handled on each child class. Because it could be different for each class
         #region PRIMARY USE
         /// <summary>
         /// Controls the decision logic for triggering the primary action of the item.
@@ -142,7 +146,7 @@ namespace Hotiovip.YAFPSController
         /// </summary>
         protected virtual void UpdateSecondaryUse()
         {
-            if (isUsingSecondary) SecondaryUse();
+
         }
         /// <summary>
         /// Starts the logic for secondary use. It can also not be used. It is needed only if we need looping secondary use,
@@ -150,7 +154,7 @@ namespace Hotiovip.YAFPSController
         /// </summary>
         protected virtual void StartSecondaryUse()
         {
-
+            
         }
         /// <summary>
         /// Primary use logic. Can be overriden to add custom logic.

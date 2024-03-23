@@ -1,4 +1,5 @@
 using Hotiovip.YAFPSController.Attributes;
+using Hotiovip.YAFPSController.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -24,9 +25,12 @@ namespace Hotiovip.YAFPSController
         private Item currentItem;
         private Transform bulletsHolder;
 
+        private TransformInterp positionsHolderInterp;
+
         private void Awake()
         {
             playerInput = playerController.GetPlayerInput();
+            positionsHolderInterp = new TransformInterp(positionHolder);
         }
         private void OnEnable()
         {
@@ -40,6 +44,7 @@ namespace Hotiovip.YAFPSController
         }
         private void Start()
         {
+            // Initialize different variables
             // Create an empty game object that does not move and holds all the bullets shot for a less messy workspace
             bulletsHolder = new GameObject("BulletsHolder").transform;
 
@@ -84,6 +89,8 @@ namespace Hotiovip.YAFPSController
         public Transform GetBulletsHolder() => bulletsHolder;
         public Transform GetPositionHolder() => positionHolder;
         public Transform GetSwayHolder() => swayHolder;
+
+        public TransformInterp GetPositionsHolderInterp() => positionsHolderInterp;
 
         #region INPUTS
         public void OnActionTriggered(CallbackContext context)
