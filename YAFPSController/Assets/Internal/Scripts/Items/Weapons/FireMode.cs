@@ -1,4 +1,4 @@
-namespace Hotiovip.YAFPSController.Weapon
+namespace Hotiovip.YAFPSController.Items.Weapons
 {
     public enum FireMode
     {

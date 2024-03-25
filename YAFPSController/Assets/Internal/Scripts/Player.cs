@@ -7,61 +7,62 @@ namespace Hotiovip.YAFPSController
 {
     /// <summary>
     /// Controls the player. Move, jump, run, etc...
+    /// Can be used as base clase to make custom player controllers.
     /// </summary>
-    public class PlayerController : MonoBehaviour
+    public class Player : MonoBehaviour
     {
         #region VARIABLES
         [Title("References")]
         [SerializeField]
         [DisplayName("Rigidbody")]
-        private Rigidbody rb;
+        protected Rigidbody rb;
         [SerializeField]
-        private CapsuleCollider capsuleCollider;
+        protected CapsuleCollider capsuleCollider;
         [SerializeField]
-        private PlayerInput playerInput;
+        protected PlayerInput playerInput;
         [SerializeField]
-        private Transform playerCamera;
+        protected Transform playerCamera;
 
         [Title("Movement Settings")]
         [SerializeField]
-        private LayerMask whatIsGround;
+        protected LayerMask whatIsGround;
         [SerializeField]
-        private float groundDrag;
+        protected float groundDrag;
         [Space]
         [SerializeField]
-        private float walkSpeed = 3f;
+        protected float walkSpeed = 3f;
         [SerializeField]
-        private float runSpeed = 4.5f;
+        protected float runSpeed = 4.5f;
         [SerializeField]
-        private float jumpForce = 10f;
+        protected float jumpForce = 10f;
 
         [Title("Input Settings")]
         [SerializeField]
-        private float lookXSensitivity = 1f;
+        protected float lookXSensitivity = 1f;
         [SerializeField]
-        private float lookYSensitivity = 1f;
+        protected float lookYSensitivity = 1f;
 
-        private float currentHeight;
-        private float currentSpeed;
+        protected float currentHeight;
+        protected float currentSpeed;
 
-        private Vector2 moveInput;
-        private Vector2 lookInput;
-        private float lookXRotation;
-        private float lookYRotation;
+        protected Vector2 moveInput;
+        protected Vector2 lookInput;
+        protected float lookXRotation;
+        protected float lookYRotation;
 
         // States
-        private bool isRunning = false;
+        protected bool isRunning = false;
         #endregion
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             playerInput.onActionTriggered += OnActionTriggered;
         }
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             playerInput.onActionTriggered -= OnActionTriggered;
         }
-        void Start()
+        protected virtual void Start()
         {
             // Set default current speed to walk speed
             currentSpeed = walkSpeed;
@@ -71,17 +72,17 @@ namespace Hotiovip.YAFPSController
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
-        void Update()
+        protected virtual void Update()
         {
 
         }
-        private void FixedUpdate()
+        protected virtual void FixedUpdate()
         {
             Look();
             Move();
         }
 
-        private void Move()
+        protected virtual void Move()
         {
             Vector3 moveVector = (transform.forward * moveInput.y) + (transform.right * moveInput.x);
 
@@ -104,7 +105,7 @@ namespace Hotiovip.YAFPSController
                 rb.velocity = new Vector3(limitedVelocity.x, rb.velocity.y, limitedVelocity.z);
             }
         }
-        private void Look()
+        protected virtual void Look()
         {
             float lookInputX = lookInput.x * lookXSensitivity * Time.deltaTime;
             float lookInputY = lookInput.y * lookYSensitivity * Time.deltaTime;
@@ -116,21 +117,25 @@ namespace Hotiovip.YAFPSController
             transform.rotation = Quaternion.Euler(0f, lookYRotation, 0f);
             playerCamera.rotation = Quaternion.Euler(lookXRotation, lookYRotation, 0f);
         }
-        private void Jump()
+        protected virtual void Jump()
         {
             if (!IsGrounded) return;
 
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         }
-        private void StartRun()
+        protected virtual void StartRun()
         {
             isRunning = true;
             currentSpeed = runSpeed;
         }
-        private void StopRun()
+        protected virtual void StopRun()
         {
             isRunning = false;
             currentSpeed = walkSpeed;
+        }
+        protected virtual void Crouch()
+        {
+
         }
 
         public PlayerInput GetPlayerInput() => playerInput;
@@ -155,6 +160,9 @@ namespace Hotiovip.YAFPSController
                 case "Run":
                     OnRun(context);
                     break;
+                case "Crouch":
+                    OnCrouch(context);
+                    break;
             }
         }
 
@@ -173,6 +181,11 @@ namespace Hotiovip.YAFPSController
             if (callbackContext.performed) Jump();
         }
         private void OnRun(CallbackContext callbackContext)
+        {
+            if (callbackContext.performed) StartRun();
+            else if (callbackContext.canceled) StopRun();
+        }
+        private void OnCrouch(CallbackContext callbackContext)
         {
             if (callbackContext.performed) StartRun();
             else if (callbackContext.canceled) StopRun();

@@ -2,7 +2,7 @@ using UnityEngine;
 
 using Hotiovip.YAFPSController.Wind;
 
-namespace Hotiovip.YAFPSController.Weapon
+namespace Hotiovip.YAFPSController.Items.Weapons
 {
     public static class BallisticMethods
     {

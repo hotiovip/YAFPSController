@@ -1,18 +1,18 @@
 using UnityEngine;
 using UnityEngine.Pool;
 
-namespace Hotiovip.YAFPSController.Weapon
+namespace Hotiovip.YAFPSController.Items.Weapons
 {
     public class ProjectilePool : MonoBehaviour
     {
         [SerializeField]
-        private WeaponController weaponController;
+        private Weapon weaponController;
 
         private WeaponData weaponData;
         private Transform muzzle;
 
         private Transform poolHolder;
-        private ObjectPool<ProjectileController> pool;
+        private ObjectPool<Projectile> pool;
 
         private void Start()
         {
@@ -20,14 +20,14 @@ namespace Hotiovip.YAFPSController.Weapon
             muzzle = weaponController.GetMuzzle();
 
             poolHolder = new GameObject($"{weaponData.itemName}_ProjectilePool").transform;
-            pool = new ObjectPool<ProjectileController>(CreateProjectile, OnTakeProjectileFromPool, OnReturnProjectileToPool, OnDestroyProjectile,
+            pool = new ObjectPool<Projectile>(CreateProjectile, OnTakeProjectileFromPool, OnReturnProjectileToPool, OnDestroyProjectile,
                 true, weaponData.magSize, weaponData.magSize + weaponData.magSize / 2);
         }
 
-        private ProjectileController CreateProjectile()
+        private Projectile CreateProjectile()
         {
             // Spawn projectile's instance
-            ProjectileController projectile = Instantiate(weaponData.projectilePrefab, muzzle.position, muzzle.rotation, poolHolder);
+            Projectile projectile = Instantiate(weaponData.projectilePrefab, muzzle.position, muzzle.rotation, poolHolder);
             projectile.gameObject.SetActive(false);
 
             // Set projectile's pool
@@ -39,7 +39,7 @@ namespace Hotiovip.YAFPSController.Weapon
         /// <summary>
         /// Called when a projectile is taken from the pool.
         /// </summary>
-        private void OnTakeProjectileFromPool(ProjectileController projectile)
+        private void OnTakeProjectileFromPool(Projectile projectile)
         {
             projectile.transform.position = muzzle.position;
             projectile.transform.forward = muzzle.forward;
@@ -51,7 +51,7 @@ namespace Hotiovip.YAFPSController.Weapon
         /// Called when a projectile is returned to the pool.
         /// </summary>
         /// <param name="projectile"></param>
-        private void OnReturnProjectileToPool(ProjectileController projectile)
+        private void OnReturnProjectileToPool(Projectile projectile)
         {
             projectile.gameObject.SetActive(false);
 
@@ -64,11 +64,11 @@ namespace Hotiovip.YAFPSController.Weapon
         /// Maybe because pool is already full.
         /// </summary>
         /// <param name="projectile"></param>
-        private void OnDestroyProjectile(ProjectileController projectile)
+        private void OnDestroyProjectile(Projectile projectile)
         {
             Destroy(projectile.gameObject);
         }
 
-        public ObjectPool<ProjectileController> GetPool() => pool;
+        public ObjectPool<Projectile> GetPool() => pool;
     }
 }

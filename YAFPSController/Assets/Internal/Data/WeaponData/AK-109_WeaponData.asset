@@ -15,17 +15,18 @@ MonoBehaviour:
   itemName: AK-109
   posRotData: {fileID: 11400000, guid: a09da5a10389e5d49b1fd9686ff635e7, type: 2}
   canSway: 1
-  swayVector: {x: 1, y: 3, z: 2}
+  swayVector: {x: 2, y: 3, z: 2}
   swayVectorDirection: {x: -1, y: -1, z: 1}
   maxSwayVector: {x: 6, y: 3, z: 4}
   minSwayVector: {x: -6, y: -3, z: -4}
-  swaySmoothTime: 15
+  swaySmoothTime: 10
   fireRate: 650
   muzzleVelocity: 900
   fireModes: 020000000000000001000000
   projectilePrefab: {fileID: 7766734690337166737, guid: 353af56144c21f74184f3f426e1424e1,
     type: 3}
   magSize: 30
-  hasSpareAmmo: 1
+  shouldUseSpareAmmo: 1
   spareAmmoSize: 300
   canAim: 1
+  aimSwayMultiplier: 0.5

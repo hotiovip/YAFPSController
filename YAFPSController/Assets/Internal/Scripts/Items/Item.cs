@@ -1,9 +1,10 @@
-using Hotiovip.YAFPSController.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 
-namespace Hotiovip.YAFPSController
+using Hotiovip.YAFPSController.Utils;
+
+namespace Hotiovip.YAFPSController.Items
 {
     /// <summary>
     /// Base class for creating items. Can be used as a superclass for custom items (e.g., weapons, melee weapons).
@@ -21,11 +22,11 @@ namespace Hotiovip.YAFPSController
         /// <summary>
         /// InventoryController reference. Used to get playerController
         /// </summary>
-        protected InventoryController inventoryController;
+        protected Inventory inventoryController;
         /// <summary>
         /// PlayerController reference. Used to get playerInput
         /// </summary>
-        protected PlayerController playerController;
+        protected Player playerController;
         /// <summary>
         /// PlayerInput reference. Used for listening to player inputs
         /// </summary>
@@ -59,7 +60,7 @@ namespace Hotiovip.YAFPSController
         protected virtual void Awake()
         {
             // Get important references
-            inventoryController = GetComponentInParent<InventoryController>();
+            inventoryController = GetComponentInParent<Inventory>();
             playerController = inventoryController.GetPlayerController();
             playerInput = playerController.GetPlayerInput();
 
@@ -95,7 +96,6 @@ namespace Hotiovip.YAFPSController
             UpdateSway();
         }
 
-        // TODO: Remove Primary Use logic. Should be handled on each child class. Because it could be different for each class
         #region PRIMARY USE
         /// <summary>
         /// Controls the decision logic for triggering the primary action of the item.

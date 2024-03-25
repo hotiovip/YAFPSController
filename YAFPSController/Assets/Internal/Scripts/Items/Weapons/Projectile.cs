@@ -2,14 +2,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Pool;
 
-namespace Hotiovip.YAFPSController.Weapon
+namespace Hotiovip.YAFPSController.Items.Weapons
 {
-    public class ProjectileController : MonoBehaviour
+    public class Projectile : MonoBehaviour
     {
         [SerializeField]
         private ProjectileData projectileData;
 
-        private ObjectPool<ProjectileController> pool;
+        private ObjectPool<Projectile> pool;
         private Coroutine deactivateAfterTimeCoroutine;
 
         private Vector3 currentPosition;
@@ -85,7 +85,7 @@ namespace Hotiovip.YAFPSController.Weapon
         /// Sets the pool this projectile belongs to.
         /// </summary>
         /// <param name="pool">Pool</param>
-        public void SetPool(ObjectPool<ProjectileController> pool) 
+        public void SetPool(ObjectPool<Projectile> pool) 
         {
             this.pool = pool;
         }

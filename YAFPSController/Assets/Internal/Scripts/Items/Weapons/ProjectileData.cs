@@ -1,7 +1,7 @@
 using Hotiovip.YAFPSController.Attributes;
 using UnityEngine;
 
-namespace Hotiovip.YAFPSController.Weapon
+namespace Hotiovip.YAFPSController.Items.Weapons
 {
     /// <summary>
     /// Holds all the projectile-related data.

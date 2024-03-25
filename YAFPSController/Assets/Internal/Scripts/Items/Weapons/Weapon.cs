@@ -1,15 +1,15 @@
-using Hotiovip.YAFPSController.Utils;
-using System.Collections;
 using UnityEngine;
 
-namespace Hotiovip.YAFPSController.Weapon
+using Hotiovip.YAFPSController.Utils;
+
+namespace Hotiovip.YAFPSController.Items.Weapons
 {
     /// <summary>
     /// Base class for managing weapons, primarily used for shooting items.
     /// This class provides functionality to create custom weapons and manages aspects such as firing behavior, reloading, and aiming.
     /// Derived classes can implement specific weapon types by overriding or extending the provided functionality.
     /// </summary>
-    public class WeaponController : Item
+    public class Weapon : Item
     {
         #region VARIABLES
         [SerializeField]
@@ -30,6 +30,9 @@ namespace Hotiovip.YAFPSController.Weapon
 
         // Aim variables
         protected bool aimingFinished;
+
+        // Animations hash values
+        protected readonly int actionHash = Animator.StringToHash("Action");
         #endregion
 
         protected override void Start()
@@ -47,6 +50,9 @@ namespace Hotiovip.YAFPSController.Weapon
         {
             UpdatePrimaryUse();
             UpdateSecondaryUse();
+
+            // Remember to call base Update() otherwise UpdateSway() will not be called
+            base.Update();
         }
 
         #region PRIMARY USE
@@ -144,8 +150,10 @@ namespace Hotiovip.YAFPSController.Weapon
 
             isPerformingAction = true;
 
+            if (animator) animator.SetBool(actionHash, true);
+
             // Use spare ammo to reload
-            if (weaponData.hasSpareAmmo)
+            if (weaponData.shouldUseSpareAmmo)
             {
                 // Calculate needed ammo amount
                 int neededAmmo = weaponData.magSize - currentMagSize;
@@ -174,7 +182,41 @@ namespace Hotiovip.YAFPSController.Weapon
         /// </summary>
         protected override void ActionEnded()
         {
-            base.ActionEnded();
+            if (animator) animator.SetBool(actionHash, false);
+        }
+
+        /// <summary>
+        /// Custom UpdateSway method. Works like normal UpdateSway but when aiming then it applies less sway.
+        /// </summary>
+        protected override void UpdateSway()
+        {
+            if (!itemData.canSway) return;
+
+            // Calculate the sway movement based on mouse input
+            // Left-right sway
+            float moveX = Mathf.Clamp(lookInput.x * itemData.swayVectorDirection.y * itemData.swayVector.y, itemData.minSwayVector.y, itemData.maxSwayVector.y);
+            // Sway on itself
+            float moveY = Mathf.Clamp(lookInput.x * itemData.swayVectorDirection.x * itemData.swayVector.x, itemData.minSwayVector.x, itemData.maxSwayVector.x);
+            // Up-down sway
+            float moveZ = Mathf.Clamp(lookInput.y * itemData.swayVectorDirection.z * itemData.swayVector.z, itemData.minSwayVector.z, itemData.maxSwayVector.z);
+
+            if (isUsingSecondary)
+            {
+                moveX *= weaponData.aimSwayMultiplier;
+                moveY *= weaponData.aimSwayMultiplier;
+                moveZ *= weaponData.aimSwayMultiplier;
+            }
+
+            // Transform the rotations from Vector3s to Quaternions
+            Quaternion swayRotationX = Quaternion.AngleAxis(moveX, Vector3.up);
+            Quaternion swayRotationY = Quaternion.AngleAxis(moveY, Vector3.right);
+            Quaternion swayRotationZ = Quaternion.AngleAxis(moveZ, Vector3.forward);
+
+            // Summ all the rotations together
+            Quaternion targetRotation = swayRotationX * swayRotationY * swayRotationZ;
+
+            // Apply the rotations
+            swayHolder.localRotation = QuaternionUtil.SmoothDamp(swayHolder.localRotation, targetRotation, ref swayVelocity, itemData.swaySmoothTime * Time.deltaTime);
         }
 
         #region GETTERS

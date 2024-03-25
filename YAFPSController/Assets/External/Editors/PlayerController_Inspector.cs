@@ -3,7 +3,7 @@ using UnityEngine.UIElements;
 
 namespace Hotiovip.YAFPSController.Editors
 {
-    [CustomEditor(typeof(PlayerController))]
+    [CustomEditor(typeof(Player))]
     public class Player_Inspector : Editor
     {
         public override void OnInspectorGUI ()

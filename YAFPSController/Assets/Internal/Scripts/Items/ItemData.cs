@@ -1,7 +1,7 @@
 using Hotiovip.YAFPSController.Attributes;
 using UnityEngine;
 
-namespace Hotiovip.YAFPSController
+namespace Hotiovip.YAFPSController.Items
 {
     /// <summary>
     /// Contains item-specific data.

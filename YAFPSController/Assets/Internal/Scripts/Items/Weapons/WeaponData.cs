@@ -1,7 +1,7 @@
 using Hotiovip.YAFPSController.Attributes;
 using UnityEngine;
 
-namespace Hotiovip.YAFPSController.Weapon
+namespace Hotiovip.YAFPSController.Items.Weapons
 {
     /// <summary>
     /// Used for weapon-specific data.
@@ -25,13 +25,16 @@ namespace Hotiovip.YAFPSController.Weapon
         public FireMode[] fireModes = { FireMode.Semi };
         [Space]
         [Title("Ammo Settings")]
-        public ProjectileController projectilePrefab;
+        public Projectile projectilePrefab;
         [Space]
         public int magSize = 30;
-        public bool hasSpareAmmo = true;
-        [ShowIf("hasSpareAmmo")]
+        [Tooltip("If set to true the weapon will use and have limited ammo (spare ammo).")]
+        public bool shouldUseSpareAmmo = true;
+        [ShowIf("shouldUseSpareAmmo")]
         public int spareAmmoSize = 300;
         [Title("Aim Settings")]
         public bool canAim = true;
+        [ShowIf("canAim")]
+        public float aimSwayMultiplier = 0.5f;
     }
 }

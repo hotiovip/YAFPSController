@@ -1,19 +1,22 @@
-using Hotiovip.YAFPSController.Attributes;
-using Hotiovip.YAFPSController.Utils;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
+
+using Hotiovip.YAFPSController.Attributes;
+using Hotiovip.YAFPSController.Items;
+using Hotiovip.YAFPSController.Utils;
 
 namespace Hotiovip.YAFPSController
 {
     /// <summary>
     /// Controls the inventory system, like: weapon swapping, usables, etc...
     /// </summary>
-    public class InventoryController : MonoBehaviour
+    public class Inventory : MonoBehaviour
     {
         [SerializeField]
-        private PlayerController playerController;
+        private Player playerController;
         [Title("Holders")]
         [SerializeField]
         private Transform swayHolder;
@@ -85,7 +88,7 @@ namespace Hotiovip.YAFPSController
             currentItem = null;
         }
 
-        public PlayerController GetPlayerController() => playerController;
+        public Player GetPlayerController() => playerController;
         public Transform GetBulletsHolder() => bulletsHolder;
         public Transform GetPositionHolder() => positionHolder;
         public Transform GetSwayHolder() => swayHolder;

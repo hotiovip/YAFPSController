@@ -1,5 +1,7 @@
-using Hotiovip.YAFPSController.Attributes;
 using UnityEngine;
+
+using Hotiovip.YAFPSController.Attributes;
+using Hotiovip.YAFPSController.Items;
 
 namespace Hotiovip.YAFPSController.Utils
 {
