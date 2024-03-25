@@ -92,9 +92,6 @@ namespace Hotiovip.YAFPSController
         }
         protected virtual void Update()
         {
-            UpdatePrimaryUse();
-            UpdateSecondaryUse();
-
             UpdateSway();
         }
 
@@ -107,9 +104,7 @@ namespace Hotiovip.YAFPSController
         /// </summary>
         protected virtual void UpdatePrimaryUse()
         {
-            if (!CanPrimaryUse()) return;
 
-            if (isUsingPrimary) PrimaryUse();
         }
         /// <summary>
         /// Starts the logic for primary use. It can also not be used. It is needed only if we need looping primary use,
@@ -117,9 +112,7 @@ namespace Hotiovip.YAFPSController
         /// </summary>
         protected virtual void StartPrimaryUse()
         {
-            isUsingPrimary = true;
-
-            PrimaryUse();
+            
         }
         /// <summary>
         /// Primary use logic. Can be overriden to add custom logic.
@@ -134,7 +127,7 @@ namespace Hotiovip.YAFPSController
         /// </summary>
         protected virtual void StopPrimaryUse()
         {
-            isUsingPrimary = false;
+            
         }
         #endregion
 
@@ -193,7 +186,7 @@ namespace Hotiovip.YAFPSController
         /// <summary>
         /// Updates the weapon's sway. Has to be called each frame.
         /// </summary>
-        private void UpdateSway()
+        protected virtual void UpdateSway()
         {
             if (!itemData.canSway) return;
 

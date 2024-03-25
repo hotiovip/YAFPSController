@@ -1,4 +1,5 @@
 using Hotiovip.YAFPSController.Utils;
+using System.Collections;
 using UnityEngine;
 
 namespace Hotiovip.YAFPSController.Weapon
@@ -28,6 +29,7 @@ namespace Hotiovip.YAFPSController.Weapon
         protected FireMode currentFireMode;
 
         // Aim variables
+        protected bool aimingFinished;
         #endregion
 
         protected override void Start()
@@ -40,6 +42,11 @@ namespace Hotiovip.YAFPSController.Weapon
             currentFireMode = weaponData.fireModes[0];
             currentMagSize = weaponData.magSize;
             currentSpareAmmoSize = weaponData.spareAmmoSize;
+        }
+        protected override void Update()
+        {
+            UpdatePrimaryUse();
+            UpdateSecondaryUse();
         }
 
         #region PRIMARY USE
@@ -82,8 +89,9 @@ namespace Hotiovip.YAFPSController.Weapon
         }
         protected override void StartPrimaryUse()
         {
-            // Do normal item generic primary use start logic
-            base.StartPrimaryUse();
+            isUsingPrimary = true;
+
+            PrimaryUse();
 
             // Do weapon specific primary use start logic
             fireTimer = 0;
@@ -94,33 +102,35 @@ namespace Hotiovip.YAFPSController.Weapon
         }
         protected override void StopPrimaryUse()
         {
-            base.StopPrimaryUse();
+            isUsingPrimary = false;
         }
         #endregion
 
         #region SECONDARY USE
+        protected override void UpdateSecondaryUse()
+        {
+            // Aim in
+            if (isUsingSecondary && CanSecondaryUse())
+            {
+                positionHolderInterp.RotationSmoothDamp(weaponData.posRotData.aimRotation, 6f, InterpolationSpace.Local);
+                positionHolderInterp.PositionSmoothDamp(weaponData.posRotData.aimPosition, 6f, InterpolationSpace.Local);
+            }
+            else if (!isUsingSecondary || !CanSecondaryUse())
+            {
+                StopSecondaryUse();
+
+                positionHolderInterp.RotationSmoothDamp(weaponData.posRotData.defaultRotation, 10f, InterpolationSpace.Local);
+                positionHolderInterp.PositionSmoothDamp(weaponData.posRotData.defaultPosition, 10f, InterpolationSpace.Local);
+            }
+        }
         protected override void StartSecondaryUse()
         {
-            if (!CanSecondaryUse() && !isUsingSecondary) return;
+            if (!CanSecondaryUse()) return;
 
             isUsingSecondary = true;
-
-            // Aim
-            //positionHolder.localRotation = QuaternionUtil.SmoothDamp(positionHolder.localRotation, weaponData.aimPosRot.rotation)
-            positionHolderInterp.RotationSmoothDamp(weaponData.posRotData.aimRotation, 6f, InterpolationSpace.Local);
-            positionHolderInterp.PositionSmoothDamp(weaponData.posRotData.aimPosition, 6f, InterpolationSpace.Local);
-        }
-        protected override void SecondaryUse()
-        {
-            
         }
         protected override void StopSecondaryUse()
         {
-            if (!isUsingSecondary) return;
-
-            positionHolderInterp.RotationSmoothDamp(weaponData.posRotData.defaultRotation, 10f, InterpolationSpace.Local);
-            positionHolderInterp.PositionSmoothDamp(weaponData.posRotData.defaultPosition, 10f, InterpolationSpace.Local);
-
             isUsingSecondary = false;
         }
         #endregion

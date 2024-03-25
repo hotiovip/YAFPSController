@@ -32,8 +32,6 @@ namespace Hotiovip.YAFPSController.Utils
 
         public void PositionSmoothDamp(Vector3 targetPosition, float smoothTime, InterpolationSpace interpolationSpace = InterpolationSpace.Local) 
         {
-            if (!CanInterpolate()) return;
-
             if (interpolationSpace.Equals(InterpolationSpace.Local))
             {
                 transform.localPosition = Vector3.SmoothDamp(transform.localPosition, targetPosition, ref positionVelocity, smoothTime * Time.deltaTime);
@@ -46,8 +44,6 @@ namespace Hotiovip.YAFPSController.Utils
         }
         public void RotationSmoothDamp(Quaternion targetRotation, float smoothTime, InterpolationSpace interpolationSpace = InterpolationSpace.Local)
         {
-            if (!CanInterpolate()) return;
-
             if (interpolationSpace.Equals(InterpolationSpace.Local))
             {
                 transform.localRotation = QuaternionUtil.SmoothDamp(transform.localRotation, targetRotation, ref rotationVelocity, smoothTime * Time.deltaTime);
@@ -57,17 +53,6 @@ namespace Hotiovip.YAFPSController.Utils
                 transform.rotation = QuaternionUtil.SmoothDamp(transform.rotation, targetRotation, ref rotationVelocity, smoothTime * Time.deltaTime);
 
             }
-        }
-
-        public bool CanInterpolate()
-        {
-            if (transform == null)
-            {
-                Debug.LogError("No transform given on initialization. Cannot interpolate without transform!");
-                return false;
-            }
-
-            return true;
         }
     }
 
