@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2262.0686, g: 2403.5393, b: 3501.0396, a: 1}
+  m_IndirectSpecularColor: {r: 2262.0686, g: 2403.5393, b: 3501.0317, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1354,7 +1354,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1524786198}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9d935756e70d46459f36569c245abf0, type: 3}
+  m_Script: {fileID: 11500000, guid: bb96a41c448373c45b64e865d7ad9ebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: d23e182c99a17974ca268aedeae37ee2, type: 2}
@@ -1631,7 +1631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1709731904
 Transform:
   m_ObjectHideFlags: 0
@@ -1657,22 +1657,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1709731903}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c77c0cb9f9e05a14fa1bfcc775a978d3, type: 3}
+  m_Script: {fileID: 11500000, guid: d1af12d33892b2541b8bc379482aff6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1709731908}
-  capsuleCollider: {fileID: 1709731909}
-  playerInput: {fileID: 1709731907}
-  playerCamera: {fileID: 1466946364}
+  rb: {fileID: 0}
+  capsuleCollider: {fileID: 0}
+  playerInput: {fileID: 0}
+  playerCamera: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 64
-  groundDrag: 5
+    m_Bits: 0
+  groundDrag: 0
   walkSpeed: 3
   runSpeed: 4.5
-  jumpForce: 5
-  lookXSensitivity: 2
-  lookYSensitivity: 2
+  jumpForce: 10
+  lookXSensitivity: 1
+  lookYSensitivity: 1
 --- !u!114 &1709731907
 MonoBehaviour:
   m_ObjectHideFlags: 0
