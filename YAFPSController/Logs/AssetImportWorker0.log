@@ -1,0 +1,718 @@
+Using pre-set license
+Built from '2022.3/release' branch; Version is '2022.3.18f1 (d29bea25151d) revision 13802474'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22631) 64bit Professional' Language: 'de' Physical Memory: 16319 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Editor\2022.3.18f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+E:/GitHub/YAFPSController/YAFPSController
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+50853
+Successfully changed project path to: E:/GitHub/YAFPSController/YAFPSController
+E:/GitHub/YAFPSController/YAFPSController
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [19528] Host "[IP] 192.168.56.1 [Port] 0 [Flags] 2 [Guid] 3855047940 [EditorId] 3855047940 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-B6VI2KC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [19528] Host "[IP] 192.168.56.1 [Port] 0 [Flags] 2 [Guid] 3855047940 [EditorId] 3855047940 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-B6VI2KC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[Physics::Module] Initialized MultithreadedJobDispatcher with 5 workers.
+Refreshing native plugins compatible for Editor in 9.61 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.18f1 (d29bea25151d)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Editor/2022.3.18f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path E:/GitHub/YAFPSController/YAFPSController/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3080 (ID=0x2216)
+    Vendor:   NVIDIA
+    VRAM:     10053 MB
+    Driver:   31.0.15.5212
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Editor/2022.3.18f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Editor/2022.3.18f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Editor/2022.3.18f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56084
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Editor/2022.3.18f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Editor/2022.3.18f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Editor/2022.3.18f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Editor/2022.3.18f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Editor/2022.3.18f1/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll
+Registered in 0.025632 seconds.
+- Loaded All Assemblies, in  0.492 seconds
+Native extension for UWP target not found
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 1403 ms
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.823 seconds
+Domain Reload Profiling: 2313ms
+	BeginReloadAssembly (107ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (35ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (99ms)
+	LoadAllAssembliesAndSetupDomain (234ms)
+		LoadAssemblies (107ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (231ms)
+			TypeCache.Refresh (229ms)
+				TypeCache.ScanAssembly (213ms)
+			ScanForSourceGeneratedMonoScriptInfo (1ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (1824ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1752ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (1560ms)
+			SetLoadedEditorAssemblies (5ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (2ms)
+			ProcessInitializeOnLoadAttributes (134ms)
+			ProcessInitializeOnLoadMethodAttributes (51ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.904 seconds
+Refreshing native plugins compatible for Editor in 3.34 ms, found 3 plugins.
+Native extension for UWP target not found
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Native extension for WebGL target not found
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-YAFPSController
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.100 seconds
+Domain Reload Profiling: 2002ms
+	BeginReloadAssembly (167ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (28ms)
+	RebuildCommonClasses (45ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (47ms)
+	LoadAllAssembliesAndSetupDomain (630ms)
+		LoadAssemblies (391ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (330ms)
+			TypeCache.Refresh (290ms)
+				TypeCache.ScanAssembly (268ms)
+			ScanForSourceGeneratedMonoScriptInfo (28ms)
+			ResolveRequiredComponents (11ms)
+	FinalizeReload (1101ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (898ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (32ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (78ms)
+			ProcessInitializeOnLoadAttributes (602ms)
+			ProcessInitializeOnLoadMethodAttributes (176ms)
+			AfterProcessingInitializeOnLoad (7ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (5ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 3.32 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6748 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 106 unused Assets / (3.6 MB). Loaded Objects now: 7220.
+Memory consumption went from 306.8 MB to 303.3 MB.
+Total: 4.463000 ms (FindLiveObjects: 0.440000 ms CreateObjectMapping: 0.476700 ms MarkObjects: 3.001900 ms  DeleteObjects: 0.543300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 6d391050e5a25f67b0a2c618074f2cd9 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 6294.378800 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3.fbx
+  artifactKey: Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3.fbx using Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+ -> (artifact id: '838ad33531b47b26f1963a9135660e08') in 1.703407 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 155
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1d174f255f11bc192a75cb0535fff379') in 0.063423 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 152
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Internal/Meshes/AKS74U.fbx
+  artifactKey: Guid(59b6ecddb52b2f3489f653a0fd1594aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/AKS74U.fbx using Guid(59b6ecddb52b2f3489f653a0fd1594aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4868f4445022d1ab6eb9d3db0e1cb216') in 0.027977 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 31
+========================================================================
+Received Import Request.
+  Time since last request: 19.181818 seconds.
+  path: Assets/Internal/Meshes/AKS74U.fbx
+  artifactKey: Guid(59b6ecddb52b2f3489f653a0fd1594aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/AKS74U.fbx using Guid(59b6ecddb52b2f3489f653a0fd1594aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f93df187d5ecc519b12cfcccc06d0f39') in 0.053993 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 29
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3.fbx
+  artifactKey: Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3.fbx using Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db9621e11d68519250825dee10bb974d') in 0.111846 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 142
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35f6c7f97211593c19a16487f57333dc') in 0.086438 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 145
+========================================================================
+Received Import Request.
+  Time since last request: 8.074893 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3.fbx
+  artifactKey: Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3.fbx using Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '001404ab739fef6c5319cdbc0499459e') in 0.143036 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 144
+========================================================================
+Received Import Request.
+  Time since last request: 2.787892 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3.fbx
+  artifactKey: Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3.fbx using Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7bb23c99ca0901382b7d20657924157f') in 0.093577 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 144
+========================================================================
+Received Import Request.
+  Time since last request: 1.831011 seconds.
+  path: Assets/Internal/Materials/AKS74U_TEX.mat
+  artifactKey: Guid(169a03288667b3e4f9398411afdde8f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Materials/AKS74U_TEX.mat using Guid(169a03288667b3e4f9398411afdde8f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f99e939cf61677530fb1695681a21708') in 0.027150 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Internal/Materials/MattLightGray.mat
+  artifactKey: Guid(f1ba31e291d39144a8593ca83f0d671e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Materials/MattLightGray.mat using Guid(f1ba31e291d39144a8593ca83f0d671e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e61b96f163ab5858647b24a86f21bb62') in 0.017511 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/External/Low Poly Assault Rifles/AK-109/Materials/Body_02.mat
+  artifactKey: Guid(d7c5d7c7afae4ff46ae713390390b73d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/External/Low Poly Assault Rifles/AK-109/Materials/Body_02.mat using Guid(d7c5d7c7afae4ff46ae713390390b73d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8dc08188abae2b6ceadea06cd98837bd') in 0.024712 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Internal/Materials/FPS Arms V3/Cloth.mat
+  artifactKey: Guid(54532f5b0cc218c4a90ba7f9ffcafd2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Materials/FPS Arms V3/Cloth.mat using Guid(54532f5b0cc218c4a90ba7f9ffcafd2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0ca2129cee0a833781b05539f2d7a791') in 0.018776 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/External/Low Poly Assault Rifles/AK-109/Materials/Body_01.mat
+  artifactKey: Guid(a4a01c833dbeabe458a488d9aee2e7eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/External/Low Poly Assault Rifles/AK-109/Materials/Body_01.mat using Guid(a4a01c833dbeabe458a488d9aee2e7eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f36a3888005cdf56907e5a12b2251046') in 0.020714 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Internal/Materials/FPS Arms V3/Gloves.mat
+  artifactKey: Guid(feae4e18a0672e74eb1db293eea5e57d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Materials/FPS Arms V3/Gloves.mat using Guid(feae4e18a0672e74eb1db293eea5e57d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cda58cf032d50677d760927ab51d5707') in 0.019120 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Internal/Materials/MattDarkGray.mat
+  artifactKey: Guid(9441702fd98dd5d41b09cd05f033988e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Materials/MattDarkGray.mat using Guid(9441702fd98dd5d41b09cd05f033988e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd91834beef1f5965501148044c2eb149') in 0.015081 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Internal/Materials/ProjectileTrail.mat
+  artifactKey: Guid(d2d2dc34caba2f5498569044b01c71b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Materials/ProjectileTrail.mat using Guid(d2d2dc34caba2f5498569044b01c71b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f6788c5bc4aa1a7651b4bc4b85c0ae1') in 0.014717 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Internal/Materials/Ground.mat
+  artifactKey: Guid(a15b574783694cc469ca8f837f2603d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Materials/Ground.mat using Guid(a15b574783694cc469ca8f837f2603d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4cdbd075012255f19a77038daf8eb0ae') in 0.014764 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Internal/Materials/FPS Arms V3/Hands.mat
+  artifactKey: Guid(f2eea36befcc2c1408bc46ca119164f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Materials/FPS Arms V3/Hands.mat using Guid(f2eea36befcc2c1408bc46ca119164f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b4a1319dda08788e0afb133761364c8') in 0.017486 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 7.043233 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3.fbx
+  artifactKey: Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3.fbx using Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '70aa64a971232b2a86bcc32d86a3ce53') in 0.088683 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 152
+========================================================================
+Received Import Request.
+  Time since last request: 8.214790 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '80042c1fa013e7c8ca02fd172603f5b5') in 0.103043 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 145
+========================================================================
+Received Import Request.
+  Time since last request: 15.682547 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a77f8a1fe2f5819bd5ee258077fce6aa') in 0.074648 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 153
+========================================================================
+Received Import Request.
+  Time since last request: 4.792424 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2fed58f3024fccef47397f5f29860547') in 0.084476 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 142
+========================================================================
+Received Import Request.
+  Time since last request: 19.038385 seconds.
+  path: Assets/Internal/Meshes/AKS74U.fbx
+  artifactKey: Guid(59b6ecddb52b2f3489f653a0fd1594aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/AKS74U.fbx using Guid(59b6ecddb52b2f3489f653a0fd1594aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97ce42da96e4d41ebc16db4925c23d23') in 0.073813 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 31
+========================================================================
+Received Import Request.
+  Time since last request: 2.055442 seconds.
+  path: Assets/Internal/Meshes/AKS74U.fbx
+  artifactKey: Guid(59b6ecddb52b2f3489f653a0fd1594aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/AKS74U.fbx using Guid(59b6ecddb52b2f3489f653a0fd1594aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76e560fb11ad6220c6cd9913aebf482b') in 0.070539 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 31
+========================================================================
+Received Import Request.
+  Time since last request: 8.858272 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e78f504a31c5d4fb6e4e0d4e4d631a5') in 0.113364 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 153
+========================================================================
+Received Import Request.
+  Time since last request: 1.683907 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d27b01797ea9e5203f47570b572b5be') in 0.108552 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 153
+========================================================================
+Received Import Request.
+  Time since last request: 23.845274 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb5716c5515eb6bf3334bcef74d446e4') in 0.077098 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 152
+========================================================================
+Received Import Request.
+  Time since last request: 45.516627 seconds.
+  path: Assets/Internal/Animations/New Animator Controller.controller
+  artifactKey: Guid(89e59a21045554942a25e60c941ce7b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Animations/New Animator Controller.controller using Guid(89e59a21045554942a25e60c941ce7b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c8a4f0657d87f4084727dc1a44448bfe') in 0.001872 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 516.016109 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3.prefab
+  artifactKey: Guid(6c14f0aabb75c2d418fbd03ecd2263a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3.prefab using Guid(6c14f0aabb75c2d418fbd03ecd2263a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6af56985c96a952e671a2e8a4f4462dc') in 0.040898 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 289
+========================================================================
+Received Import Request.
+  Time since last request: 2823.521967 seconds.
+  path: Assets/Internal/Meshes/AKS74U.fbx
+  artifactKey: Guid(59b6ecddb52b2f3489f653a0fd1594aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/AKS74U.fbx using Guid(59b6ecddb52b2f3489f653a0fd1594aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2324f473377d9b8d644769984d801d2c') in 0.058151 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 29
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3.fbx
+  artifactKey: Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3.fbx using Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a5a765054f8997729d69b5a9a937547') in 0.103808 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 132
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ae4e18758afe1b334921984c5560c809') in 0.089803 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 135
+========================================================================
+Received Import Request.
+  Time since last request: 3.246004 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3.fbx
+  artifactKey: Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3.fbx using Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6563c9516e244000a506e05b004efc1') in 0.104373 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 132
+========================================================================
+Received Import Request.
+  Time since last request: 182.548252 seconds.
+  path: Assets/Internal/Meshes/AKS74U.fbx
+  artifactKey: Guid(59b6ecddb52b2f3489f653a0fd1594aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/AKS74U.fbx using Guid(59b6ecddb52b2f3489f653a0fd1594aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76fdccd940aa143d49ca1c612b63523a') in 0.054745 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 29
+========================================================================
+Received Import Request.
+  Time since last request: 0.000051 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db65198d9991e7d6b8d12853a1521054') in 0.110769 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 135
+========================================================================
+Received Import Request.
+  Time since last request: 20.115962 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3.fbx
+  artifactKey: Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3.fbx using Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c42ca2949407285753f9422c906efad') in 0.104911 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 140
+========================================================================
+Received Import Request.
+  Time since last request: 28.008172 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3.fbx
+  artifactKey: Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3.fbx using Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55c06d17bcd506d55de1f1b6a5fdf453') in 0.089288 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 142
+========================================================================
+Received Import Request.
+  Time since last request: 19.114884 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2fd5fe490324fe02e0d10e12d7204e5d') in 0.134015 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 135
+========================================================================
+Received Import Request.
+  Time since last request: 5.677356 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b745624db34abbbf37fd0419f7895627') in 0.103447 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 135
+========================================================================
+Received Import Request.
+  Time since last request: 11.250470 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03061c2d2c1605c97a4d0b94ed9be728') in 0.104755 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 134
+========================================================================
+Received Import Request.
+  Time since last request: 10.312734 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'efa70fd32de005511d7071fe061ad1b0') in 0.079154 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 142
+========================================================================
+Received Import Request.
+  Time since last request: 233.319099 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3.fbx
+  artifactKey: Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3.fbx using Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c1d4875f37c1106d8f45578705b7f1b') in 0.117313 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 132
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7fbbb65c6827e9d1d9343e5ebd1a0b6b') in 0.100051 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 134
+========================================================================
+Received Import Request.
+  Time since last request: 5.549791 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3.fbx
+  artifactKey: Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3.fbx using Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64916a02f2d56d679986aaae2e88cd09') in 0.112217 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 132
+========================================================================
+Received Import Request.
+  Time since last request: 6.583088 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3.fbx
+  artifactKey: Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3.fbx using Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f046dcc183545591cf8e43149113fa0b') in 0.161379 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 134
+========================================================================
+Received Import Request.
+  Time since last request: 9.709803 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3.fbx
+  artifactKey: Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3.fbx using Guid(8274da041ea35b8458ea18f4426ce2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13c66bc461bc4ffd7eece824ef3c3e28') in 0.075062 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 142
+========================================================================
+Received Import Request.
+  Time since last request: 11.880447 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '789404aac53be542996372f83dea3e23') in 0.120698 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 134
+========================================================================
+Received Import Request.
+  Time since last request: 11.114203 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd6234ec6cce6b19680b7469de978b9') in 0.101978 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 133
+========================================================================
+Received Import Request.
+  Time since last request: 11.067238 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0bdaa0c0a70a9d404f9ea05c59d2cdc7') in 0.105660 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 141
+========================================================================
+Received Import Request.
+  Time since last request: 1507.021329 seconds.
+  path: Assets/Internal/Meshes/AKS74U.fbx
+  artifactKey: Guid(59b6ecddb52b2f3489f653a0fd1594aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/AKS74U.fbx using Guid(59b6ecddb52b2f3489f653a0fd1594aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5bb2d5f6dd40af1c5b8f0d37190d83d5') in 0.069571 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 29
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5641a17bc6df7f75fbc67736620f0e44') in 0.128533 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 133
+========================================================================
+Received Import Request.
+  Time since last request: 10.754461 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '92fe3741decc451542e2f95fead47459') in 0.132963 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 133
+========================================================================
+Received Import Request.
+  Time since last request: 5.502186 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f5d3bdff9e1f51c74bb60b77f52c18d') in 0.126176 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 133
+========================================================================
+Received Import Request.
+  Time since last request: 7.548722 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e26eb1837f377300dca275c9acd7a40d') in 0.084037 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 141
+========================================================================
+Received Import Request.
+  Time since last request: 3181.136763 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U 1.fbx
+  artifactKey: Guid(c3092863c0905f94e8295ca23c57bfac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U 1.fbx using Guid(c3092863c0905f94e8295ca23c57bfac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f52ec79d7c97c0e7349bb83905c4cd88') in 0.168817 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 133
+========================================================================
+Received Import Request.
+  Time since last request: 37.056875 seconds.
+  path: Assets/Internal/Meshes
+  artifactKey: Guid(84772423406aea6439160c65749d61f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes using Guid(84772423406aea6439160c65749d61f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1df061fcf34c6dd7bfd97ecd527b7fda') in 0.000712 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 25.714679 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx
+  artifactKey: Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3_AKS74U.fbx using Guid(25a212f4ef2307e44bbfa24a0d22b86b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4bdd297b7efbaca1b7420422906be4fb') in 0.118202 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 141
+========================================================================
+Received Import Request.
+  Time since last request: 24.421376 seconds.
+  path: Assets/Internal/Meshes/AKS74U.fbx
+  artifactKey: Guid(59b6ecddb52b2f3489f653a0fd1594aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/AKS74U.fbx using Guid(59b6ecddb52b2f3489f653a0fd1594aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'debc869f5bde1b8f91eeece04cc4483b') in 0.047262 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 30
+========================================================================
+Received Import Request.
+  Time since last request: 9.015530 seconds.
+  path: Assets/Internal/Meshes/AKS74U.fbx
+  artifactKey: Guid(59b6ecddb52b2f3489f653a0fd1594aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/AKS74U.fbx using Guid(59b6ecddb52b2f3489f653a0fd1594aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5cdf8bc6790f7a86f23448d45bc7d60') in 0.070545 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 32
+========================================================================
+Received Import Request.
+  Time since last request: 5.201903 seconds.
+  path: Assets/Internal/Meshes/AKS74U.fbx
+  artifactKey: Guid(59b6ecddb52b2f3489f653a0fd1594aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/AKS74U.fbx using Guid(59b6ecddb52b2f3489f653a0fd1594aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ae7ccb22dea698d9cdf7ef922e9cd77') in 0.053695 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 32
+========================================================================
+Received Import Request.
+  Time since last request: 128.157008 seconds.
+  path: Assets/Internal/Meshes/FPS_Arms_V3.prefab
+  artifactKey: Guid(6c14f0aabb75c2d418fbd03ecd2263a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS_Arms_V3.prefab using Guid(6c14f0aabb75c2d418fbd03ecd2263a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6461f06e4631a31762e53e47486a5a0c') in 0.041071 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 269
+========================================================================
+Received Import Request.
+  Time since last request: 3.104812 seconds.
+  path: Assets/Internal/Project.Runtime.asmdef
+  artifactKey: Guid(370d756e74e92144e821042f783a7d62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Project.Runtime.asmdef using Guid(370d756e74e92144e821042f783a7d62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6fa84f36528b9f763072035db8671a03') in 0.000795 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 1.789716 seconds.
+  path: Assets/Internal/Prefabs
+  artifactKey: Guid(06e95ce025c29384f98c84f85a6e57c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Prefabs using Guid(06e95ce025c29384f98c84f85a6e57c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '914e76d844ac1572835942e615ed47eb') in 0.000436 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 161.583413 seconds.
+  path: Assets/Internal/Meshes/FPS Arms V3
+  artifactKey: Guid(27f6821eb4689a84ca9d2b0e9fe357d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/FPS Arms V3 using Guid(27f6821eb4689a84ca9d2b0e9fe357d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14a5d6e632f52c4e4759ac5e3959e080') in 0.000756 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 30.786409 seconds.
+  path: Assets/Internal/Meshes/AKS74U
+  artifactKey: Guid(82f6b185f36c5564fa34d56f258aad5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal/Meshes/AKS74U using Guid(82f6b185f36c5564fa34d56f258aad5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed44613dbd8f7c35500d071161505402') in 0.000453 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
