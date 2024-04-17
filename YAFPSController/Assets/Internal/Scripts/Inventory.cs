@@ -18,10 +18,14 @@ namespace Hotiovip.YAFPSController
         [SerializeField]
         private Player playerController;
         [Title("Holders")]
-        [SerializeField]
+        /*[SerializeField]
         private Transform swayHolder;
         [SerializeField]
         private Transform positionHolder;
+        */
+
+        [SerializeField]
+        private Transform weaponBoneTarget;
 
         private PlayerInput playerInput;
         private List<Item> items;
@@ -33,7 +37,8 @@ namespace Hotiovip.YAFPSController
         private void Awake()
         {
             playerInput = playerController.GetPlayerInput();
-            positionsHolderInterp = new TransformInterp(positionHolder);
+            //positionsHolderInterp = new TransformInterp(positionHolder);
+            positionsHolderInterp = new TransformInterp(weaponBoneTarget);
         }
         private void OnEnable()
         {
@@ -90,8 +95,11 @@ namespace Hotiovip.YAFPSController
 
         public Player GetPlayerController() => playerController;
         public Transform GetBulletsHolder() => bulletsHolder;
+        /*
         public Transform GetPositionHolder() => positionHolder;
         public Transform GetSwayHolder() => swayHolder;
+        */
+        public Transform GetWeaponBoneTarget() => weaponBoneTarget;
 
         public TransformInterp GetPositionsHolderInterp() => positionsHolderInterp;
 

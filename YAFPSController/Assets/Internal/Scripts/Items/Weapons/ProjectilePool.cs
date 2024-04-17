@@ -6,7 +6,7 @@ namespace Hotiovip.YAFPSController.Items.Weapons
     public class ProjectilePool : MonoBehaviour
     {
         [SerializeField]
-        private Weapon weaponController;
+        private Weapon weapon;
 
         private WeaponData weaponData;
         private Transform muzzle;
@@ -16,8 +16,8 @@ namespace Hotiovip.YAFPSController.Items.Weapons
 
         private void Start()
         {
-            weaponData = weaponController.GetWeaponData();
-            muzzle = weaponController.GetMuzzle();
+            weaponData = weapon.GetWeaponData();
+            muzzle = weapon.GetMuzzle();
 
             poolHolder = new GameObject($"{weaponData.itemName}_ProjectilePool").transform;
             pool = new ObjectPool<Projectile>(CreateProjectile, OnTakeProjectileFromPool, OnReturnProjectileToPool, OnDestroyProjectile,

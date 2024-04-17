@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c6c8f009832d3249b8cd07abc6ec420, type: 3}
-  m_Name: AK-109_WeaponData
+  m_Name: AKS7U_WeaponData
   m_EditorClassIdentifier: 
   itemName: AK-109
   posRotData: {fileID: 11400000, guid: a09da5a10389e5d49b1fd9686ff635e7, type: 2}
-  canSway: 1
+  canSway: 0
   swayVector: {x: 2, y: 3, z: 2}
   swayVectorDirection: {x: -1, y: -1, z: 1}
   maxSwayVector: {x: 6, y: 3, z: 4}
@@ -23,8 +23,7 @@ MonoBehaviour:
   fireRate: 650
   muzzleVelocity: 900
   fireModes: 020000000000000001000000
-  projectilePrefab: {fileID: 7766734690337166737, guid: 353af56144c21f74184f3f426e1424e1,
-    type: 3}
+  projectilePrefab: {fileID: 0}
   magSize: 30
   shouldUseSpareAmmo: 1
   spareAmmoSize: 300

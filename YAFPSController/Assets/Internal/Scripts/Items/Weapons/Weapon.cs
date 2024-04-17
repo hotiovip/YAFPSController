@@ -118,15 +118,15 @@ namespace Hotiovip.YAFPSController.Items.Weapons
             // Aim in
             if (isUsingSecondary && CanSecondaryUse())
             {
-                positionHolderInterp.RotationSmoothDamp(weaponData.posRotData.aimRotation, 6f, InterpolationSpace.Local);
-                positionHolderInterp.PositionSmoothDamp(weaponData.posRotData.aimPosition, 6f, InterpolationSpace.Local);
+                //positionHolderInterp.RotationSmoothDamp(weaponData.posRotData.aimRotation, 6f, InterpolationSpace.Local);
+                //positionHolderInterp.PositionSmoothDamp(weaponData.posRotData.aimPosition, 6f, InterpolationSpace.Local);
             }
             else if (!isUsingSecondary || !CanSecondaryUse())
             {
                 StopSecondaryUse();
 
-                positionHolderInterp.RotationSmoothDamp(weaponData.posRotData.defaultRotation, 10f, InterpolationSpace.Local);
-                positionHolderInterp.PositionSmoothDamp(weaponData.posRotData.defaultPosition, 10f, InterpolationSpace.Local);
+                //positionHolderInterp.RotationSmoothDamp(weaponData.posRotData.defaultRotation, 10f, InterpolationSpace.Local);
+                //positionHolderInterp.PositionSmoothDamp(weaponData.posRotData.defaultPosition, 10f, InterpolationSpace.Local);
             }
         }
         protected override void StartSecondaryUse()
@@ -216,7 +216,7 @@ namespace Hotiovip.YAFPSController.Items.Weapons
             Quaternion targetRotation = swayRotationX * swayRotationY * swayRotationZ;
 
             // Apply the rotations
-            swayHolder.localRotation = QuaternionUtil.SmoothDamp(swayHolder.localRotation, targetRotation, ref swayVelocity, itemData.swaySmoothTime * Time.deltaTime);
+            //swayHolder.localRotation = QuaternionUtil.SmoothDamp(swayHolder.localRotation, targetRotation, ref swayVelocity, itemData.swaySmoothTime * Time.deltaTime);
         }
 
         #region GETTERS

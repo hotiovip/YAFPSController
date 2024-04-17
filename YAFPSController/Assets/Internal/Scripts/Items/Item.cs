@@ -36,16 +36,21 @@ namespace Hotiovip.YAFPSController.Items
         /// Vector2 used to store mouse delta
         /// </summary>
         protected Vector2 lookInput;
+        /*
         /// <summary>
         /// This transform will get the weapon's position and rotation setup in the itemData.
         /// </summary>
         protected Transform positionHolder;
         protected TransformInterp positionHolderInterp;
+        */
 
+        /*
         /// <summary>
         /// Transform to wich the sway is applied
         /// </summary>
         protected Transform swayHolder;
+        */
+        protected Transform weaponBoneTarget;
         /// <summary>
         /// the velocity parameter used for the sway's smooth damp
         /// </summary>
@@ -65,10 +70,13 @@ namespace Hotiovip.YAFPSController.Items
             playerInput = playerController.GetPlayerInput();
 
             // Get the transforms on wich the various movements will be applied
+            /*
             positionHolder = inventoryController.GetPositionHolder();
             swayHolder = inventoryController.GetSwayHolder();
+            */
+            weaponBoneTarget = inventoryController.GetWeaponBoneTarget();
 
-            positionHolderInterp = inventoryController.GetPositionsHolderInterp();
+            //positionHolderInterp = inventoryController.GetPositionsHolderInterp();
         }
         protected virtual void OnEnable()
         {
@@ -78,8 +86,8 @@ namespace Hotiovip.YAFPSController.Items
             // Set positionHolder's position and rotation
             //positionHolder.localPosition = itemData.itemPosition;
             //positionHolder.localRotation = itemData.itemRotation;
-            positionHolder.localPosition = itemData.posRotData.defaultPosition;
-            positionHolder.localRotation = itemData.posRotData.defaultRotation;
+            //positionHolder.localPosition = itemData.posRotData.defaultPosition;
+            //positionHolder.localRotation = itemData.posRotData.defaultRotation;
 
         }
         protected virtual void OnDisable()
@@ -93,7 +101,11 @@ namespace Hotiovip.YAFPSController.Items
         }
         protected virtual void Update()
         {
-            UpdateSway();
+            //UpdateSway();
+
+            Quaternion sway = CalculateSway();
+
+            weaponBoneTarget.localRotation *= sway;
         }
 
         #region PRIMARY USE
@@ -207,7 +219,31 @@ namespace Hotiovip.YAFPSController.Items
             Quaternion targetRotation = swayRotationX * swayRotationY * swayRotationZ;
 
             // Apply the rotations
-            swayHolder.localRotation = QuaternionUtil.SmoothDamp(swayHolder.localRotation, targetRotation, ref swayVelocity, itemData.swaySmoothTime * Time.deltaTime);
+            //swayHolder.localRotation = QuaternionUtil.SmoothDamp(swayHolder.localRotation, targetRotation, ref swayVelocity, itemData.swaySmoothTime * Time.deltaTime);
+        }
+
+        protected virtual Quaternion CalculateSway()
+        {
+            if (!itemData.canSway) return Quaternion.identity;
+
+            // Calculate the sway movement based on mouse input
+            // Left-right sway
+            float moveX = Mathf.Clamp(lookInput.x * itemData.swayVectorDirection.y * itemData.swayVector.y, itemData.minSwayVector.y, itemData.maxSwayVector.y);
+            // Sway on itself
+            float moveY = Mathf.Clamp(lookInput.x * itemData.swayVectorDirection.x * itemData.swayVector.x, itemData.minSwayVector.x, itemData.maxSwayVector.x);
+            // Up-down sway
+            float moveZ = Mathf.Clamp(lookInput.y * itemData.swayVectorDirection.z * itemData.swayVector.z, itemData.minSwayVector.z, itemData.maxSwayVector.z);
+
+            // Transform the rotations from Vector3s to Quaternions
+            Quaternion swayRotationX = Quaternion.AngleAxis(moveX, Vector3.up);
+            Quaternion swayRotationY = Quaternion.AngleAxis(moveY, Vector3.right);
+            Quaternion swayRotationZ = Quaternion.AngleAxis(moveZ, Vector3.forward);
+
+            // Summ all the rotations together
+            Quaternion targetRotation = swayRotationX * swayRotationY * swayRotationZ;
+
+            // Return rotation
+            return QuaternionUtil.SmoothDamp(weaponBoneTarget.localRotation, targetRotation, ref swayVelocity, itemData.swaySmoothTime * Time.deltaTime);
         }
 
         #region GETTERS
