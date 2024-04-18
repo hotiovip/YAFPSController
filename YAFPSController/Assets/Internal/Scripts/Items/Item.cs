@@ -101,11 +101,9 @@ namespace Hotiovip.YAFPSController.Items
         }
         protected virtual void Update()
         {
-            //UpdateSway();
-
             Quaternion sway = CalculateSway();
-
-            weaponBoneTarget.localRotation *= sway;
+            Quaternion finalRotation = sway;
+            weaponBoneTarget.localRotation = finalRotation;
         }
 
         #region PRIMARY USE
@@ -194,45 +192,18 @@ namespace Hotiovip.YAFPSController.Items
         {
 
         }
-        
-        /// <summary>
-        /// Updates the weapon's sway. Has to be called each frame.
-        /// </summary>
-        protected virtual void UpdateSway()
-        {
-            if (!itemData.canSway) return;
-
-            // Calculate the sway movement based on mouse input
-            // Left-right sway
-            float moveX = Mathf.Clamp(lookInput.x * itemData.swayVectorDirection.y * itemData.swayVector.y, itemData.minSwayVector.y, itemData.maxSwayVector.y);
-            // Sway on itself
-            float moveY = Mathf.Clamp(lookInput.x * itemData.swayVectorDirection.x * itemData.swayVector.x, itemData.minSwayVector.x, itemData.maxSwayVector.x);
-            // Up-down sway
-            float moveZ = Mathf.Clamp(lookInput.y * itemData.swayVectorDirection.z * itemData.swayVector.z, itemData.minSwayVector.z, itemData.maxSwayVector.z);
-
-            // Transform the rotations from Vector3s to Quaternions
-            Quaternion swayRotationX = Quaternion.AngleAxis(moveX, Vector3.up);
-            Quaternion swayRotationY = Quaternion.AngleAxis(moveY, Vector3.right);
-            Quaternion swayRotationZ = Quaternion.AngleAxis(moveZ, Vector3.forward);
-
-            // Summ all the rotations together
-            Quaternion targetRotation = swayRotationX * swayRotationY * swayRotationZ;
-
-            // Apply the rotations
-            //swayHolder.localRotation = QuaternionUtil.SmoothDamp(swayHolder.localRotation, targetRotation, ref swayVelocity, itemData.swaySmoothTime * Time.deltaTime);
-        }
 
         protected virtual Quaternion CalculateSway()
         {
             if (!itemData.canSway) return Quaternion.identity;
 
             // Calculate the sway movement based on mouse input
-            // Left-right sway
-            float moveX = Mathf.Clamp(lookInput.x * itemData.swayVectorDirection.y * itemData.swayVector.y, itemData.minSwayVector.y, itemData.maxSwayVector.y);
-            // Sway on itself
-            float moveY = Mathf.Clamp(lookInput.x * itemData.swayVectorDirection.x * itemData.swayVector.x, itemData.minSwayVector.x, itemData.maxSwayVector.x);
-            // Up-down sway
-            float moveZ = Mathf.Clamp(lookInput.y * itemData.swayVectorDirection.z * itemData.swayVector.z, itemData.minSwayVector.z, itemData.maxSwayVector.z);
+            // left-right
+            float moveX = Mathf.Clamp(lookInput.x * itemData.swayVectorDirection.x * itemData.swayVector.x, itemData.minSwayVector.x, itemData.maxSwayVector.x);
+            // up-down
+            float moveY = Mathf.Clamp(lookInput.y * itemData.swayVectorDirection.y * itemData.swayVector.y, itemData.minSwayVector.y, itemData.maxSwayVector.y);
+            // on it self
+            float moveZ = Mathf.Clamp(lookInput.x * itemData.swayVectorDirection.z * itemData.swayVector.z, itemData.minSwayVector.z, itemData.maxSwayVector.z);
 
             // Transform the rotations from Vector3s to Quaternions
             Quaternion swayRotationX = Quaternion.AngleAxis(moveX, Vector3.up);
