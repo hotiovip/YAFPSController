@@ -206,8 +206,8 @@ namespace Hotiovip.YAFPSController.Items
             float moveZ = Mathf.Clamp(lookInput.x * itemData.swayVectorDirection.z * itemData.swayVector.z, itemData.minSwayVector.z, itemData.maxSwayVector.z);
 
             // Transform the rotations from Vector3s to Quaternions
-            Quaternion swayRotationX = Quaternion.AngleAxis(moveX, Vector3.up);
-            Quaternion swayRotationY = Quaternion.AngleAxis(moveY, Vector3.right);
+            Quaternion swayRotationX = Quaternion.AngleAxis(moveX, Vector3.right);
+            Quaternion swayRotationY = Quaternion.AngleAxis(moveY, Vector3.up);
             Quaternion swayRotationZ = Quaternion.AngleAxis(moveZ, Vector3.forward);
 
             // Summ all the rotations together

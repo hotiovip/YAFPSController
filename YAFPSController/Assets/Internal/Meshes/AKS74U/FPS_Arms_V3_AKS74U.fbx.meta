@@ -49,7 +49,7 @@ ModelImporter:
     clipAnimations:
     - serializedVersion: 16
       name: Arms_AKS74U_Pose
-      takeName: Arms_Rig|Arms_AKS74U_Pose
+      takeName: Arms_AKS74U_Pose
       internalID: 4044170653284261075
       firstFrame: 0
       lastFrame: 1

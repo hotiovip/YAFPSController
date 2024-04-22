@@ -17,8 +17,8 @@ MonoBehaviour:
   canSway: 1
   swayVector: {x: 0.5, y: 0.1, z: 0.1}
   swayVectorDirection: {x: -1, y: -1, z: 1}
-  maxSwayVector: {x: 2, y: 0.5, z: 0.1}
-  minSwayVector: {x: -2, y: -0.5, z: -0.1}
+  maxSwayVector: {x: 2, y: 0.5, z: 1}
+  minSwayVector: {x: -2, y: -0.5, z: -1}
   swaySmoothTime: 5
   fireRate: 650
   muzzleVelocity: 900

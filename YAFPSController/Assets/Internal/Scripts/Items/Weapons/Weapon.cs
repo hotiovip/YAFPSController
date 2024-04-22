@@ -185,6 +185,7 @@ namespace Hotiovip.YAFPSController.Items.Weapons
             if (animator) animator.SetBool(actionHash, false);
         }
 
+        /*
         /// <summary>
         /// Custom UpdateSway method. Works like normal UpdateSway but when aiming then it applies less sway.
         /// </summary>
@@ -218,6 +219,7 @@ namespace Hotiovip.YAFPSController.Items.Weapons
             // Apply the rotations
             //swayHolder.localRotation = QuaternionUtil.SmoothDamp(swayHolder.localRotation, targetRotation, ref swayVelocity, itemData.swaySmoothTime * Time.deltaTime);
         }
+        */
 
         #region GETTERS
         public override bool CanPrimaryUse() => currentMagSize > 0 && !isPerformingAction;
