@@ -36,25 +36,11 @@ namespace Hotiovip.YAFPSController.Items
         /// Vector2 used to store mouse delta
         /// </summary>
         protected Vector2 lookInput;
-        /*
-        /// <summary>
-        /// This transform will get the weapon's position and rotation setup in the itemData.
-        /// </summary>
-        protected Transform positionHolder;
-        protected TransformInterp positionHolderInterp;
-        */
 
-        /*
-        /// <summary>
-        /// Transform to wich the sway is applied
-        /// </summary>
-        protected Transform swayHolder;
-        */
-        protected Transform weaponBoneTarget;
-        /// <summary>
-        /// the velocity parameter used for the sway's smooth damp
-        /// </summary>
-        protected Quaternion swayVelocity;
+        protected Transform weaponBoneIKTransform;
+        protected Transform finalTransform;
+        protected TransformInterpolator lookSwayInterpolator;
+        protected TransformInterpolator movementSwayInterpolator;
 
         // STATES
         protected bool isUsingPrimary;
@@ -69,14 +55,11 @@ namespace Hotiovip.YAFPSController.Items
             playerController = inventoryController.GetPlayerController();
             playerInput = playerController.GetPlayerInput();
 
-            // Get the transforms on wich the various movements will be applied
-            /*
-            positionHolder = inventoryController.GetPositionHolder();
-            swayHolder = inventoryController.GetSwayHolder();
-            */
-            weaponBoneTarget = inventoryController.GetWeaponBoneTarget();
-
-            //positionHolderInterp = inventoryController.GetPositionsHolderInterp();
+            // Get the interpolators on wich the various movements will be applied
+            weaponBoneIKTransform = inventoryController.GetWeaponBoneIKTransform();
+            finalTransform = inventoryController.GetFinalTransform();
+            lookSwayInterpolator = inventoryController.GetLookSwayInterpolator();
+            movementSwayInterpolator = inventoryController.GetMovementSwayInterpolator();
         }
         protected virtual void OnEnable()
         {
@@ -101,9 +84,9 @@ namespace Hotiovip.YAFPSController.Items
         }
         protected virtual void Update()
         {
-            Quaternion sway = CalculateSway();
-            Quaternion finalRotation = sway;
-            weaponBoneTarget.localRotation = finalRotation;
+            UpdateLookSway();
+
+            weaponBoneIKTransform.SetPositionAndRotation(finalTransform.position, finalTransform.rotation);
         }
 
         #region PRIMARY USE
@@ -193,28 +176,39 @@ namespace Hotiovip.YAFPSController.Items
 
         }
 
-        protected virtual Quaternion CalculateSway()
+        /// <summary>
+        /// Calculates and applies look sway, caused by moving the mouse (looking around).
+        /// </summary>
+        protected virtual void UpdateLookSway()
         {
-            if (!itemData.canSway) return Quaternion.identity;
+            if (!itemData.canLookSway) return;
 
             // Calculate the sway movement based on mouse input
             // left-right
-            float moveX = Mathf.Clamp(lookInput.x * itemData.swayVectorDirection.x * itemData.swayVector.x, itemData.minSwayVector.x, itemData.maxSwayVector.x);
+            float moveX = Mathf.Clamp(lookInput.x * itemData.lookSwayVectorDirection.x * itemData.lookSwayVector.x, itemData.minLookSwayVector.x, itemData.maxLookSwayVector.x);
             // up-down
-            float moveY = Mathf.Clamp(lookInput.y * itemData.swayVectorDirection.y * itemData.swayVector.y, itemData.minSwayVector.y, itemData.maxSwayVector.y);
+            float moveY = Mathf.Clamp(lookInput.y * itemData.lookSwayVectorDirection.y * itemData.lookSwayVector.y, itemData.minLookSwayVector.y, itemData.maxLookSwayVector.y);
             // on it self
-            float moveZ = Mathf.Clamp(lookInput.x * itemData.swayVectorDirection.z * itemData.swayVector.z, itemData.minSwayVector.z, itemData.maxSwayVector.z);
+            float moveZ = Mathf.Clamp(lookInput.x * itemData.lookSwayVectorDirection.z * itemData.lookSwayVector.z, itemData.minLookSwayVector.z, itemData.maxLookSwayVector.z);
 
             // Transform the rotations from Vector3s to Quaternions
-            Quaternion swayRotationX = Quaternion.AngleAxis(moveX, Vector3.right);
-            Quaternion swayRotationY = Quaternion.AngleAxis(moveY, Vector3.up);
+            Quaternion swayRotationX = Quaternion.AngleAxis(moveX, Vector3.up);
+            Quaternion swayRotationY = Quaternion.AngleAxis(moveY, Vector3.right);
             Quaternion swayRotationZ = Quaternion.AngleAxis(moveZ, Vector3.forward);
 
             // Summ all the rotations together
             Quaternion targetRotation = swayRotationX * swayRotationY * swayRotationZ;
 
-            // Return rotation
-            return QuaternionUtil.SmoothDamp(weaponBoneTarget.localRotation, targetRotation, ref swayVelocity, itemData.swaySmoothTime * Time.deltaTime);
+            // Apply rotation
+            lookSwayInterpolator.RotationSmoothDamp(targetRotation, itemData.lookSwaySmoothTime, InterpolationSpace.Local);
+        }
+
+        /// <summary>
+        /// Calculates and applies the movement sway, caused by moving around.
+        /// </summary>
+        protected virtual void UpdateMovementSway()
+        {
+
         }
 
         #region GETTERS

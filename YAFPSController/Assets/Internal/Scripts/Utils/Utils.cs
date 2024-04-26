@@ -2,14 +2,14 @@ using UnityEngine;
 
 namespace Hotiovip.YAFPSController.Utils
 {
-    public class TransformInterp
+    public class TransformInterpolator
     {
         private Transform transform;
 
         private Vector3 positionVelocity;
         private Quaternion rotationVelocity;
         
-        public TransformInterp(Transform targetTransform)
+        public TransformInterpolator(Transform targetTransform)
         {
             transform = targetTransform;
             positionVelocity = Vector3.zero;
@@ -18,8 +18,8 @@ namespace Hotiovip.YAFPSController.Utils
 
         public void Reset()
         {
-            positionVelocity = Vector3.zero;
-            rotationVelocity = Quaternion.identity;
+            ResetPosition();
+            ResetRotation();
         }
         public void ResetPosition()
         {

@@ -15,30 +15,36 @@ namespace Hotiovip.YAFPSController
     /// </summary>
     public class Inventory : MonoBehaviour
     {
+        #region VARIABLES
         [SerializeField]
         private Player playerController;
-        [Title("Holders")]
-        /*[SerializeField]
-        private Transform swayHolder;
-        [SerializeField]
-        private Transform positionHolder;
-        */
 
+        [Title("Procedural Animations")]
         [SerializeField]
-        private Transform weaponBoneTarget;
+        private Transform weaponBoneIKTransform;
+        [SerializeField]
+        private Transform finalTransform;
+        [SerializeField]
+        private Transform lookSwayTransform;
+        [SerializeField]
+        private Transform movementSwayTransform;
 
         private PlayerInput playerInput;
         private List<Item> items;
         private Item currentItem;
         private Transform bulletsHolder;
 
-        private TransformInterp positionsHolderInterp;
+        private TransformInterpolator movementSwayInterpolator;
+        private TransformInterpolator lookSwayInterpolator;
+        #endregion
 
         private void Awake()
         {
             playerInput = playerController.GetPlayerInput();
-            //positionsHolderInterp = new TransformInterp(positionHolder);
-            positionsHolderInterp = new TransformInterp(weaponBoneTarget);
+            
+            // Instantiate all the interpolators
+            lookSwayInterpolator = new TransformInterpolator(lookSwayTransform);
+            movementSwayInterpolator = new TransformInterpolator(movementSwayTransform);
         }
         private void OnEnable()
         {
@@ -93,15 +99,16 @@ namespace Hotiovip.YAFPSController
             currentItem = null;
         }
 
+        #region GETTERS
         public Player GetPlayerController() => playerController;
         public Transform GetBulletsHolder() => bulletsHolder;
-        /*
-        public Transform GetPositionHolder() => positionHolder;
-        public Transform GetSwayHolder() => swayHolder;
-        */
-        public Transform GetWeaponBoneTarget() => weaponBoneTarget;
 
-        public TransformInterp GetPositionsHolderInterp() => positionsHolderInterp;
+        // Procedural Animations Getters
+        public Transform GetWeaponBoneIKTransform() => weaponBoneIKTransform;
+        public Transform GetFinalTransform() => finalTransform;
+        public TransformInterpolator GetLookSwayInterpolator() => lookSwayInterpolator;
+        public TransformInterpolator GetMovementSwayInterpolator() => movementSwayInterpolator;
+        #endregion
 
         #region INPUTS
         public void OnActionTriggered(CallbackContext context)

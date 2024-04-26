@@ -185,21 +185,20 @@ namespace Hotiovip.YAFPSController.Items.Weapons
             if (animator) animator.SetBool(actionHash, false);
         }
 
-        /*
         /// <summary>
-        /// Custom UpdateSway method. Works like normal UpdateSway but when aiming then it applies less sway.
+        /// Custom sway logic. Works like normal sway but takes aiming in consideration.
         /// </summary>
-        protected override void UpdateSway()
+        protected override void UpdateLookSway()
         {
-            if (!itemData.canSway) return;
+            if (!itemData.canLookSway) return;
 
             // Calculate the sway movement based on mouse input
-            // Left-right sway
-            float moveX = Mathf.Clamp(lookInput.x * itemData.swayVectorDirection.y * itemData.swayVector.y, itemData.minSwayVector.y, itemData.maxSwayVector.y);
-            // Sway on itself
-            float moveY = Mathf.Clamp(lookInput.x * itemData.swayVectorDirection.x * itemData.swayVector.x, itemData.minSwayVector.x, itemData.maxSwayVector.x);
-            // Up-down sway
-            float moveZ = Mathf.Clamp(lookInput.y * itemData.swayVectorDirection.z * itemData.swayVector.z, itemData.minSwayVector.z, itemData.maxSwayVector.z);
+            // left-right
+            float moveX = Mathf.Clamp(lookInput.x * itemData.lookSwayVectorDirection.x * itemData.lookSwayVector.x, itemData.minLookSwayVector.x, itemData.maxLookSwayVector.x);
+            // up-down
+            float moveY = Mathf.Clamp(lookInput.y * itemData.lookSwayVectorDirection.y * itemData.lookSwayVector.y, itemData.minLookSwayVector.y, itemData.maxLookSwayVector.y);
+            // on it self
+            float moveZ = Mathf.Clamp(lookInput.x * itemData.lookSwayVectorDirection.z * itemData.lookSwayVector.z, itemData.minLookSwayVector.z, itemData.maxLookSwayVector.z);
 
             if (isUsingSecondary)
             {
@@ -216,10 +215,9 @@ namespace Hotiovip.YAFPSController.Items.Weapons
             // Summ all the rotations together
             Quaternion targetRotation = swayRotationX * swayRotationY * swayRotationZ;
 
-            // Apply the rotations
-            //swayHolder.localRotation = QuaternionUtil.SmoothDamp(swayHolder.localRotation, targetRotation, ref swayVelocity, itemData.swaySmoothTime * Time.deltaTime);
+            // Apply rotation
+            lookSwayInterpolator.RotationSmoothDamp(targetRotation, itemData.lookSwaySmoothTime, InterpolationSpace.Local);
         }
-        */
 
         #region GETTERS
         public override bool CanPrimaryUse() => currentMagSize > 0 && !isPerformingAction;
