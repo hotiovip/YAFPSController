@@ -2589,8 +2589,8 @@ MonoBehaviour:
   playerController: {fileID: 1049220446}
   weaponBoneIKTransform: {fileID: 6896949}
   finalTransform: {fileID: 1357924376}
-  lookSwayTransform: {fileID: 0}
-  movementSwayTransform: {fileID: 0}
+  lookSwayTransform: {fileID: 1283376587}
+  movementSwayTransform: {fileID: 652732694}
 --- !u!1 &2013410473
 GameObject:
   m_ObjectHideFlags: 1

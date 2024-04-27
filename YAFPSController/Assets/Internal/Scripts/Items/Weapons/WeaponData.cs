@@ -24,6 +24,7 @@ namespace Hotiovip.YAFPSController.Items.Weapons
         /// </summary>
         public FireMode[] fireModes = { FireMode.Semi };
         [Space]
+
         [Title("Ammo Settings")]
         public Projectile projectilePrefab;
         [Space]
@@ -32,6 +33,8 @@ namespace Hotiovip.YAFPSController.Items.Weapons
         public bool shouldUseSpareAmmo = true;
         [ShowIf("shouldUseSpareAmmo")]
         public int spareAmmoSize = 300;
+
+
         [Title("Aim Settings")]
         public bool canAim = true;
         [ShowIf("canAim")]

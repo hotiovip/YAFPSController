@@ -13,46 +13,19 @@ MonoBehaviour:
   m_Name: AKS7U_WeaponData
   m_EditorClassIdentifier: 
   itemName: AKS74U
-  canLookSway: 1
-  lookSwayVector: {x: 5, y: 3, z: 2}
-  lookSwayVectorDirection: {x: -1, y: 1, z: 1}
-  maxLookSwayVector: {x: 10, y: 6, z: 4}
-  minLookSwayVector: {x: -10, y: -6, z: -4}
-  lookSwaySmoothTime: 10
-  canMovementSway: 1
-  movementSwayAnimationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.5
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -2
-      outSlope: -2
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  swayConfig:
+    canLookSway: 1
+    lookSwayForce: {x: 1, y: 1, z: 1}
+    lookSwayDirection: {x: -1, y: -1, z: 1}
+    maxLookSwayVector: {x: 5, y: 3, z: 3}
+    minLookSwayVector: {x: -5, y: -3, z: -3}
+    lookSwaySmoothTime: 5
+    canMovementSway: 1
+    movementSwayForce: {x: 1, y: 1, z: 1}
+    movementSwayDirection: {x: 1, y: -1, z: 1}
+    maxMovementSwayVector: {x: 2, y: 2, z: 4}
+    minMovementSwayVector: {x: -2, y: -2, z: -4}
+    movementSwaySmoothTime: 5
   fireRate: 650
   muzzleVelocity: 900
   fireModes: 020000000000000001000000

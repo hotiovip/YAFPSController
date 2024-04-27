@@ -188,17 +188,17 @@ namespace Hotiovip.YAFPSController.Items.Weapons
         /// <summary>
         /// Custom sway logic. Works like normal sway but takes aiming in consideration.
         /// </summary>
-        protected override void UpdateLookSway()
+        protected override void CalculateLookSway()
         {
-            if (!itemData.canLookSway) return;
+            if (!itemData.swayConfig.canLookSway) return;
 
             // Calculate the sway movement based on mouse input
             // left-right
-            float moveX = Mathf.Clamp(lookInput.x * itemData.lookSwayVectorDirection.x * itemData.lookSwayVector.x, itemData.minLookSwayVector.x, itemData.maxLookSwayVector.x);
+            float moveX = Mathf.Clamp(lookInput.x * itemData.swayConfig.lookSwayDirection.x * itemData.swayConfig.lookSwayForce.x, itemData.swayConfig.minLookSwayVector.x, itemData.swayConfig.maxLookSwayVector.x);
             // up-down
-            float moveY = Mathf.Clamp(lookInput.y * itemData.lookSwayVectorDirection.y * itemData.lookSwayVector.y, itemData.minLookSwayVector.y, itemData.maxLookSwayVector.y);
+            float moveY = Mathf.Clamp(lookInput.y * itemData.swayConfig.lookSwayDirection.y * itemData.swayConfig.lookSwayForce.y, itemData.swayConfig.minLookSwayVector.y, itemData.swayConfig.maxLookSwayVector.y);
             // on it self
-            float moveZ = Mathf.Clamp(lookInput.x * itemData.lookSwayVectorDirection.z * itemData.lookSwayVector.z, itemData.minLookSwayVector.z, itemData.maxLookSwayVector.z);
+            float moveZ = Mathf.Clamp(lookInput.x * itemData.swayConfig.lookSwayDirection.z * itemData.swayConfig.lookSwayForce.z, itemData.swayConfig.minLookSwayVector.z, itemData.swayConfig.maxLookSwayVector.z);
 
             if (isUsingSecondary)
             {
@@ -216,7 +216,7 @@ namespace Hotiovip.YAFPSController.Items.Weapons
             Quaternion targetRotation = swayRotationX * swayRotationY * swayRotationZ;
 
             // Apply rotation
-            lookSwayInterpolator.RotationSmoothDamp(targetRotation, itemData.lookSwaySmoothTime, InterpolationSpace.Local);
+            lookSwayInterpolator.RotationSmoothDamp(targetRotation, itemData.swayConfig.lookSwaySmoothTime, InterpolationSpace.Local);
         }
 
         #region GETTERS
