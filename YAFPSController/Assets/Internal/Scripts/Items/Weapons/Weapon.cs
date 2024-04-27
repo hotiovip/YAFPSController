@@ -51,7 +51,7 @@ namespace Hotiovip.YAFPSController.Items.Weapons
             UpdatePrimaryUse();
             UpdateSecondaryUse();
 
-            // Remember to call base Update() otherwise UpdateSway() will not be called
+            // Remember to call base Update()
             base.Update();
         }
 
@@ -185,38 +185,24 @@ namespace Hotiovip.YAFPSController.Items.Weapons
             if (animator) animator.SetBool(actionHash, false);
         }
 
+        // TODO: Fix This. Weapon move strange when aim multiplier is applied.
         /// <summary>
         /// Custom sway logic. Works like normal sway but takes aiming in consideration.
         /// </summary>
-        protected override void CalculateLookSway()
+        protected override Quaternion CalculateLookSway()
         {
-            if (!itemData.swayConfig.canLookSway) return;
-
-            // Calculate the sway movement based on mouse input
-            // left-right
-            float moveX = Mathf.Clamp(lookInput.x * itemData.swayConfig.lookSwayDirection.x * itemData.swayConfig.lookSwayForce.x, itemData.swayConfig.minLookSwayVector.x, itemData.swayConfig.maxLookSwayVector.x);
-            // up-down
-            float moveY = Mathf.Clamp(lookInput.y * itemData.swayConfig.lookSwayDirection.y * itemData.swayConfig.lookSwayForce.y, itemData.swayConfig.minLookSwayVector.y, itemData.swayConfig.maxLookSwayVector.y);
-            // on it self
-            float moveZ = Mathf.Clamp(lookInput.x * itemData.swayConfig.lookSwayDirection.z * itemData.swayConfig.lookSwayForce.z, itemData.swayConfig.minLookSwayVector.z, itemData.swayConfig.maxLookSwayVector.z);
+            Quaternion lookSwayTarget = base.CalculateLookSway();
 
             if (isUsingSecondary)
             {
-                moveX *= weaponData.aimSwayMultiplier;
-                moveY *= weaponData.aimSwayMultiplier;
-                moveZ *= weaponData.aimSwayMultiplier;
+                lookSwayTarget.eulerAngles = new Vector3(lookSwayTarget.eulerAngles.x * weaponData.aimSwayMultiplier, 
+                    lookSwayTarget.eulerAngles.y * weaponData.aimSwayMultiplier, 
+                    lookSwayTarget.eulerAngles.z * weaponData.aimSwayMultiplier);
+
+                Debug.Log($"Changed | {weaponData.aimSwayMultiplier}");
             }
 
-            // Transform the rotations from Vector3s to Quaternions
-            Quaternion swayRotationX = Quaternion.AngleAxis(moveX, Vector3.up);
-            Quaternion swayRotationY = Quaternion.AngleAxis(moveY, Vector3.right);
-            Quaternion swayRotationZ = Quaternion.AngleAxis(moveZ, Vector3.forward);
-
-            // Summ all the rotations together
-            Quaternion targetRotation = swayRotationX * swayRotationY * swayRotationZ;
-
-            // Apply rotation
-            lookSwayInterpolator.RotationSmoothDamp(targetRotation, itemData.swayConfig.lookSwaySmoothTime, InterpolationSpace.Local);
+            return lookSwayTarget;
         }
 
         #region GETTERS

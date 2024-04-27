@@ -97,10 +97,7 @@ namespace Hotiovip.YAFPSController.Items
         }
         protected virtual void Update()
         {
-            CalculateLookSway();
-            CalculateMovementSway();
-
-            weaponBoneIKTransform.SetPositionAndRotation(finalTransform.position, finalTransform.rotation);
+            UpdateProceduralAnimations();  
         }
 
         #region PRIMARY USE
@@ -190,11 +187,12 @@ namespace Hotiovip.YAFPSController.Items
 
         }
         
-        //TODO: Add this method inside of Weapon and make it apply aming multipliers before Interpolating
         protected virtual void UpdateProceduralAnimations()
         {
             lookSwayInterpolator.RotationSmoothDamp(CalculateLookSway(), itemData.swayConfig.lookSwaySmoothTime, InterpolationSpace.Local);
             movementSwayInterpolator.RotationSmoothDamp(CalculateMovementSway(), itemData.swayConfig.movementSwaySmoothTime, InterpolationSpace.Local);
+
+            weaponBoneIKTransform.SetPositionAndRotation(finalTransform.position, finalTransform.rotation);
         }
         /// <summary>
         /// Calculates and applies look sway, caused by moving the mouse (looking around).
@@ -215,6 +213,17 @@ namespace Hotiovip.YAFPSController.Items
             lookX = Mathf.Clamp(lookX, itemData.swayConfig.minLookSwayVector.x, itemData.swayConfig.maxLookSwayVector.x);
             lookY = Mathf.Clamp(lookY, itemData.swayConfig.minLookSwayVector.y, itemData.swayConfig.maxLookSwayVector.y);
             lookZ = Mathf.Clamp(lookZ, itemData.swayConfig.minLookSwayVector.z, itemData.swayConfig.maxLookSwayVector.z);
+
+            // Reset the forces if the move axis is 0
+            if (lookInput.x == 0)
+            {
+                lookX = 0;
+                lookZ = 0;
+            }
+            if (lookInput.y == 0)
+            {
+                lookY = 0;
+            }
 
             // Transform the rotations from Vector3s to Quaternions
             Quaternion swayRotationX = Quaternion.AngleAxis(lookX, Vector3.up);

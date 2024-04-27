@@ -21,10 +21,10 @@ MonoBehaviour:
     minLookSwayVector: {x: -5, y: -3, z: -3}
     lookSwaySmoothTime: 5
     canMovementSway: 1
-    movementSwayForce: {x: 1, y: 1, z: 1}
+    movementSwayForce: {x: 1, y: 1, z: 3}
     movementSwayDirection: {x: 1, y: -1, z: 1}
-    maxMovementSwayVector: {x: 2, y: 2, z: 4}
-    minMovementSwayVector: {x: -2, y: -2, z: -4}
+    maxMovementSwayVector: {x: 2, y: 2, z: 10}
+    minMovementSwayVector: {x: -2, y: -2, z: -10}
     movementSwaySmoothTime: 5
   fireRate: 650
   muzzleVelocity: 900
