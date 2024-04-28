@@ -185,24 +185,52 @@ namespace Hotiovip.YAFPSController.Items.Weapons
             if (animator) animator.SetBool(actionHash, false);
         }
 
-        // TODO: Fix This. Weapon move strange when aim multiplier is applied.
+
         /// <summary>
         /// Custom sway logic. Works like normal sway but takes aiming in consideration.
         /// </summary>
         protected override Quaternion CalculateLookSway()
         {
-            Quaternion lookSwayTarget = base.CalculateLookSway();
+            if (!swayConfig.canLookSway) return Quaternion.identity;
+
+            // Calculate the sway movement based on mouse input
+            // left-right
+            lookX += lookInput.x * swayConfig.lookSwayDirection.x * swayConfig.lookSwayVector.x;
+            // up-down
+            lookY += lookInput.y * swayConfig.lookSwayDirection.y * swayConfig.lookSwayVector.y;
+            // on it self
+            lookZ += lookInput.x * swayConfig.lookSwayDirection.z * swayConfig.lookSwayVector.z;
+
+            // Clamp the results between min and max
+            lookX = Mathf.Clamp(lookX, swayConfig.minLookSwayVector.x, swayConfig.maxLookSwayVector.x);
+            lookY = Mathf.Clamp(lookY, swayConfig.minLookSwayVector.y, swayConfig.maxLookSwayVector.y);
+            lookZ = Mathf.Clamp(lookZ, swayConfig.minLookSwayVector.z, swayConfig.maxLookSwayVector.z);
 
             if (isUsingSecondary)
             {
-                lookSwayTarget.eulerAngles = new Vector3(lookSwayTarget.eulerAngles.x * weaponData.aimSwayMultiplier, 
-                    lookSwayTarget.eulerAngles.y * weaponData.aimSwayMultiplier, 
-                    lookSwayTarget.eulerAngles.z * weaponData.aimSwayMultiplier);
-
-                Debug.Log($"Changed | {weaponData.aimSwayMultiplier}");
+                lookX *= weaponData.aimSwayMultiplier;
+                lookY *= weaponData.aimSwayMultiplier;
+                lookZ *= weaponData.aimSwayMultiplier;
             }
 
-            return lookSwayTarget;
+            // Reset the forces if the move axis is 0
+            if (lookInput.x == 0)
+            {
+                lookX = 0;
+                lookZ = 0;
+            }
+            if (lookInput.y == 0)
+            {
+                lookY = 0;
+            }
+
+            // Transform the rotations from Vector3s to Quaternions
+            Quaternion swayRotationX = Quaternion.AngleAxis(lookX, Vector3.up);
+            Quaternion swayRotationY = Quaternion.AngleAxis(lookY, Vector3.right);
+            Quaternion swayRotationZ = Quaternion.AngleAxis(lookZ, Vector3.forward);
+
+            // Summ all the rotations together
+            return swayRotationX * swayRotationY * swayRotationZ;
         }
 
         #region GETTERS

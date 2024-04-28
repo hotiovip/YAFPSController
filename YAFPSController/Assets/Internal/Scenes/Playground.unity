@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2206.1282, g: 2384.2053, b: 3561.0903, a: 1}
+  m_IndirectSpecularColor: {r: 2205.8079, g: 2383.9534, b: 3561.1685, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -608,7 +608,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 652732694}
+  - {fileID: 2014600801}
   - {fileID: 6896949}
   m_Father: {fileID: 88757587}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -815,7 +815,7 @@ GameObject:
   m_Component:
   - component: {fileID: 652732694}
   m_Layer: 0
-  m_Name: Movement
+  m_Name: MovementSway
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -829,13 +829,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 652732693}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1283376587}
-  m_Father: {fileID: 348955450}
+  m_Father: {fileID: 2014600801}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &770585710
 GameObject:
@@ -941,8 +941,9 @@ MonoBehaviour:
   playerController: {fileID: 1709731906}
   weaponBoneIKTransform: {fileID: 0}
   finalTransform: {fileID: 0}
-  lookSwayTransform: {fileID: 0}
+  movementBobbingTransform: {fileID: 0}
   movementSwayTransform: {fileID: 0}
+  lookSwayTransform: {fileID: 0}
 --- !u!1 &806781853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1557,7 +1558,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1283376587}
   m_Layer: 0
-  m_Name: Sway
+  m_Name: LookSway
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2589,8 +2590,9 @@ MonoBehaviour:
   playerController: {fileID: 1049220446}
   weaponBoneIKTransform: {fileID: 6896949}
   finalTransform: {fileID: 1357924376}
-  lookSwayTransform: {fileID: 1283376587}
+  movementBobbingTransform: {fileID: 2014600801}
   movementSwayTransform: {fileID: 652732694}
+  lookSwayTransform: {fileID: 1283376587}
 --- !u!1 &2013410473
 GameObject:
   m_ObjectHideFlags: 1
@@ -2638,6 +2640,38 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2014600800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2014600801}
+  m_Layer: 0
+  m_Name: MovementBobbing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2014600801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014600800}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 3.970468e-23, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 652732694}
+  m_Father: {fileID: 348955450}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &134105862676979851
 GameObject:

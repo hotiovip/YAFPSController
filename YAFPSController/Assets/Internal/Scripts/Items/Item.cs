@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 using Hotiovip.YAFPSController.Utils;
 using Quaternion = UnityEngine.Quaternion;
+using static UnityEditor.PlayerSettings;
+using static UnityEngine.GraphicsBuffer;
+using static UnityEngine.UI.Image;
 
 namespace Hotiovip.YAFPSController.Items
 {
@@ -32,6 +35,17 @@ namespace Hotiovip.YAFPSController.Items
         /// </summary>
         protected PlayerInput playerInput;
 
+        // Procedural Animations
+        /// <summary>
+        /// ScriptableObject containing all the procedural animations relevant data.
+        /// </summary>
+        protected ProceduralAnimationsData proceduralAnimationsData;
+        protected SwayConfig swayConfig;
+        protected MovementBobbingConfig movementBobbingConfig;
+
+        // Movement bobbing
+        protected float movementBobbingJourney;
+
         // Look Sway
         /// <summary>
         /// Vector2 used to store mouse delta
@@ -52,8 +66,9 @@ namespace Hotiovip.YAFPSController.Items
 
         protected Transform weaponBoneIKTransform;
         protected Transform finalTransform;
-        protected TransformInterpolator lookSwayInterpolator;
+        protected TransformInterpolator movementBobbingInterpolator;
         protected TransformInterpolator movementSwayInterpolator;
+        protected TransformInterpolator lookSwayInterpolator;
 
         // STATES
         protected bool isUsingPrimary;
@@ -68,11 +83,16 @@ namespace Hotiovip.YAFPSController.Items
             playerController = inventoryController.GetPlayerController();
             playerInput = playerController.GetPlayerInput();
 
+            proceduralAnimationsData = itemData.proceduralAnimationsData;
+            swayConfig = proceduralAnimationsData.swayConfig;
+            movementBobbingConfig = proceduralAnimationsData.movementBobbingConfig;
+
             // Get the interpolators on wich the various movements will be applied
             weaponBoneIKTransform = inventoryController.GetWeaponBoneIKTransform();
             finalTransform = inventoryController.GetFinalTransform();
-            lookSwayInterpolator = inventoryController.GetLookSwayInterpolator();
+            movementBobbingInterpolator = inventoryController.GetMovementBobbingInterpolator();
             movementSwayInterpolator = inventoryController.GetMovementSwayInterpolator();
+            lookSwayInterpolator = inventoryController.GetLookSwayInterpolator();
         }
         protected virtual void OnEnable()
         {
@@ -189,8 +209,9 @@ namespace Hotiovip.YAFPSController.Items
         
         protected virtual void UpdateProceduralAnimations()
         {
-            lookSwayInterpolator.RotationSmoothDamp(CalculateLookSway(), itemData.swayConfig.lookSwaySmoothTime, InterpolationSpace.Local);
-            movementSwayInterpolator.RotationSmoothDamp(CalculateMovementSway(), itemData.swayConfig.movementSwaySmoothTime, InterpolationSpace.Local);
+            CalculateMovementBobbing();
+            movementSwayInterpolator.RotationSmoothDamp(CalculateMovementSway(), swayConfig.movementSwaySmoothTime, InterpolationSpace.Local);
+            lookSwayInterpolator.RotationSmoothDamp(CalculateLookSway(), swayConfig.lookSwaySmoothTime, InterpolationSpace.Local);
 
             weaponBoneIKTransform.SetPositionAndRotation(finalTransform.position, finalTransform.rotation);
         }
@@ -199,20 +220,20 @@ namespace Hotiovip.YAFPSController.Items
         /// </summary>
         protected virtual Quaternion CalculateLookSway()
         {
-            if (!itemData.swayConfig.canLookSway) return Quaternion.identity;
+            if (!swayConfig.canLookSway) return Quaternion.identity;
 
             // Calculate the sway movement based on mouse input
             // left-right
-            lookX += lookInput.x * itemData.swayConfig.lookSwayDirection.x * itemData.swayConfig.lookSwayForce.x;
+            lookX += lookInput.x * swayConfig.lookSwayDirection.x * swayConfig.lookSwayVector.x;
             // up-down
-            lookY += lookInput.y * itemData.swayConfig.lookSwayDirection.y * itemData.swayConfig.lookSwayForce.y;
+            lookY += lookInput.y * swayConfig.lookSwayDirection.y * swayConfig.lookSwayVector.y;
             // on it self
-            lookZ += lookInput.x * itemData.swayConfig.lookSwayDirection.z * itemData.swayConfig.lookSwayForce.z;
+            lookZ += lookInput.x * swayConfig.lookSwayDirection.z * swayConfig.lookSwayVector.z;
 
             // Clamp the results between min and max
-            lookX = Mathf.Clamp(lookX, itemData.swayConfig.minLookSwayVector.x, itemData.swayConfig.maxLookSwayVector.x);
-            lookY = Mathf.Clamp(lookY, itemData.swayConfig.minLookSwayVector.y, itemData.swayConfig.maxLookSwayVector.y);
-            lookZ = Mathf.Clamp(lookZ, itemData.swayConfig.minLookSwayVector.z, itemData.swayConfig.maxLookSwayVector.z);
+            lookX = Mathf.Clamp(lookX, swayConfig.minLookSwayVector.x, swayConfig.maxLookSwayVector.x);
+            lookY = Mathf.Clamp(lookY, swayConfig.minLookSwayVector.y, swayConfig.maxLookSwayVector.y);
+            lookZ = Mathf.Clamp(lookZ, swayConfig.minLookSwayVector.z, swayConfig.maxLookSwayVector.z);
 
             // Reset the forces if the move axis is 0
             if (lookInput.x == 0)
@@ -232,29 +253,26 @@ namespace Hotiovip.YAFPSController.Items
 
             // Summ all the rotations together
             return swayRotationX * swayRotationY * swayRotationZ;
-
-            // Apply rotation
-            //lookSwayInterpolator.RotationSmoothDamp(targetRotation, itemData.swayConfig.lookSwaySmoothTime, InterpolationSpace.Local);
         }
         /// <summary>
         /// Calculates and applies the movement sway, caused by moving around.
         /// </summary>
         protected virtual Quaternion CalculateMovementSway()
         {
-            if (!itemData.swayConfig.canMovementSway) return Quaternion.identity;
+            if (!swayConfig.canMovementSway) return Quaternion.identity;
 
             // Calculate the sway movement based on mouse input
             // left-right
-            moveX += moveInput.x * itemData.swayConfig.movementSwayDirection.x * itemData.swayConfig.movementSwayForce.x;
+            moveX += moveInput.x * swayConfig.movementSwayDirection.x * swayConfig.movementSwayVector.x;
             // up-down
-            moveY += moveInput.y * itemData.swayConfig.movementSwayDirection.y * itemData.swayConfig.movementSwayForce.y;
+            moveY += moveInput.y * swayConfig.movementSwayDirection.y * swayConfig.movementSwayVector.y;
             // on it self
-            moveZ += moveInput.x * itemData.swayConfig.movementSwayDirection.z * itemData.swayConfig.movementSwayForce.z;
+            moveZ += moveInput.x * swayConfig.movementSwayDirection.z * swayConfig.movementSwayVector.z;
 
-            // Clamp the results between min and max
-            moveX = Mathf.Clamp(moveX, itemData.swayConfig.minMovementSwayVector.x, itemData.swayConfig.maxMovementSwayVector.x);
-            moveY = Mathf.Clamp(moveY, itemData.swayConfig.minMovementSwayVector.y, itemData.swayConfig.maxMovementSwayVector.y);
-            moveZ = Mathf.Clamp(moveZ, itemData.swayConfig.minMovementSwayVector.z, itemData.swayConfig.maxMovementSwayVector.z);
+            // Clamp the results between min and 
+            moveX = Mathf.Clamp(moveX, swayConfig.minMovementSwayVector.x, swayConfig.maxMovementSwayVector.x);
+            moveY = Mathf.Clamp(moveY, swayConfig.minMovementSwayVector.y, swayConfig.maxMovementSwayVector.y);
+            moveZ = Mathf.Clamp(moveZ, swayConfig.minMovementSwayVector.z, swayConfig.maxMovementSwayVector.z);
             
             // Reset the forces if the move axis is 0
             if (moveInput.x == 0)
@@ -274,11 +292,53 @@ namespace Hotiovip.YAFPSController.Items
 
             // Summ all the rotations together
             return swayRotationX * swayRotationY * swayRotationZ;
+        }
+        protected virtual void CalculateMovementBobbing()
+        {
+            if (!movementBobbingConfig.canBob) return;
 
-            // Apply rotation
-            //movementSwayInterpolator.RotationSmoothDamp(targetRotation, itemData.swayConfig.movementSwaySmoothTime, InterpolationSpace.Local);
+            if (movementBobbingJourney > movementBobbingConfig.duration)
+            {
+                movementBobbingJourney = 0f;
+            }
+
+            movementBobbingJourney = movementBobbingJourney + Time.deltaTime;
+
+            float percent = Mathf.Clamp01(movementBobbingJourney / movementBobbingConfig.duration);
+            float curvePercent = movementBobbingConfig.xCurve.Evaluate(percent);
+
+            Debug.Log(curvePercent);
+
+            // Calculate the sway movement based on mouse input
+            // left-right
+            moveX += moveInput.x * movementBobbingConfig.movementSwayDirection.x * movementBobbingConfig.bobbingVector.x;
+            // up-down
+            moveY += moveInput.y * movementBobbingConfig.movementSwayDirection.y * movementBobbingConfig.bobbingVector.y;
+            // on it self
+            moveZ += moveInput.x * movementBobbingConfig.movementSwayDirection.z * movementBobbingConfig.bobbingVector.z;
+
+            // Clamp the results between min and 
+            moveX = Mathf.Clamp(moveX, movementBobbingConfig.minMovementSwayVector.x, movementBobbingConfig.maxMovementSwayVector.x);
+            moveY = Mathf.Clamp(moveY, movementBobbingConfig.minMovementSwayVector.y, movementBobbingConfig.maxMovementSwayVector.y);
+            moveZ = Mathf.Clamp(moveZ, movementBobbingConfig.minMovementSwayVector.z, movementBobbingConfig.maxMovementSwayVector.z);
+
+            // Reset the forces if the move axis is 0
+            if (moveInput.x == 0)
+            {
+                moveX = 0;
+                moveZ = 0;
+            }
+            if (moveInput.y == 0)
+            {
+                moveY = 0;
+            }
+
+            Vector3 targetPosition = new Vector3(moveX, moveY, moveZ);
+
+            //movementBobbingInterpolator.PositionSmoothDamp(targetPosition, 0.1f);
         }
 
+        
 
         #region GETTERS
         public virtual bool CanPrimaryUse() => true;

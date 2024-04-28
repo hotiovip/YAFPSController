@@ -25,15 +25,18 @@ namespace Hotiovip.YAFPSController
         [SerializeField]
         private Transform finalTransform;
         [SerializeField]
-        private Transform lookSwayTransform;
+        private Transform movementBobbingTransform;
         [SerializeField]
         private Transform movementSwayTransform;
+        [SerializeField]
+        private Transform lookSwayTransform;
 
         private PlayerInput playerInput;
         private List<Item> items;
         private Item currentItem;
         private Transform bulletsHolder;
 
+        private TransformInterpolator movementBobbingInterpolator;
         private TransformInterpolator movementSwayInterpolator;
         private TransformInterpolator lookSwayInterpolator;
         #endregion
@@ -41,10 +44,11 @@ namespace Hotiovip.YAFPSController
         private void Awake()
         {
             playerInput = playerController.GetPlayerInput();
-            
+
             // Instantiate all the interpolators
-            lookSwayInterpolator = new TransformInterpolator(lookSwayTransform);
+            movementBobbingInterpolator = new TransformInterpolator(movementBobbingTransform);
             movementSwayInterpolator = new TransformInterpolator(movementSwayTransform);
+            lookSwayInterpolator = new TransformInterpolator(lookSwayTransform);
         }
         private void OnEnable()
         {
@@ -106,8 +110,9 @@ namespace Hotiovip.YAFPSController
         // Procedural Animations Getters
         public Transform GetWeaponBoneIKTransform() => weaponBoneIKTransform;
         public Transform GetFinalTransform() => finalTransform;
-        public TransformInterpolator GetLookSwayInterpolator() => lookSwayInterpolator;
+        public TransformInterpolator GetMovementBobbingInterpolator() => movementBobbingInterpolator;
         public TransformInterpolator GetMovementSwayInterpolator() => movementSwayInterpolator;
+        public TransformInterpolator GetLookSwayInterpolator() => lookSwayInterpolator;
         #endregion
 
         #region INPUTS

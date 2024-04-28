@@ -13,19 +13,8 @@ MonoBehaviour:
   m_Name: AKS7U_WeaponData
   m_EditorClassIdentifier: 
   itemName: AKS74U
-  swayConfig:
-    canLookSway: 1
-    lookSwayForce: {x: 1, y: 1, z: 1}
-    lookSwayDirection: {x: -1, y: -1, z: 1}
-    maxLookSwayVector: {x: 5, y: 3, z: 3}
-    minLookSwayVector: {x: -5, y: -3, z: -3}
-    lookSwaySmoothTime: 5
-    canMovementSway: 1
-    movementSwayForce: {x: 1, y: 1, z: 3}
-    movementSwayDirection: {x: 1, y: -1, z: 1}
-    maxMovementSwayVector: {x: 2, y: 2, z: 10}
-    minMovementSwayVector: {x: -2, y: -2, z: -10}
-    movementSwaySmoothTime: 5
+  proceduralAnimationsData: {fileID: 11400000, guid: e367a9e86b16a124095d660e3c772c87,
+    type: 2}
   fireRate: 650
   muzzleVelocity: 900
   fireModes: 020000000000000001000000

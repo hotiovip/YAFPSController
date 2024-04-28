@@ -12,7 +12,7 @@ namespace Hotiovip.YAFPSController.Items
         [Title("General Settings")]
         public string itemName;
 
-        [Space]
-        public SwayConfig swayConfig;
+        [Title("Procedural Animations")]
+        public ProceduralAnimationsData proceduralAnimationsData;
     }
 }
