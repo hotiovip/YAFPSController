@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swayConfig:
     canLookSway: 1
-    lookSwayVector: {x: 1, y: 1, z: 1}
+    lookSwayVector: {x: 0.1, y: 0.1, z: 0.1}
     lookSwayDirection: {x: -1, y: -1, z: 1}
     maxLookSwayVector: {x: 5, y: 3, z: 3}
     minLookSwayVector: {x: -5, y: -3, z: -3}
@@ -27,38 +27,52 @@ MonoBehaviour:
     movementSwaySmoothTime: 5
   movementBobbingConfig:
     canBob: 1
-    bobbingVector: {x: 0.1, y: 0, z: 0}
-    movementSwayDirection: {x: -1, y: -1, z: 1}
-    maxMovementSwayVector: {x: 0.1, y: 0, z: 0}
-    minMovementSwayVector: {x: -0.1, y: 0, z: 0}
-    smoothTime: 3
-    duration: 1
+    bobbingVector: {x: 0.0001, y: 0.00005, z: 0.0001}
+    bobbingDirectionVector: {x: -1, y: -1, z: 1}
     xCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
         value: 0
-        inSlope: 2
-        outSlope: 2
+        inSlope: 3.94339
+        outSlope: 3.94339
         tangentMode: 34
         weightedMode: 0
         inWeight: 0
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.5
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 34
+        time: 0.125
+        value: 0.49292374
+        inSlope: 0.035383258
+        outSlope: 0.035383258
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.21917278
+      - serializedVersion: 3
+        time: 0.47473475
+        value: 0.017126322
+        inSlope: -0.020626694
+        outSlope: -0.020626694
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
+        time: 0.733348
+        value: 0.49290738
+        inSlope: 0.051262613
+        outSlope: 0.051262613
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.15070546
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: -2
-        outSlope: -2
+        inSlope: -1.8485044
+        outSlope: -1.8485044
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
@@ -72,26 +86,44 @@ MonoBehaviour:
       - serializedVersion: 3
         time: 0
         value: 0
-        inSlope: 2
-        outSlope: 2
+        inSlope: 2.416762
+        outSlope: 2.416762
         tangentMode: 34
         weightedMode: 0
         inWeight: 0
         outWeight: 0.33333334
       - serializedVersion: 3
+        time: 0.26576963
+        value: 0.642302
+        inSlope: 0.33280218
+        outSlope: 0.33280218
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.4356014
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 0.5
         value: 1
-        inSlope: 0
-        outSlope: 0
+        inSlope: 0.08985144
+        outSlope: 0.08985144
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
+        time: 0.7056322
+        value: 0.7229275
+        inSlope: -0.27893934
+        outSlope: -0.27893934
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.425035
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: -2
-        outSlope: -2
+        inSlope: -2.455865
+        outSlope: -2.455865
         tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
@@ -132,3 +164,6 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+    bobbingSmoothTime: 5
+    bobbingDuration: 1
+    bobbingSpeed: 1.4

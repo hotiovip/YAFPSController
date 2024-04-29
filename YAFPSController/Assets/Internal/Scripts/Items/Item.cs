@@ -117,7 +117,11 @@ namespace Hotiovip.YAFPSController.Items
         }
         protected virtual void Update()
         {
-            UpdateProceduralAnimations();  
+            CalculateMovementBobbing();
+            CalculateMovementSway();
+            CalculateLookSway();
+
+            weaponBoneIKTransform.SetPositionAndRotation(finalTransform.position, finalTransform.rotation);
         }
 
         #region PRIMARY USE
@@ -206,21 +210,14 @@ namespace Hotiovip.YAFPSController.Items
         {
 
         }
-        
-        protected virtual void UpdateProceduralAnimations()
-        {
-            CalculateMovementBobbing();
-            movementSwayInterpolator.RotationSmoothDamp(CalculateMovementSway(), swayConfig.movementSwaySmoothTime, InterpolationSpace.Local);
-            lookSwayInterpolator.RotationSmoothDamp(CalculateLookSway(), swayConfig.lookSwaySmoothTime, InterpolationSpace.Local);
+       
 
-            weaponBoneIKTransform.SetPositionAndRotation(finalTransform.position, finalTransform.rotation);
-        }
         /// <summary>
         /// Calculates and applies look sway, caused by moving the mouse (looking around).
         /// </summary>
-        protected virtual Quaternion CalculateLookSway()
+        protected virtual void CalculateLookSway()
         {
-            if (!swayConfig.canLookSway) return Quaternion.identity;
+            if (!swayConfig.canLookSway) return;
 
             // Calculate the sway movement based on mouse input
             // left-right
@@ -251,15 +248,16 @@ namespace Hotiovip.YAFPSController.Items
             Quaternion swayRotationY = Quaternion.AngleAxis(lookY, Vector3.right);
             Quaternion swayRotationZ = Quaternion.AngleAxis(lookZ, Vector3.forward);
 
-            // Summ all the rotations together
-            return swayRotationX * swayRotationY * swayRotationZ;
+            // Interpolate
+            lookSwayInterpolator.RotationSmoothDamp(swayRotationX * swayRotationY * swayRotationZ, 
+                swayConfig.lookSwaySmoothTime, InterpolationSpace.Local);
         }
         /// <summary>
         /// Calculates and applies the movement sway, caused by moving around.
         /// </summary>
-        protected virtual Quaternion CalculateMovementSway()
+        protected virtual void CalculateMovementSway()
         {
-            if (!swayConfig.canMovementSway) return Quaternion.identity;
+            if (!swayConfig.canMovementSway) return;
 
             // Calculate the sway movement based on mouse input
             // left-right
@@ -291,55 +289,40 @@ namespace Hotiovip.YAFPSController.Items
             Quaternion swayRotationZ = Quaternion.AngleAxis(moveZ, Vector3.forward);
 
             // Summ all the rotations together
-            return swayRotationX * swayRotationY * swayRotationZ;
+            movementSwayInterpolator.RotationSmoothDamp(swayRotationX * swayRotationY * swayRotationZ, 
+                swayConfig.movementSwaySmoothTime, InterpolationSpace.Local);
         }
         protected virtual void CalculateMovementBobbing()
         {
             if (!movementBobbingConfig.canBob) return;
 
-            if (movementBobbingJourney > movementBobbingConfig.duration)
+            if (movementBobbingJourney > movementBobbingConfig.bobbingDuration)
             {
                 movementBobbingJourney = 0f;
             }
 
-            movementBobbingJourney = movementBobbingJourney + Time.deltaTime;
-
-            float percent = Mathf.Clamp01(movementBobbingJourney / movementBobbingConfig.duration);
-            float curvePercent = movementBobbingConfig.xCurve.Evaluate(percent);
-
-            Debug.Log(curvePercent);
+            movementBobbingJourney = movementBobbingJourney + (Time.deltaTime * movementBobbingConfig.bobbingSpeed);
+            float percent = Mathf.Clamp01(movementBobbingJourney / movementBobbingConfig.bobbingDuration);
+            
+            float curvePercentX = movementBobbingConfig.xCurve.Evaluate(percent);
+            float curvePercentY = movementBobbingConfig.yCurve.Evaluate(percent);
+            float curvePercentZ = movementBobbingConfig.zCurve.Evaluate(percent);
 
             // Calculate the sway movement based on mouse input
             // left-right
-            moveX += moveInput.x * movementBobbingConfig.movementSwayDirection.x * movementBobbingConfig.bobbingVector.x;
+            float bobbingX = moveInput.x * movementBobbingConfig.bobbingVector.x * curvePercentX;
             // up-down
-            moveY += moveInput.y * movementBobbingConfig.movementSwayDirection.y * movementBobbingConfig.bobbingVector.y;
+            float bobbingY = moveInput.y * movementBobbingConfig.bobbingVector.y * curvePercentY;
             // on it self
-            moveZ += moveInput.x * movementBobbingConfig.movementSwayDirection.z * movementBobbingConfig.bobbingVector.z;
+            float bobbingZ = moveInput.x * movementBobbingConfig.bobbingVector.z * curvePercentZ;
 
-            // Clamp the results between min and 
-            moveX = Mathf.Clamp(moveX, movementBobbingConfig.minMovementSwayVector.x, movementBobbingConfig.maxMovementSwayVector.x);
-            moveY = Mathf.Clamp(moveY, movementBobbingConfig.minMovementSwayVector.y, movementBobbingConfig.maxMovementSwayVector.y);
-            moveZ = Mathf.Clamp(moveZ, movementBobbingConfig.minMovementSwayVector.z, movementBobbingConfig.maxMovementSwayVector.z);
+            Vector3 targetPosition = new Vector3(bobbingX, bobbingY, bobbingZ);
 
-            // Reset the forces if the move axis is 0
-            if (moveInput.x == 0)
-            {
-                moveX = 0;
-                moveZ = 0;
-            }
-            if (moveInput.y == 0)
-            {
-                moveY = 0;
-            }
-
-            Vector3 targetPosition = new Vector3(moveX, moveY, moveZ);
-
-            //movementBobbingInterpolator.PositionSmoothDamp(targetPosition, 0.1f);
+            movementBobbingInterpolator.PositionSmoothDamp(targetPosition, movementBobbingConfig.bobbingSmoothTime);
         }
 
-        
 
+        
         #region GETTERS
         public virtual bool CanPrimaryUse() => true;
         public virtual bool CanSecondaryUse() => true;

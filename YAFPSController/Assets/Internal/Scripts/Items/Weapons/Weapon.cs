@@ -189,9 +189,9 @@ namespace Hotiovip.YAFPSController.Items.Weapons
         /// <summary>
         /// Custom sway logic. Works like normal sway but takes aiming in consideration.
         /// </summary>
-        protected override Quaternion CalculateLookSway()
+        protected override void CalculateLookSway()
         {
-            if (!swayConfig.canLookSway) return Quaternion.identity;
+            if (!swayConfig.canLookSway) return;
 
             // Calculate the sway movement based on mouse input
             // left-right
@@ -229,8 +229,9 @@ namespace Hotiovip.YAFPSController.Items.Weapons
             Quaternion swayRotationY = Quaternion.AngleAxis(lookY, Vector3.right);
             Quaternion swayRotationZ = Quaternion.AngleAxis(lookZ, Vector3.forward);
 
-            // Summ all the rotations together
-            return swayRotationX * swayRotationY * swayRotationZ;
+            // Interpolate
+            lookSwayInterpolator.RotationSmoothDamp(swayRotationX * swayRotationY * swayRotationZ,
+                swayConfig.lookSwaySmoothTime, InterpolationSpace.Local);
         }
 
         #region GETTERS

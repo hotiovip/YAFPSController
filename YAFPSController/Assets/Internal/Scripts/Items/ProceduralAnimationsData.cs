@@ -59,17 +59,17 @@ namespace Hotiovip.YAFPSController.Items
         [Tooltip("X: on itself | Y: left-right | Z: down-up")]
         public Vector3 bobbingVector = new Vector3(1f, 1f, 1f);
         [Tooltip("1 = positive direction (up, forward, right) and -1 = negative direction (down, back, left)")]
-        public Vector3 movementSwayDirection = new Vector3(-1f, -1f, 1f);
-        [Tooltip("Max values that can be reached on each axis. (Maximum)")]
-        public Vector3 maxMovementSwayVector = new Vector3(5f, 3f, 3f);
-        [Tooltip("Min values that can be reached on each axis. (Least)")]
-        public Vector3 minMovementSwayVector = new Vector3(-5f, -3f, -3f);
-        [Tooltip("The time that the weapons need to return to their original axis. More is smoother, less is snappier.")]
-        public float smoothTime = 5f;
-        public float duration = 1f;
-
+        public Vector3 bobbingDirectionVector = new Vector3(-1f, -1f, 1f);
+        [Space]
         public AnimationCurve xCurve;
         public AnimationCurve yCurve;
         public AnimationCurve zCurve;
+        [Space]
+        [Tooltip("The time that the weapons need to return to their original axis. More is smoother, less is snappier.")]
+        public float bobbingSmoothTime = 5f;
+        public float bobbingDuration = 1f;
+        public float bobbingSpeed = 2f;
+
+        
     }
 }
