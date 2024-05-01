@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -272,9 +272,9 @@ MonoBehaviour:
     y: 691
     width: 1432
     height: 248
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 21}
+  m_MinSize: {x: 231, y: 271}
+  m_MaxSize: {x: 10001, y: 10021}
+  m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
   - {fileID: 20}
@@ -283,8 +283,8 @@ MonoBehaviour:
   - {fileID: 23}
   - {fileID: 24}
   - {fileID: 25}
-  m_Selected: 2
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1440,7 +1440,7 @@ MonoBehaviour:
     m_SkipHidden: 1
     m_SearchArea: 1
     m_Folders:
-    - Assets/Internal/Scripts/Items/Weapons
+    - Assets/Internal/Data/ProceduralAnimationsData
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1448,15 +1448,15 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 62
   m_LastFolders:
-  - Assets/Internal/Scripts/Items/Weapons
+  - Assets/Internal/Data/ProceduralAnimationsData
   m_LastFoldersGridSize: 62
   m_LastProjectPath: E:\GitHub\YAFPSController\YAFPSController
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 289}
-    m_SelectedIDs: 8e7c0000
-    m_LastClickedID: 31886
+    scrollPos: {x: 0, y: 271}
+    m_SelectedIDs: 3c7c0000
+    m_LastClickedID: 31804
     m_ExpandedIDs: 000000006a7a00006c7a00006e7a0000707a0000727a0000747a0000767a00004c7c000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1510,8 +1510,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 3c770000
-    m_LastClickedInstanceID: 30524
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000e878000026d4030012d6030010f50000ba37010064f60100b8cd0200ceb000009abb0000b08a00003eaa000002be0000f87b00007c9f0000f4940000000000004cfb0200
     m_RenameOverlay:
@@ -1657,8 +1657,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 22780000
-    m_LastClickedInstanceID: 30754
+    m_SelectedInstanceIDs: 8e7c0000
+    m_LastClickedInstanceID: 31886
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 10f5000000980000e0f00000ccc30000c88c000002be000078ac00000ee3030016e30300587c0000
     m_RenameOverlay:

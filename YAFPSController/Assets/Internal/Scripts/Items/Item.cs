@@ -210,7 +210,7 @@ namespace Hotiovip.YAFPSController.Items
         {
 
         }
-       
+
 
         /// <summary>
         /// Calculates and applies look sway, caused by moving the mouse (looking around).
@@ -314,14 +314,12 @@ namespace Hotiovip.YAFPSController.Items
             // up-down
             float bobbingY = moveInput.y * movementBobbingConfig.bobbingVector.y * curvePercentY;
             // on it self
-            float bobbingZ = moveInput.x * movementBobbingConfig.bobbingVector.z * curvePercentZ;
+            float bobbingZ = moveInput.y * movementBobbingConfig.bobbingVector.z * curvePercentZ;
 
             Vector3 targetPosition = new Vector3(bobbingX, bobbingY, bobbingZ);
 
             movementBobbingInterpolator.PositionSmoothDamp(targetPosition, movementBobbingConfig.bobbingSmoothTime);
         }
-
-
         
         #region GETTERS
         public virtual bool CanPrimaryUse() => true;
